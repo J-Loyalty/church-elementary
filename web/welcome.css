@@ -1,0 +1,126 @@
+/* ============================================================
+   초등부 환영 안내 — A3 인쇄용 (새 부모님·섬김 지원 성도님 대상)
+   ============================================================ */
+
+@page { size: A3 portrait; margin: 16mm; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #256456;
+  --primary-2: #2e7d6b;
+  --ink: #232323;
+  --muted: #5f5a53;
+  --line: #d7ddd8;
+  --soft: #e9f2ee;
+  --warm: #f4ede1;
+  --accent: #bd7f2f;
+}
+
+body {
+  font-family: "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕",
+    system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: #e6e9e9;
+  line-height: 1.6;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ---- A3 화면 미리보기 프레임 ---- */
+.sheet {
+  width: 297mm;
+  min-height: 420mm;
+  margin: 20px auto;
+  padding: 18mm;
+  background: #fff;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, .18);
+}
+
+/* ---- 인쇄 도구막대 (화면 전용) ---- */
+.toolbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  background: #256456; color: #fff; padding: 12px 20px; font-size: .95rem;
+}
+.toolbar button {
+  font-family: inherit; font-size: 1rem; font-weight: 700;
+  background: #fff; color: #256456; border: none; border-radius: 8px;
+  padding: 9px 18px; cursor: pointer;
+}
+
+/* ---- 머리말 ---- */
+.w-head {
+  text-align: center; background: var(--soft); border-radius: 18px;
+  padding: 34px 24px; margin-bottom: 22px;
+}
+.w-sub { font-size: 1.1rem; letter-spacing: .14em; color: var(--primary-2); }
+.w-head h1 { font-size: 3.1rem; line-height: 1.2; color: var(--primary); margin: 8px 0 12px; letter-spacing: -.01em; }
+.w-tagline { font-size: 1.25rem; color: var(--muted); }
+
+/* ---- 목표 ---- */
+.w-goal { margin-bottom: 22px; }
+.w-goal h2 { text-align: center; font-size: 1.7rem; color: var(--primary); margin-bottom: 16px; }
+.goal-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.goal-col { background: var(--warm); border-radius: 14px; padding: 20px; text-align: center; }
+.goal-col p { font-size: 1.15rem; margin-top: 12px; line-height: 1.7; }
+.gt {
+  display: inline-block; font-size: 1rem; font-weight: 700; color: #fff;
+  padding: 5px 18px; border-radius: 999px;
+}
+.gt.word { background: #2e7d6b; }
+.gt.heart { background: #c26a3c; }
+.gt.life { background: #4a76c4; }
+
+/* ---- 본문 그리드 ---- */
+.w-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.box { border: 1.5px solid var(--line); border-radius: 14px; padding: 22px 24px; break-inside: avoid; }
+.box.wide { grid-column: 1 / -1; }
+.box h3 {
+  font-size: 1.4rem; color: var(--primary); margin-bottom: 14px;
+  border-bottom: 2px solid var(--line); padding-bottom: 8px;
+}
+.box h3 em { font-style: normal; font-size: .9rem; font-weight: 600; color: var(--muted); }
+
+.mini { width: 100%; border-collapse: collapse; font-size: 1.15rem; }
+.mini td { padding: 8px 6px; border-bottom: 1px solid var(--line); }
+.mini td:first-child { color: var(--muted); white-space: nowrap; width: 40%; }
+.mini tr:last-child td { border-bottom: none; }
+
+.dots { list-style: none; }
+.dots li { font-size: 1.15rem; padding: 8px 0 8px 24px; position: relative; border-bottom: 1px dashed var(--line); }
+.dots li:last-child { border-bottom: none; }
+.dots li::before { content: "•"; color: var(--primary-2); position: absolute; left: 6px; font-weight: 700; }
+
+.small { font-size: 1.02rem; color: var(--muted); margin-top: 12px; }
+
+/* 반 편성 칩 */
+.classes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.chip { border: 1.5px solid var(--line); border-radius: 12px; padding: 14px 8px; text-align: center; background: var(--soft); }
+.chip b { display: block; color: var(--primary); font-size: 1.4rem; }
+.chip span { display: block; font-size: .95rem; color: var(--muted); margin-top: 4px; }
+
+/* 섬김 초대 */
+.invite { background: var(--warm); border-color: #e6d9c2; }
+.invite p { font-size: 1.15rem; }
+.serve { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
+.serve span {
+  background: #fff; border: 1.5px solid var(--accent); color: var(--accent);
+  font-weight: 700; font-size: 1.02rem; padding: 8px 18px; border-radius: 999px;
+}
+
+/* ---- 하단 문의 ---- */
+.w-foot { margin-top: 22px; border-top: 3px solid var(--primary); padding-top: 18px; }
+.foot-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center; }
+.foot-row div { font-size: 1.1rem; line-height: 1.7; }
+.foot-row b { color: var(--primary); }
+.foot-note { text-align: center; font-size: 1rem; color: var(--muted); margin-top: 14px; }
+
+/* ============================================================
+   인쇄 모드
+   ============================================================ */
+@media print {
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .sheet { width: auto; min-height: auto; margin: 0; padding: 0; box-shadow: none; }
+}

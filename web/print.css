@@ -1,0 +1,117 @@
+/* ============================================================
+   초등부 안내 — 인쇄용(비치용) 스타일  ·  A4 세로 1장
+   ============================================================ */
+
+@page { size: A4 portrait; margin: 14mm; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #256456;
+  --primary-2: #2e7d6b;
+  --ink: #232323;
+  --muted: #5f5a53;
+  --line: #d7ddd8;
+  --soft: #e9f2ee;
+}
+
+body {
+  font-family: "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕",
+    system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: #e6e9e9;
+  line-height: 1.5;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ---- 화면 미리보기 프레임 (A4 시뮬레이션) ---- */
+.sheet {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 20px auto;
+  padding: 14mm;
+  background: #fff;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, .18);
+}
+
+/* ---- 상단 인쇄 도구막대 (화면 전용) ---- */
+.toolbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  background: #256456; color: #fff;
+  padding: 12px 20px; font-size: .9rem;
+}
+.toolbar button {
+  font-family: inherit; font-size: .92rem; font-weight: 700;
+  background: #fff; color: #256456; border: none; border-radius: 8px;
+  padding: 8px 16px; cursor: pointer;
+}
+
+/* ---- 제목 ---- */
+.p-head { text-align: center; border-bottom: 3px solid var(--primary); padding-bottom: 12px; margin-bottom: 16px; }
+.p-sub { font-size: .95rem; letter-spacing: .12em; color: var(--muted); }
+.p-head h1 { font-size: 2rem; color: var(--primary); margin-top: 2px; }
+
+/* ---- 목표 ---- */
+.p-goal { margin-bottom: 16px; }
+.p-goal h2 { font-size: 1.15rem; color: var(--primary); margin-bottom: 10px; text-align: center; }
+.goal-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.goal-col { background: var(--soft); border-radius: 10px; padding: 12px 14px; }
+.goal-col p { font-size: .95rem; margin-top: 8px; line-height: 1.6; }
+.gt {
+  display: inline-block; font-size: .8rem; font-weight: 700; color: #fff;
+  padding: 3px 12px; border-radius: 999px;
+}
+.gt.word { background: #2e7d6b; }
+.gt.heart { background: #c26a3c; }
+.gt.life { background: #4a76c4; }
+
+/* ---- 본문 그리드 ---- */
+.p-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.box {
+  border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px;
+  break-inside: avoid;
+}
+.box.wide { grid-column: 1 / -1; }
+.box h3 {
+  font-size: 1.05rem; color: var(--primary); margin-bottom: 10px;
+  border-bottom: 1px solid var(--line); padding-bottom: 6px;
+}
+.box h3 em { font-style: normal; font-size: .78rem; font-weight: 600; color: var(--muted); }
+.box h4 { font-size: .9rem; color: var(--primary-2); margin: 12px 0 4px; }
+
+/* 예배 순서 (2열) */
+.order { columns: 2; column-gap: 18px; margin-left: 18px; }
+.order li { font-size: .95rem; padding: 2px 0; break-inside: avoid; }
+
+/* 미니 표 */
+.mini { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.mini td { padding: 4px 6px; border-bottom: 1px solid var(--line); }
+.mini td:first-child { color: var(--muted); white-space: nowrap; width: 42%; }
+.mini tr:last-child td { border-bottom: none; }
+
+.small { font-size: .88rem; color: var(--muted); }
+
+/* 반 편성 칩 */
+.classes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.chip { border: 1px solid var(--line); border-radius: 8px; padding: 8px; text-align: center; }
+.chip b { display: block; color: var(--primary); font-size: 1rem; }
+.chip span { display: block; font-size: .76rem; color: var(--muted); margin-top: 2px; }
+
+/* 연간 행사 */
+.year { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 18px; }
+.year span { font-size: .92rem; padding: 2px 0; }
+.year b { color: var(--primary); margin-right: 6px; }
+
+/* ---- 하단 ---- */
+.p-foot { margin-top: 16px; text-align: center; font-size: .85rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10px; }
+
+/* ============================================================
+   인쇄 모드
+   ============================================================ */
+@media print {
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .sheet { width: auto; min-height: auto; margin: 0; padding: 0; box-shadow: none; }
+}
