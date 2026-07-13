@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 여름성경학교 1일차 큐시트</title>
+<style>
+  :root{
+    --navy:#0f2a43; --navy-2:#173d61; --gold:#e0a94a; --gold-soft:#f4d79b;
+    --bg:#eef2f6; --card:#ffffff; --ink:#1a2735; --muted:#5b6b7c;
+    --line:#d9e1ea; --chk:#8aa0b5; --warn-bg:#fff4e0; --warn-line:#e0a94a; --warn-ink:#7a5410;
+    --accent-bg:#eaf1f8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --navy:#0b2135; --navy-2:#12314d; --gold:#e6b45c; --gold-soft:#f0cd8a;
+      --bg:#0c141d; --card:#151f2b; --ink:#e7edf3; --muted:#9fb0c1;
+      --line:#26333f; --chk:#4a5c6d; --warn-bg:#2c2416; --warn-line:#b58236; --warn-ink:#e8c583;
+      --accent-bg:#152436;
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Pretendard","Malgun Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ── 상단 바 (화면 전용) ── */
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 16px; background:var(--navy); color:#fff;
+    border-bottom:3px solid var(--gold);
+  }
+  .topbar .brand{font-weight:700; font-size:15px; letter-spacing:.02em;}
+  .topbar .brand small{display:block; font-weight:400; font-size:11px; opacity:.75; letter-spacing:.03em;}
+  .spacer{flex:1;}
+  .nav-btns{display:flex; align-items:center; gap:6px;}
+  button{
+    font-family:inherit; cursor:pointer; border:0; border-radius:8px;
+    background:var(--navy-2); color:#fff; padding:8px 12px; font-size:14px; font-weight:600;
+  }
+  button:hover{background:#20496f;}
+  button.ghost{background:transparent; border:1px solid rgba(255,255,255,.35);}
+  .counter{font-variant-numeric:tabular-nums; font-weight:700; min-width:58px; text-align:center;}
+  .counter b{color:var(--gold-soft);}
+
+  /* 시간 점프 칩 */
+  .jump{display:flex; gap:6px; overflow-x:auto; padding:8px 16px; background:var(--navy-2);}
+  .jump::-webkit-scrollbar{height:6px;}
+  .jump::-webkit-scrollbar-thumb{background:rgba(255,255,255,.25); border-radius:3px;}
+  .chip{
+    flex:0 0 auto; font-size:12px; font-weight:600; color:#cdd9e5;
+    background:rgba(255,255,255,.08); border:1px solid transparent;
+    padding:5px 9px; border-radius:999px; cursor:pointer; white-space:nowrap;
+    font-variant-numeric:tabular-nums;
+  }
+  .chip:hover{background:rgba(255,255,255,.18);}
+  .chip.on{background:var(--gold); color:var(--navy); border-color:var(--gold);}
+
+  /* ── 슬롯(페이지) ── */
+  .stage{padding:22px 16px 60px;}
+  .slot{
+    display:none;
+    max-width:820px; margin:0 auto; background:var(--card);
+    border:1px solid var(--line); border-radius:16px; overflow:hidden;
+    box-shadow:0 6px 24px rgba(15,42,67,.10);
+  }
+  .slot.active{display:block; animation:fade .18s ease;}
+  @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+
+  .slot-head{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    color:#fff; padding:20px 26px; position:relative;
+  }
+  .slot-head .idx{
+    position:absolute; top:16px; right:22px; font-size:12px; letter-spacing:.08em;
+    opacity:.7; font-weight:600;
+  }
+  .slot-head .time{
+    font-size:34px; font-weight:800; letter-spacing:.01em; font-variant-numeric:tabular-nums;
+    display:flex; align-items:baseline; gap:12px;
+  }
+  .slot-head .tag{
+    font-size:11px; font-weight:700; background:var(--gold); color:var(--navy);
+    padding:3px 9px; border-radius:999px; letter-spacing:.03em; align-self:center;
+  }
+  .slot-head .title{font-size:22px; font-weight:700; margin-top:4px;}
+  .meta{display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:12px; font-size:14px;}
+  .meta span{display:inline-flex; align-items:center; gap:6px; opacity:.95;}
+  .meta .k{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; opacity:.65;}
+
+  .slot-body{padding:22px 26px 26px;}
+  .block{margin-bottom:18px;}
+  .block:last-child{margin-bottom:0;}
+  .block > .label{
+    font-size:12px; font-weight:800; letter-spacing:.05em; color:var(--muted);
+    text-transform:uppercase; margin-bottom:8px; display:flex; align-items:center; gap:8px;
+  }
+  .block > .label::before{content:""; width:14px; height:2px; background:var(--gold); border-radius:2px;}
+
+  ul.steps{margin:0; padding:0; list-style:none;}
+  ul.steps li{
+    position:relative; padding:6px 0 6px 22px; font-size:16px; border-bottom:1px dashed var(--line);
+  }
+  ul.steps li:last-child{border-bottom:0;}
+  ul.steps li::before{
+    content:""; position:absolute; left:4px; top:14px; width:7px; height:7px;
+    background:var(--navy-2); border-radius:50%;
+  }
+
+  ul.check{margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:6px 14px;}
+  ul.check li{position:relative; padding:6px 0 6px 28px; font-size:15px;}
+  ul.check li::before{
+    content:""; position:absolute; left:2px; top:6px; width:16px; height:16px;
+    border:2px solid var(--chk); border-radius:4px;
+  }
+
+  .note{
+    background:var(--warn-bg); border:1px solid var(--warn-line); border-left-width:4px;
+    border-radius:8px; padding:12px 14px; font-size:14.5px; color:var(--warn-ink);
+  }
+  .note b{color:var(--warn-ink);}
+  .note .h{font-weight:800; margin-right:6px;}
+  .note ul{margin:6px 0 0; padding-left:18px;}
+  .note li{margin:3px 0;}
+
+  .info{display:flex; flex-wrap:wrap; gap:6px 20px; font-size:15px;}
+  .info div{display:flex; gap:7px;}
+  .info .k{font-weight:700; color:var(--muted);}
+
+  .people{font-size:14px; color:var(--muted); margin-top:-4px; margin-bottom:8px;}
+  .ref{font-size:13px; color:var(--muted);}
+  .ref a{color:#2a6db0;}
+
+  /* 하단 이동 (화면 전용) */
+  .footnav{
+    position:fixed; bottom:16px; left:50%; transform:translateX(-50%);
+    display:flex; gap:10px; align-items:center; z-index:20;
+    background:var(--navy); color:#fff; padding:8px 10px; border-radius:999px;
+    box-shadow:0 6px 20px rgba(0,0,0,.25);
+  }
+  .footnav .counter{color:#fff;}
+  .hint{text-align:center; font-size:12px; color:var(--muted); margin:18px 0 0;}
+
+  /* ── 인쇄: 한 슬롯 = 한 페이지 ── */
+  @page{ size:A4; margin:14mm; }
+  @media print{
+    body{background:#fff;}
+    .topbar,.jump,.footnav,.hint{display:none !important;}
+    .stage{padding:0;}
+    .slot{
+      display:block !important; max-width:none; margin:0 0 0 0;
+      border:1.5px solid #333; border-radius:10px; box-shadow:none;
+      page-break-after:always; break-after:page;
+    }
+    .slot:last-child{page-break-after:auto; break-after:auto;}
+    .slot-head{background:#0f2a43 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .slot-head .tag,.block>.label::before{background:#e0a94a !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .note{background:#fff4e0 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    ul.check{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">2026 여름성경학교 · 1일차 큐시트<small>7월 24일(금) · 진행용</small></div>
+  <div class="spacer"></div>
+  <div class="nav-btns">
+    <button class="ghost" onclick="go(-1)">◀ 이전</button>
+    <span class="counter"><b id="cur">1</b> / <span id="tot">12</span></span>
+    <button class="ghost" onclick="go(1)">다음 ▶</button>
+    <button onclick="window.print()">🖨 인쇄</button>
+  </div>
+</header>
+<nav class="jump" id="jump"></nav>
+
+<main class="stage" id="stage"></main>
+
+<div class="footnav">
+  <button class="ghost" onclick="go(-1)">◀</button>
+  <span class="counter"><b id="cur2">1</b> / 12</span>
+  <button class="ghost" onclick="go(1)">▶</button>
+</div>
+<p class="hint">← → 방향키로 이동 · 🖨 인쇄 시 한 슬롯이 한 페이지로 출력됩니다</p>
+
+<script>
+const slots = [
+  { time:"~ 15:30", tag:"사전 준비", title:"교사 모임", place:"교회", staff:"교사 8명",
+    blocks:[
+      {t:"steps", label:"진행", items:["15:00 차량 운행 시작 → 15:30 교회 도착","기도회 및 아이들 맞이 준비"]},
+      {t:"note", h:"확인", items:["기도회 팀 도착·기도회 시각 확정 필요 (진행표는 ~15:30, 세부는 15:30 도착으로 상충)"]},
+    ]},
+
+  { time:"15:30 ~ 16:10", tag:"접수", title:"접수 · 티셔츠 환복 · 짐 정리 · 간식", place:"1층 접수 → 2·3층", staff:"1층·2층 담당",
+    blocks:[
+      {t:"steps", label:"진행", items:[
+        "1층에서 접수 + 티셔츠·입장팔찌 지급 → 환복 후 2층 이동",
+        "짐 정리 — 2층: 여자아이 / 3층: 남자아이",
+        "간식 — 환복 후 올라온 친구부터 순차 지급",
+      ]},
+      {t:"note", h:"참고", items:["입장팔찌가 이름표 역할(별도 명찰 없음) · 회비 영수증 미발급"]},
+      {t:"people", label:"1층 담당", text:"이선미 집사 · 이수진 집사 · 박종렬 장로 · 조소현 집사"},
+      {t:"check", items:["명단표","회비납부봉투","필기도구","티셔츠","입장팔찌"]},
+      {t:"people", label:"2층 담당", text:"조남선 권사 · 서옥래 집사"},
+      {t:"check", items:["환영·안내 PPT","간식","별 스티커","선물용 볼펜","항해사 모자","항해사 스카프"]},
+    ]},
+
+  { time:"16:10 ~ 16:25", tag:"찬양", title:"준비찬양", place:"비전센터 2층", staff:"이유진 사모 · 지수민 · 김동완 · 이하음 · 찬양팀",
+    blocks:[ {t:"check", label:"준비물", items:["준비찬양 PPT","음원"]} ]},
+
+  { time:"16:25 ~ 17:00", tag:"예배", title:"개회예배 (축도 포함)", place:"비전센터 2층", staff:"담임 목사",
+    blocks:[
+      {t:"steps", label:"진행", items:["개회예배 → 축도","단체 사진 — 담임 목사님 설교 후 촬영"]},
+      {t:"check", label:"준비물", items:["개회예배 PPT"]},
+    ]},
+
+  { time:"17:00 ~ 18:00", tag:"식사", title:"저녁 식사", place:"식당", staff:"홍선미 집사",
+    blocks:[
+      {t:"info", items:[["메뉴","불고기 · 돈까스(여러 소스)"],["간식","아이스크림"],["인원","총 70명분 (아이 50 · 어른 20)"]]},
+      {t:"note", h:"참고", items:["식판·수저·물 등 기본 식기는 식당에 구비"]},
+      {t:"check", label:"준비물", items:["순서 정하기 볼 (저·고학년)"]},
+    ]},
+
+  { time:"18:00 ~ 18:15", tag:"찬양", title:"준비찬양", place:"비전센터 2층", staff:"이유진 사모 · 찬양팀",
+    blocks:[ {t:"check", label:"준비물", items:["1과 예배 PPT"]} ]},
+
+  { time:"18:15 ~ 18:35", tag:"말씀", title:"1과 설교", place:"비전센터 2층", staff:"김진서 목사",
+    blocks:[ {t:"steps", label:"진행", items:["1과 설교","설교 중 교사들은 공과 자리로 이동해 대기(쉬는 타임)"]} ]},
+
+  { time:"18:35 ~ 19:45", tag:"공과", title:"1과 공과", place:"각 반 (1층 2개 반 → 성가대실·자모실)", staff:"반별 담임교사",
+    blocks:[
+      {t:"steps", label:"진행", items:[
+        "각 반에서 1과 공과 진행 → 마치는 순서대로 본당으로 이동",
+        "신실반: 담임 부재 → 장충성 집사 대체 진행",
+      ]},
+      {t:"note", h:"장소 조정", items:[
+        "코스 3(천국문)이 <b>비전센터 1층 소그룹실</b>을 미리 꾸며야 하므로, 1층 2개 반은 <b>본당 성가대실·자모실</b>로 이동해 진행",
+        "사전 세팅이 필요한 곳은 비전센터 1층뿐 — 다른 코스 장소는 공과 후 바로 전환 무방",
+      ]},
+      {t:"note", h:"전환 ★", items:[
+        "공과 끝나기 전 <b>도우미 집사들이 각 반으로 가서 아이들을 본당으로 인솔</b>",
+        "그 사이 <b>교사들은 약 15~20분간 천로역정 세팅</b>",
+      ]},
+      {t:"check", label:"준비물", items:["각 반 공과 자료"]},
+    ]},
+
+  { time:"19:45 ~ 22:00", tag:"메인", title:"천로역정 + 기도회", place:"비전센터 · 야외 → 본당", staff:"교사(코스) · 집사(조 인솔) · 김진서 목사(기도회)",
+    blocks:[
+      {t:"note", h:"세팅 ★", items:[
+        "공과 직후 바로 코스 세팅 — 도우미 집사가 아이들을 본당으로 인솔하는 동안(15~20분) 교사가 코스 준비",
+        "본당에 모인 아이들 → 그대로 <b>천로역정 오프닝</b>으로 연결",
+        "코스 3(천국문)은 비전센터 1층 소그룹실을 <b>사전 세팅</b>",
+      ]},
+      {t:"steps", label:"천로역정 (약 120분)", items:["천로역정 순례길 기획안에 맞춰 진행 (교사=코스 담당 / 집사=조 인솔)"]},
+      {t:"check", label:"교구 (기획안 준비물 총괄)", items:[
+        "코스1 배낭·죄의 생수병","코스2 나무 십자가·붉은 끈·가위","코스3 천국문 장식·생명책 전지·마커·포스트잇",
+        "코스4 유혹/말씀 카드","코스5 안대·발바닥 스티커·안전 장애물","코스6 LED 촛불·우드락 십자가·압정·볼펜·종이",
+        "순례 여권·스티커","각 코스 타이머",
+      ]},
+      {t:"steps", label:"기도회 (10~15분)", items:["천로역정 종료 후 본당에 모여 짧게 (담당: 김진서 목사)","※ 시간 문제로 본당 앞 캠프파이어 대체 검토 중"]},
+      {t:"ref", text:"참고 문서: ../천로역정.md (천로역정 순례길 기획안)"},
+    ]},
+
+  { time:"22:00 ~ 22:30", tag:"야식", title:"야식 (분식)", place:"식당", staff:"이정록 집사 (즉석 분식)",
+    blocks:[ {t:"note", h:"안내", items:["<b>22:00 부모님 픽업 안내</b> (당일만 참석 아이)"]} ]},
+
+  { time:"22:30 ~ 23:00", tag:"정리", title:"자유 시간 및 짐 이동", place:"2층(여) · 3층(남)",
+    staff:"여: 이유진 사모·조소현 집사 / 남: 김진서 목사·장충성 집사",
+    blocks:[
+      {t:"steps", label:"진행", items:[
+        "여자아이 — 2층 초등부실 (1·2층 화장실)",
+        "남자아이 — 3층 유치부실 (3·4층 화장실)",
+        "샤워 — 본당 지하 1층 샤워실 (슬리퍼 준비)",
+      ]},
+      {t:"note", h:"야간 대기", items:["자유시간 담당 4명(여 2·남 2) 잔류 · 그 외 교사 귀가 → 다음날(토) 07:00 재집합"]},
+    ]},
+
+  { time:"23:00 ~", tag:"취침", title:"취침", place:"2층(여) · 3층(남)", staff:"야간 대기 교사 4명",
+    blocks:[
+      {t:"steps", label:"진행", items:["여자아이 2층 / 남자아이 3층","취침 전 인원 점검 → 야간 대기 교사 각 층 대기"]},
+      {t:"note", h:"참고", items:["침구는 아이들이 개인 지참 (가정통신문 안내) · 별도 수면등 없음"]},
+    ]},
+];
+
+const stage = document.getElementById('stage');
+const jump = document.getElementById('jump');
+let idx = 0;
+
+function esc(s){return s;} // 항목에 의도적 <b> 허용
+
+function blockHTML(b){
+  if(b.t==="steps") return `<div class="block"><div class="label">${b.label||"진행"}</div><ul class="steps">${b.items.map(i=>`<li>${i}</li>`).join("")}</ul></div>`;
+  if(b.t==="check") return `<div class="block">${b.label?`<div class="label">${b.label}</div>`:""}<ul class="check">${b.items.map(i=>`<li>${i}</li>`).join("")}</ul></div>`;
+  if(b.t==="note")  return `<div class="block"><div class="note"><span class="h">⚠ ${b.h||"주의"}</span>${b.items.length>1?`<ul>${b.items.map(i=>`<li>${i}</li>`).join("")}</ul>`:b.items[0]}</div></div>`;
+  if(b.t==="info")  return `<div class="block"><div class="info">${b.items.map(kv=>`<div><span class="k">${kv[0]}</span> ${kv[1]}</div>`).join("")}</div></div>`;
+  if(b.t==="people")return `<div class="block"><div class="label">${b.label}</div><div class="people">${b.text}</div></div>`;
+  if(b.t==="ref")   return `<div class="block"><div class="ref">${b.text}</div></div>`;
+  return "";
+}
+
+function render(){
+  document.getElementById('tot').textContent = slots.length;
+  document.querySelectorAll('.footnav .counter').forEach(()=>{});
+  stage.innerHTML = slots.map((s,i)=>`
+    <section class="slot" data-i="${i}">
+      <div class="slot-head">
+        <div class="idx">${String(i+1).padStart(2,'0')} / ${slots.length}</div>
+        <div class="time">${s.time}${s.tag?`<span class="tag">${s.tag}</span>`:""}</div>
+        <div class="title">${s.title}</div>
+        <div class="meta">
+          ${s.place?`<span><span class="k">장소</span> ${s.place}</span>`:""}
+          ${s.staff?`<span><span class="k">담당</span> ${s.staff}</span>`:""}
+        </div>
+      </div>
+      <div class="slot-body">${s.blocks.map(blockHTML).join("")}</div>
+    </section>`).join("");
+
+  jump.innerHTML = slots.map((s,i)=>`<span class="chip" data-i="${i}" onclick="show(${i})">${s.time}</span>`).join("");
+  show(0);
+}
+
+function show(i){
+  idx = Math.max(0, Math.min(slots.length-1, i));
+  document.querySelectorAll('.slot').forEach(el=>el.classList.toggle('active', +el.dataset.i===idx));
+  document.querySelectorAll('.chip').forEach(el=>el.classList.toggle('on', +el.dataset.i===idx));
+  document.getElementById('cur').textContent = idx+1;
+  document.getElementById('cur2').textContent = idx+1;
+  const chip = document.querySelector(`.chip[data-i="${idx}"]`);
+  if(chip) chip.scrollIntoView({inline:'center', block:'nearest'});
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function go(d){ show(idx+d); }
+
+document.addEventListener('keydown', e=>{
+  if(e.key==="ArrowRight"||e.key==="PageDown") go(1);
+  if(e.key==="ArrowLeft"||e.key==="PageUp") go(-1);
+  if(e.key==="Home") show(0);
+  if(e.key==="End") show(slots.length-1);
+});
+
+render();
+</script>
+</body>
+</html>
