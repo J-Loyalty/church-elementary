@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>초등부 달란트 잔치 기획안 — 2026 상반기</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #e0e7ff;
+      --accent: #f59e0b;
+      --accent-light: #fef3c7;
+      --green: #10b981;
+      --green-light: #d1fae5;
+      --red: #ef4444;
+      --red-light: #fee2e2;
+      --purple: #8b5cf6;
+      --purple-light: #ede9fe;
+      --gray: #6b7280;
+      --gray-light: #f3f4f6;
+      --border: #e5e7eb;
+      --text: #111827;
+      --text-muted: #6b7280;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+      background: #f1f5f9;
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* ── 커버 ── */
+    .cover {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a855f7 100%);
+      color: #fff;
+      text-align: center;
+      padding: 48px 24px 36px;
+    }
+    .cover .badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 12px;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .cover h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 800; margin-bottom: 6px; }
+    .cover .subtitle { font-size: clamp(13px, 3vw, 16px); opacity: .85; margin-bottom: 20px; }
+    .cover .meta-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .cover .meta-chip {
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 12px;
+    }
+    .cover .meta-chip strong { display: block; font-size: 10px; opacity: .75; margin-bottom: 1px; }
+
+    /* ── 탭 네비게이션 ── */
+    .tab-nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 2px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+    .tab-nav {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      flex-shrink: 0;
+      padding: 14px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .2s, border-color .2s;
+      font-family: inherit;
+      margin-bottom: -2px;
+    }
+    .tab-btn:hover { color: var(--primary); }
+    .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+    /* ── 탭 콘텐츠 ── */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── 레이아웃 ── */
+    .container { max-width: 960px; margin: 0 auto; padding: 24px 16px 60px; }
+
+    /* ── 섹션 ── */
+    .section { margin-bottom: 32px; }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary-light);
+    }
+    .section-title .icon {
+      width: 28px; height: 28px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    /* ── 카드 그리드 ── */
+    .card-grid { display: grid; gap: 12px; }
+    .card-grid.col2 { grid-template-columns: repeat(2, 1fr); }
+    .card-grid.col3 { grid-template-columns: repeat(3, 1fr); }
+    .card-grid.col4 { grid-template-columns: repeat(4, 1fr); }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .card.highlight { border-color: var(--primary); background: var(--primary-light); }
+    .card.accent    { border-color: var(--accent);  background: var(--accent-light); }
+    .card.green     { border-color: var(--green);   background: var(--green-light); }
+    .card.red       { border-color: var(--red);     background: var(--red-light); }
+    .card .card-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: .04em;
+      margin-bottom: 4px;
+    }
+    .card .card-value { font-size: 20px; font-weight: 800; color: var(--text); }
+    .card .card-value.primary { color: var(--primary); }
+    .card .card-value.accent  { color: #d97706; }
+    .card .card-value.green   { color: #059669; }
+    .card .card-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ── 테이블 ── */
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      font-size: 13px;
+      min-width: 480px;
+    }
+    thead th {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+    tbody tr:nth-child(even) { background: #f9fafb; }
+    tbody td { padding: 9px 14px; border-bottom: 1px solid var(--border); }
+    tbody tr:last-child td { border-bottom: none; }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    td.center { text-align: center; }
+    .highlight-row td { background: var(--primary-light) !important; font-weight: 700; color: var(--primary); }
+    .accent-row td   { background: var(--accent-light)  !important; font-weight: 700; color: #d97706; }
+
+    /* ── 타임라인 ── */
+    .timeline { display: flex; flex-direction: column; }
+    .tl-item { display: flex; gap: 0; }
+    .tl-left {
+      width: 90px;
+      flex-shrink: 0;
+      text-align: right;
+      padding: 0 14px 0 0;
+      padding-top: 14px;
+    }
+    .tl-time { font-size: 12px; font-weight: 700; color: var(--primary); white-space: nowrap; }
+    .tl-mid { display: flex; flex-direction: column; align-items: center; width: 22px; flex-shrink: 0; }
+    .tl-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px var(--primary);
+      margin-top: 16px;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+    .tl-dot.accent { background: var(--accent);  box-shadow: 0 0 0 2px var(--accent); }
+    .tl-dot.green  { background: var(--green);   box-shadow: 0 0 0 2px var(--green); }
+    .tl-dot.red    { background: var(--red);     box-shadow: 0 0 0 2px var(--red); }
+    .tl-dot.purple { background: var(--purple);  box-shadow: 0 0 0 2px var(--purple); }
+    .tl-line { width: 2px; flex: 1; background: var(--border); min-height: 20px; }
+    .tl-item:last-child .tl-line { display: none; }
+    .tl-right { flex: 1; padding: 10px 0 18px 14px; }
+    .tl-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; line-height: 1.4; }
+    .tl-desc  { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+    .tl-badge {
+      display: inline-block;
+      font-size: 11px;
+      border-radius: 4px;
+      padding: 1px 7px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .badge-blue   { background: var(--primary-light); color: var(--primary); }
+    .badge-amber  { background: var(--accent-light);  color: #d97706; }
+    .badge-green  { background: var(--green-light);   color: #059669; }
+    .badge-red    { background: var(--red-light);     color: var(--red); }
+    .badge-purple { background: var(--purple-light);  color: var(--purple); }
+
+    /* ── 공간 배치 ── */
+    .space-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .space-card { border-radius: 12px; border: 2px solid; padding: 16px; text-align: center; }
+    .space-card.blue  { border-color: var(--primary); background: var(--primary-light); }
+    .space-card.amber { border-color: var(--accent);  background: var(--accent-light); }
+    .space-card.green { border-color: var(--green);   background: var(--green-light); }
+    .space-card .space-icon { font-size: 26px; margin-bottom: 6px; }
+    .space-card .space-name { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .space-card .space-role { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
+    .space-card ul { list-style: none; text-align: left; }
+    .space-card li { font-size: 12px; padding: 2px 0; }
+    .space-card li::before { content: "· "; }
+
+    /* ── 흐름도 ── */
+    .flow {
+      display: flex;
+      align-items: stretch;
+      flex-wrap: wrap;
+      gap: 0;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .flow-step { flex: 1; min-width: 90px; text-align: center; padding: 8px 6px; }
+    .flow-step .step-num {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 6px;
+    }
+    .flow-step .step-text { font-size: 12px; font-weight: 600; }
+    .flow-step .step-sub  { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .flow-arrow { color: var(--gray); font-size: 18px; display: flex; align-items: center; flex-shrink: 0; }
+
+    /* ── 게임 카드 ── */
+    .game-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .game-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .game-card.existing { border-left: 3px solid var(--green); }
+    .game-card.new      { border-left: 3px solid var(--accent); }
+    .game-card .game-icon { font-size: 22px; flex-shrink: 0; line-height: 1; margin-top: 1px; }
+    .game-card .game-name { font-weight: 700; font-size: 13px; margin-bottom: 3px; }
+    .game-card .game-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── 복권 카드 ── */
+    .lottery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+    .lottery-card {
+      border-radius: 12px;
+      padding: 16px 8px;
+      text-align: center;
+      border: 2px dashed;
+      transition: transform .15s;
+      cursor: default;
+    }
+    .lottery-card:hover { transform: translateY(-3px); }
+    .lottery-card .l-icon   { font-size: 22px; margin-bottom: 6px; }
+    .lottery-card .l-amount { font-size: 22px; font-weight: 900; line-height: 1; }
+    .lottery-card .l-label  { font-size: 11px; margin-top: 4px; opacity: .7; font-weight: 600; }
+    .lc1 { background: linear-gradient(145deg,#f0fdf4,#dcfce7); border-color: #86efac; color: #166534; }
+    .lc2 { background: linear-gradient(145deg,#eff6ff,#dbeafe); border-color: #93c5fd; color: #1d4ed8; }
+    .lc3 { background: linear-gradient(145deg,#fefce8,#fef9c3); border-color: #fde047; color: #854d0e; }
+    .lc4 { background: linear-gradient(145deg,#fdf4ff,#fae8ff); border-color: #e879f9; color: #86198f; }
+    .lc5 { background: linear-gradient(145deg,#fff7ed,#ffedd5); border-color: #fb923c; color: #9a3412; }
+
+    /* ── 인력 카드 ── */
+    .staff-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .staff-card .staff-place { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+    .staff-card .staff-title { font-weight: 700; margin-bottom: 10px; font-size: 14px; }
+    .staff-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      gap: 8px;
+    }
+    .staff-row:last-child { border-bottom: none; }
+    .staff-count { font-weight: 700; white-space: nowrap; flex-shrink: 0; }
+
+    /* ── 체크리스트 ── */
+    .checklist { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .checklist-item:last-child { border-bottom: none; }
+    .ci-box {
+      width: 18px; height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .ci-label { flex: 1; }
+    .ci-tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .ci-tag.pre  { background: var(--primary-light); color: var(--primary); }
+    .ci-tag.day  { background: var(--accent-light);  color: #d97706; }
+
+    /* ── 인포 박스 ── */
+    .info-box {
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+    .info-box.green  { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+    .info-box.blue   { background: var(--primary-light); border: 1px solid #a5b4fc; color: var(--primary); }
+    .info-box.amber  { background: var(--accent-light); border: 1px solid #fcd34d; color: #92400e; }
+
+    /* ── 반응형 ── */
+    @media (max-width: 700px) {
+      .card-grid.col4 { grid-template-columns: repeat(2, 1fr); }
+      .card-grid.col3 { grid-template-columns: repeat(2, 1fr); }
+      .space-grid     { grid-template-columns: 1fr; }
+      .game-grid      { grid-template-columns: 1fr; }
+      .lottery-grid   { grid-template-columns: repeat(3, 1fr); }
+      .staff-3col     { grid-template-columns: 1fr !important; }
+      .flow           { flex-direction: column; align-items: center; }
+      .flow-step      { width: 100%; min-width: unset; }
+      .flow-arrow     { transform: rotate(90deg); padding: 2px 0; }
+      .tl-left        { width: 68px; }
+      .tl-title       { font-size: 13px; }
+      .example-4col   { grid-template-columns: repeat(2, 1fr) !important; }
+      .discount-2col  { grid-template-columns: 1fr !important; }
+      .tab-btn        { padding: 12px 14px; font-size: 12px; }
+    }
+
+    @media (max-width: 420px) {
+      .card-grid.col2 { grid-template-columns: 1fr; }
+      .lottery-grid   { grid-template-columns: repeat(2, 1fr); }
+      .cover          { padding: 36px 16px 28px; }
+    }
+
+    @media print {
+      .tab-nav-wrap { display: none; }
+      .tab-panel    { display: block !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════ 커버 ════ -->
+<div class="cover">
+  <div class="badge">2026 상반기</div>
+  <h1>초등부 달란트 잔치</h1>
+  <p class="subtitle">"각각 그 재능대로" — 마태복음 25:15</p>
+  <div class="meta-row">
+    <div class="meta-chip"><strong>날짜</strong>2026. 04. 25. (토)</div>
+    <div class="meta-chip"><strong>시간</strong>11:00 ~ 13:00</div>
+    <div class="meta-chip"><strong>장소</strong>비전센터 · 식당 · 성가대실</div>
+    <div class="meta-chip"><strong>대상</strong>초등부 40~50명</div>
+    <div class="meta-chip"><strong>총 예산</strong>1,600,000원</div>
+  </div>
+</div>
+
+<!-- ════ 탭 네비게이션 ════ -->
+<div class="tab-nav-wrap">
+  <nav class="tab-nav" role="tablist">
+    <button class="tab-btn active" onclick="showTab('tab-budget')"   >📊 예산·달란트</button>
+    <button class="tab-btn"        onclick="showTab('tab-timeline')" >⏱ 타임라인</button>
+    <button class="tab-btn"        onclick="showTab('tab-space')"    >🏛 공간 배치</button>
+    <button class="tab-btn"        onclick="showTab('tab-order')"    >🎲 반 순서 뽑기</button>
+    <button class="tab-btn"        onclick="showTab('tab-game')"     >🎯 게임 프로그램</button>
+    <button class="tab-btn"        onclick="showTab('tab-staff')"    >👥 운영 인력</button>
+    <button class="tab-btn"        onclick="showTab('tab-checklist')">✅ 체크리스트</button>
+  </nav>
+</div>
+
+<!-- ════ 탭 1: 예산·달란트 ════ -->
+<div id="tab-budget" class="tab-panel active">
+  <div class="container">
+
+    <div class="section">
+      <div class="section-title"><div class="icon">₩</div>예산 현황</div>
+      <div class="card-grid col4" style="margin-bottom:12px;">
+        <div class="card highlight">
+          <div class="card-label">총 예산</div>
+          <div class="card-value primary">160만원</div>
+          <div class="card-sub">물품 130 + 음식 30</div>
+        </div>
+        <div class="card">
+          <div class="card-label">물품 구매 예산</div>
+          <div class="card-value">1,300,000원</div>
+        </div>
+        <div class="card accent">
+          <div class="card-label">사전 주문 완료</div>
+          <div class="card-value accent">935,900원</div>
+          <div class="card-sub">인터넷 구매 완료</div>
+        </div>
+        <div class="card green">
+          <div class="card-label">현장 구매 예산</div>
+          <div class="card-value green">364,100원</div>
+          <div class="card-sub">도매 물품 구매 필요</div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>달란트 항목</th>
+              <th class="num">달란트 합계</th>
+              <th class="num">원화 단가</th>
+              <th>비고</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>전체 달란트 총합</td>
+              <td class="num">7,666</td>
+              <td class="num">—</td>
+              <td>누적 달란트 전체</td>
+            </tr>
+            <tr>
+              <td>십일조 제외 (×0.9)</td>
+              <td class="num">6,873</td>
+              <td class="num">—</td>
+              <td>십일조 10% 공제</td>
+            </tr>
+            <tr class="highlight-row">
+              <td>쇼핑 가능 달란트 (음식비 제외)</td>
+              <td class="num">5,633</td>
+              <td class="num">231원</td>
+              <td>물품 단가 계산 기준</td>
+            </tr>
+            <tr class="accent-row">
+              <td>음식 달란트 환산</td>
+              <td class="num">—</td>
+              <td class="num">242원</td>
+              <td>음식 단가 기준</td>
+            </tr>
+            <tr>
+              <td>당일 지급 예정 달란트</td>
+              <td class="num">3,645</td>
+              <td class="num">—</td>
+              <td>당일 지급분</td>
+            </tr>
+            <tr>
+              <td>당일 지급 (십일조 제외)</td>
+              <td class="num">2,852</td>
+              <td class="num">—</td>
+              <td>당일 쇼핑 가능 기준</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="info-box green">
+        <strong>현장 물품 구매 가이드</strong> — 364,100원으로 도매 물품 구매 시 <strong>개당 단가 231원 이하</strong> 위주로 구성 (달란트 단가 유지)
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><div class="icon">🧮</div>달란트 계산 구조</div>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="step-num">①</div>
+          <div class="step-text">달란트 수령</div>
+          <div class="step-sub">비전센터 등록</div>
+        </div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step">
+          <div class="step-num">②</div>
+          <div class="step-text">십일조 납부</div>
+          <div class="step-sub">달란트 × 10%</div>
+        </div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step">
+          <div class="step-num">③</div>
+          <div class="step-text">음식 신청</div>
+          <div class="step-sub">20달란트 공제</div>
+        </div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step">
+          <div class="step-num">④</div>
+          <div class="step-text">사전주문 수령</div>
+          <div class="step-sub">이름 확인 후 수령</div>
+        </div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step">
+          <div class="step-num">⑤</div>
+          <div class="step-text">현장 쇼핑</div>
+          <div class="step-sub">남은 달란트 사용</div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px; padding:16px; background:#fff; border:1px solid var(--border); border-radius:10px;">
+        <div style="font-weight:700; font-size:13px; margin-bottom:10px;">예시 — 100달란트를 받은 아이</div>
+        <div class="example-4col" style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px; text-align:center;">
+          <div style="padding:10px; background:var(--primary-light); border-radius:8px;">
+            <div style="font-size:11px; color:var(--primary);">받은 달란트</div>
+            <div style="font-size:22px; font-weight:800; color:var(--primary);">100</div>
+          </div>
+          <div style="padding:10px; background:var(--red-light); border-radius:8px;">
+            <div style="font-size:11px; color:var(--red);">— 십일조</div>
+            <div style="font-size:22px; font-weight:800; color:var(--red);">10</div>
+          </div>
+          <div style="padding:10px; background:var(--accent-light); border-radius:8px;">
+            <div style="font-size:11px; color:#d97706;">— 음식비</div>
+            <div style="font-size:22px; font-weight:800; color:#d97706;">20</div>
+          </div>
+          <div style="padding:10px; background:var(--green-light); border-radius:8px;">
+            <div style="font-size:11px; color:var(--green);">쇼핑 가능</div>
+            <div style="font-size:22px; font-weight:800; color:var(--green);">70</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ 탭 2: 타임라인 ════ -->
+<div id="tab-timeline" class="tab-panel">
+  <div class="container">
+
+    <div class="section">
+      <div class="section-title"><div class="icon">⏱</div>전체 타임라인</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">11:00</div></div>
+          <div class="tl-mid"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-title">오프닝 예배 + 말씀 <span class="tl-badge badge-blue">비전센터</span></div>
+            <div class="tl-desc">찬양 · 기도 · 달란트 비유 말씀 (마태복음 25장) / 20분</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">11:20</div></div>
+          <div class="tl-mid"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-title">달란트 지급 + 십일조 납부 + 반 순서 뽑기 <span class="tl-badge badge-blue">비전센터</span></div>
+            <div class="tl-desc">명단 순 달란트 지급 → 십일조 수납함 납부 → 반 이동 순서 결정 (10분)</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">11:30</div></div>
+          <div class="tl-mid"><div class="tl-dot accent"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-title">반별 자유 이동 — 쇼핑 시작 <span class="tl-badge badge-amber">식당 · 성가대실</span></div>
+            <div class="tl-desc">반 순서에 따라 이동 · 사전주문 수령 + 현장 마켓 + 음식 구매</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">11:45</div></div>
+          <div class="tl-mid"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-title">🎯 달란트 추가 획득 프로그램 1회 <span class="tl-badge badge-purple">비전센터</span></div>
+            <div class="tl-desc">게임 참여 → 복권 긁기로 달란트 추가 획득 (1인 최대 3회 참여 가능)</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">12:10</div></div>
+          <div class="tl-mid"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-title">🎯 달란트 추가 획득 프로그램 2회 <span class="tl-badge badge-purple">비전센터</span></div>
+            <div class="tl-desc">동일 방식 진행 · 미참여자 우선 참여 유도</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">12:30</div></div>
+          <div class="tl-mid"><div class="tl-dot red"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-title">🏷️ 재고 할인 타임 <span class="tl-badge badge-red">성가대실</span></div>
+            <div class="tl-desc">남은 물건 달란트 단가 50% 할인 판매 · MC 멘트로 분위기 업 / 5~10분</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">12:45</div></div>
+          <div class="tl-mid"><div class="tl-dot green"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-title">마무리 기도 + 광고 <span class="tl-badge badge-green">비전센터</span></div>
+            <div class="tl-desc">마무리 기도 · 다음 일정 광고 · 정리 (13:00 종료)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><div class="icon">🏷</div>재고 할인 타임 (12:30)</div>
+      <div style="background:#fff; border:1px solid var(--border); border-radius:10px; padding:16px;">
+        <div class="discount-2col" style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div>
+            <div style="font-weight:700; margin-bottom:8px;">운영 방식</div>
+            <ul style="font-size:13px; padding-left:16px; line-height:2.1;">
+              <li>성가대실 남은 물건 전체 대상</li>
+              <li>기존 달란트 단가의 <strong>50% 할인</strong> 적용</li>
+              <li>MC 멘트으로 전체 아이 집중 유도</li>
+              <li>5~10분간 진행</li>
+            </ul>
+          </div>
+          <div style="background:var(--accent-light); border-radius:8px; padding:14px;">
+            <div style="font-size:12px; color:#d97706; font-weight:700; margin-bottom:6px;">MC 멘트 예시</div>
+            <div style="font-size:13px; font-style:italic; color:var(--text); line-height:1.6;">
+              "지금부터 딱 5분! 성가대실에 남은 물건을 <strong>반값</strong>에 드립니다! 이 기회를 놓치지 마세요!"
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ 탭 3: 공간 배치 ════ -->
+<div id="tab-space" class="tab-panel">
+  <div class="container">
+
+    <div class="section">
+      <div class="section-title"><div class="icon">🏛</div>공간 배치</div>
+      <div class="space-grid">
+        <div class="space-card blue">
+          <div class="space-icon">⛪</div>
+          <div class="space-name">비전센터</div>
+          <div class="space-role">오프닝 · 운영 본부</div>
+          <ul>
+            <li>오프닝 예배 · 말씀</li>
+            <li>달란트 지급</li>
+            <li>십일조 수납함</li>
+            <li>반 순서 뽑기</li>
+            <li>추가 획득 게임 진행</li>
+            <li>마무리 예배</li>
+          </ul>
+        </div>
+        <div class="space-card green">
+          <div class="space-icon">🛍</div>
+          <div class="space-name">성가대실</div>
+          <div class="space-role">달란트 마켓</div>
+          <ul>
+            <li>사전주문 물품 수령</li>
+            <li>현장 구매 마켓</li>
+            <li>재고 할인 타임</li>
+            <li>달란트 계산 데스크</li>
+          </ul>
+        </div>
+        <div class="space-card amber">
+          <div class="space-icon">🍱</div>
+          <div class="space-name">본당 식당</div>
+          <div class="space-role">음식 코너</div>
+          <ul>
+            <li>음식 판매 (20달란트)</li>
+            <li>달란트 계산 데스크</li>
+            <li>식사 공간</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ 탭 4: 반 순서 뽑기 ════ -->
+<div id="tab-order" class="tab-panel">
+  <div class="container">
+
+    <div class="section">
+      <div class="section-title"><div class="icon">🎲</div>반 이동 순서 결정 방법</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>안</th><th>방법</th><th>설명</th><th class="center">추천</th></tr>
+          </thead>
+          <tbody>
+            <tr style="background:#f0fdf4;">
+              <td><strong>1안</strong></td>
+              <td><strong>반 대표 뽑기 배틀</strong></td>
+              <td>각 반 대표 1명이 나와 동시에 숫자 카드 뽑기 → 낮은 숫자 순서로 출발. 발표 시 긴장감 연출 가능</td>
+              <td class="center">⭐ 추천</td>
+            </tr>
+            <tr>
+              <td>2안</td>
+              <td>미션 선착순</td>
+              <td>"이 구절 가장 빨리 외우는 반?" 또는 "반 전체가 가장 빨리 일어서는 반?" → 1등 반부터 순서 선택</td>
+              <td class="center">—</td>
+            </tr>
+            <tr>
+              <td>3안</td>
+              <td>스피너 앱</td>
+              <td>화면에 반 이름 넣고 스피너 돌리기. 아이들이 환호하며 집중</td>
+              <td class="center">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="info-box blue" style="margin-top:10px;">
+        <strong>이동 원칙</strong> — 먼저 뽑힌 반 = 성가대실(마켓) 우선 / 나중 반 = 식당(음식) 먼저 → 이후 자유 이동
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ 탭 5: 게임 프로그램 ════ -->
+<div id="tab-game" class="tab-panel">
+  <div class="container">
+
+    <div class="section">
+      <div class="section-title"><div class="icon">🎯</div>달란트 추가 획득 프로그램</div>
+
+      <div class="card-grid col2" style="margin-bottom:16px;">
+        <div class="card">
+          <div class="card-label">참여 횟수</div>
+          <div class="card-value" style="font-size:16px;">성경 구절 3회 · 성경 퀴즈 5회</div>
+          <div class="card-sub">1인 기준 · 회차 구분 없음</div>
+        </div>
+        <div class="card highlight">
+          <div class="card-label">달란트 지급 방식</div>
+          <div class="card-value primary">복권 긁기</div>
+          <div class="card-sub">게임 성공 시 지급</div>
+        </div>
+      </div>
+
+      <div class="game-grid">
+        <div class="game-card existing">
+          <div class="game-icon">📖</div>
+          <div>
+            <div class="game-name">성경 퀴즈 <span class="tl-badge badge-green" style="font-size:10px;">기존</span></div>
+            <div class="game-desc">O/X 또는 단답형 성경 질문. 말씀 암송과 연계 가능. 소요 약 30초/1명</div>
+          </div>
+        </div>
+        <div class="game-card existing">
+          <div class="game-icon">🙏</div>
+          <div>
+            <div class="game-name">성경 구절 암송 <span class="tl-badge badge-green" style="font-size:10px;">기존</span></div>
+            <div class="game-desc">정해진 성경 구절 암송. 소요 약 30초/1명</div>
+          </div>
+        </div>
+        <div class="game-card new">
+          <div class="game-icon">🚶</div>
+          <div>
+            <div class="game-name">눈 감고 걸음 수 맞추기 <span class="tl-badge badge-amber" style="font-size:10px;">신규 추천</span></div>
+            <div class="game-desc">"5걸음 걷고 멈춰!" → 정확히 멈추면 성공. 웃음 포인트 풍부. 소요 약 30초/1명</div>
+          </div>
+        </div>
+        <div class="game-card new">
+          <div class="game-icon">📝</div>
+          <div>
+            <div class="game-name">말씀 빈칸 채우기 <span class="tl-badge badge-amber" style="font-size:10px;">신규 추천</span></div>
+            <div class="game-desc">유명 구절 빈칸 → 큰 소리로 외치기. 말씀 암송과 직결. 소요 약 30초/1명</div>
+          </div>
+        </div>
+        <div class="game-card new">
+          <div class="game-icon">🎭</div>
+          <div>
+            <div class="game-name">성경 인물 표정 퀴즈 <span class="tl-badge badge-amber" style="font-size:10px;">신규 추천</span></div>
+            <div class="game-desc">선생님이 성경 인물 표정/동작 연기 → 맞추기. 교사 참여로 분위기 UP. 소요 약 1분/1명</div>
+          </div>
+        </div>
+        <div class="game-card new">
+          <div class="game-icon">🔤</div>
+          <div>
+            <div class="game-name">성경 초성 퀴즈 <span class="tl-badge badge-amber" style="font-size:10px;">신규 추천</span></div>
+            <div class="game-desc">성경 인물·지명 초성만 보고 맞추기. 예: ㄷㅇ = 다윗, ㅁㅅ = 모세. 빠른 진행 가능. 소요 약 20초/1명</div>
+          </div>
+        </div>
+        <div class="game-card new">
+          <div class="game-icon">🃏</div>
+          <div>
+            <div class="game-name">미션 카드 뽑기 <span class="tl-badge badge-amber" style="font-size:10px;">신규 추천</span></div>
+            <div class="game-desc">카드 뽑아 나온 미션 수행. 예: 한 발로 10초 버티기, 혀 굴려 말하기, 선생님께 안아달라고 하기. 소요 약 30초/1명</div>
+          </div>
+        </div>
+        <div class="game-card new">
+          <div class="game-icon">🏗</div>
+          <div>
+            <div class="game-name">종이컵 탑 쌓기 <span class="tl-badge badge-amber" style="font-size:10px;">신규 추천</span></div>
+            <div class="game-desc">10초 안에 종이컵을 최대한 높이 쌓기. 목표 높이(예: 5층) 도달 시 성공. 시각적 긴장감 최고. 소요 약 30초/1명</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px;">
+        <div style="font-weight:700; margin-bottom:10px; font-size:13px;">복권 달란트 구성 (예시)</div>
+        <div class="lottery-grid">
+          <div class="lottery-card lc1">
+            <div class="l-icon">🍀</div>
+            <div class="l-amount">1</div>
+            <div class="l-label">달란트</div>
+          </div>
+          <div class="lottery-card lc2">
+            <div class="l-icon">⭐</div>
+            <div class="l-amount">2</div>
+            <div class="l-label">달란트</div>
+          </div>
+          <div class="lottery-card lc3">
+            <div class="l-icon">🌟</div>
+            <div class="l-amount">3</div>
+            <div class="l-label">달란트</div>
+          </div>
+          <div class="lottery-card lc4">
+            <div class="l-icon">💎</div>
+            <div class="l-amount">5</div>
+            <div class="l-label">달란트</div>
+          </div>
+          <div class="lottery-card lc5">
+            <div class="l-icon">🏆</div>
+            <div class="l-amount">10</div>
+            <div class="l-label">달란트</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ 탭 6: 운영 인력 ════ -->
+<div id="tab-staff" class="tab-panel">
+  <div class="container">
+
+    <div class="section">
+      <div class="section-title"><div class="icon">👥</div>운영 인력 배치</div>
+
+      <div class="card-grid col4" style="margin-bottom:16px;">
+        <div class="card highlight">
+          <div class="card-label">비전센터</div>
+          <div class="card-value primary">4명</div>
+          <div class="card-sub">오프닝 · 게임</div>
+        </div>
+        <div class="card green">
+          <div class="card-label">성가대실</div>
+          <div class="card-value green">5명</div>
+          <div class="card-sub">달란트 마켓</div>
+        </div>
+        <div class="card accent">
+          <div class="card-label">본당 식당</div>
+          <div class="card-value accent">8명+</div>
+          <div class="card-sub">음식 · 정리 · 지도</div>
+        </div>
+        <div class="card">
+          <div class="card-label">총 인원</div>
+          <div class="card-value">17명+</div>
+          <div class="card-sub">최소 기준</div>
+        </div>
+      </div>
+
+      <div class="staff-3col" style="display:grid; grid-template-columns:1fr 1fr 2fr; gap:12px;">
+
+        <div class="staff-card" style="border-top:3px solid var(--primary);">
+          <div class="staff-place">⛪ 비전센터</div>
+          <div class="staff-title">오프닝 · 달란트 · 게임</div>
+          <div class="staff-row">
+            <span>오프닝 · 달란트 지급 · 십일조 수납</span>
+            <span class="staff-count" style="color:var(--primary);">2명</span>
+          </div>
+          <div class="staff-row">
+            <span>게임 진행</span>
+            <span class="staff-count" style="color:var(--primary);">2명</span>
+          </div>
+        </div>
+
+        <div class="staff-card" style="border-top:3px solid var(--green);">
+          <div class="staff-place">🛍 성가대실</div>
+          <div class="staff-title">달란트 마켓</div>
+          <div class="staff-row">
+            <span>마켓 운영 (판매·계산)</span>
+            <span class="staff-count" style="color:var(--green);">4명</span>
+          </div>
+          <div class="staff-row">
+            <span>사전 물품 수령 데스크</span>
+            <span class="staff-count" style="color:var(--green);">1명</span>
+          </div>
+        </div>
+
+        <div class="staff-card" style="border-top:3px solid var(--accent);">
+          <div class="staff-place">🍱 본당 식당</div>
+          <div class="staff-title">음식 판매 · 정리 · 지도</div>
+          <div class="staff-row">
+            <span>과자 / 음료</span>
+            <span class="staff-count" style="color:#d97706;">1명</span>
+          </div>
+          <div class="staff-row" style="flex-direction:column; align-items:flex-start;">
+            <div style="display:flex; justify-content:space-between; width:100%;">
+              <span>음식 제작 및 판매</span>
+              <span class="staff-count" style="color:#d97706;">6명</span>
+            </div>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px; line-height:1.7;">
+              햄버거 · 닭꼬치 · 떡볶이 · 김밥 · 회오리 감자 · 콜팝
+            </div>
+          </div>
+          <div class="staff-row">
+            <span>식당 정리 및 아이들 지도</span>
+            <span class="staff-count" style="color:#d97706;">별도</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ 탭 7: 체크리스트 ════ -->
+<div id="tab-checklist" class="tab-panel">
+  <div class="container">
+
+    <div class="section">
+      <div class="section-title"><div class="icon">✅</div>D-DAY 준비 체크리스트</div>
+
+      <div style="font-weight:700; font-size:12px; color:var(--primary); margin-bottom:8px; padding-left:2px;">사전 준비</div>
+      <div class="checklist" style="margin-bottom:16px;">
+        <div class="checklist-item">
+          <div class="ci-box"></div>
+          <div class="ci-label">현장 구매 물품 364,100원치 도매 구매 완료</div>
+          <div class="ci-tag pre">사전</div>
+        </div>
+        <div class="checklist-item">
+          <div class="ci-box"></div>
+          <div class="ci-label">사전주문 물품 수령 및 이름표 부착 완료</div>
+          <div class="ci-tag pre">사전</div>
+        </div>
+        <div class="checklist-item">
+          <div class="ci-box"></div>
+          <div class="ci-label">달란트 지급 명단 출력 (아이별 달란트 수량 기재)</div>
+          <div class="ci-tag pre">사전</div>
+        </div>
+        <div class="checklist-item">
+          <div class="ci-box"></div>
+          <div class="ci-label">복권 인쇄 및 제작 완료 (달란트 구성별 수량 배분)</div>
+          <div class="ci-tag pre">사전</div>
+        </div>
+      </div>
+
+      <div style="font-weight:700; font-size:12px; color:#d97706; margin-bottom:8px; padding-left:2px;">당일 준비</div>
+      <div class="checklist">
+        <div class="checklist-item">
+          <div class="ci-box"></div>
+          <div class="ci-label">십일조 수납함 준비</div>
+          <div class="ci-tag day">당일</div>
+        </div>
+        <div class="checklist-item">
+          <div class="ci-box"></div>
+          <div class="ci-label">반 순서 뽑기 도구 준비 (숫자 카드 or 스피너)</div>
+          <div class="ci-tag day">당일</div>
+        </div>
+        <div class="checklist-item">
+          <div class="ci-box"></div>
+          <div class="ci-label">성가대실 물품 진열 및 가격(달란트) 태그 부착</div>
+          <div class="ci-tag day">당일</div>
+        </div>
+        <div class="checklist-item">
+          <div class="ci-box"></div>
+          <div class="ci-label">음식 준비 및 식당 세팅 완료</div>
+          <div class="ci-tag day">당일</div>
+        </div>
+        <div class="checklist-item">
+          <div class="ci-box"></div>
+          <div class="ci-label">운영 인력 역할 배정 및 사전 브리핑</div>
+          <div class="ci-tag day">당일</div>
+        </div>
+        <div class="checklist-item">
+          <div class="ci-box"></div>
+          <div class="ci-label">MC 타임라인 스크립트 확인</div>
+          <div class="ci-tag day">당일</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; font-size:11px; color:var(--text-muted); padding-top:16px; border-top:1px solid var(--border);">
+      초등부 달란트 잔치 기획안 — 2026 상반기 &nbsp;|&nbsp; 작성일: 2026. 04. 24.
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    const idx = ['tab-budget','tab-timeline','tab-space','tab-order','tab-game','tab-staff','tab-checklist'].indexOf(id);
+    document.querySelectorAll('.tab-btn')[idx].classList.add('active');
+    // 선택된 탭이 보이도록 스크롤
+    document.querySelectorAll('.tab-btn')[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+</script>
+
+</body>
+</html>
