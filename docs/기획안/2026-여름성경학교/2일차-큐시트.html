@@ -6,15 +6,15 @@
 <title>2026 여름성경학교 2일차 큐시트</title>
 <style>
   :root{
-    --navy:#0f2a43; --navy-2:#173d61; --gold:#e0a94a; --gold-soft:#f4d79b;
-    --bg:#eef2f6; --card:#ffffff; --ink:#1a2735; --muted:#5b6b7c;
-    --line:#d9e1ea; --chk:#8aa0b5; --warn-bg:#fff4e0; --warn-line:#e0a94a; --warn-ink:#7a5410;
-    --accent-bg:#eaf1f8;
+    --navy:#155a87; --navy-2:#2a8cc4; --gold:#f0b34c; --gold-soft:#ffe2a8;
+    --bg:#eaf4fb; --card:#ffffff; --ink:#123048; --muted:#587288;
+    --line:#d3e4f1; --chk:#8fb0c9; --warn-bg:#fff4e0; --warn-line:#e0a94a; --warn-ink:#7a5410;
+    --accent-bg:#e1f0fb;
   }
   @media (prefers-color-scheme: dark){
     :root{
-      --navy:#0b2135; --navy-2:#12314d; --gold:#e6b45c; --gold-soft:#f0cd8a;
-      --bg:#0c141d; --card:#151f2b; --ink:#e7edf3; --muted:#9fb0c1;
+      --navy:#134a70; --navy-2:#1e628f; --gold:#eab659; --gold-soft:#f4d290;
+      --bg:#0f1d29; --card:#17232f; --ink:#e7edf3; --muted:#a6b7c7;
       --line:#26333f; --chk:#4a5c6d; --warn-bg:#2c2416; --warn-line:#b58236; --warn-ink:#e8c583;
       --accent-bg:#152436;
     }
@@ -41,7 +41,7 @@
     font-family:inherit; cursor:pointer; border:0; border-radius:8px;
     background:var(--navy-2); color:#fff; padding:8px 12px; font-size:14px; font-weight:600;
   }
-  button:hover{background:#20496f;}
+  button:hover{background:#3197d1;}
   button.ghost{background:transparent; border:1px solid rgba(255,255,255,.35);}
   .counter{font-variant-numeric:tabular-nums; font-weight:700; min-width:58px; text-align:center;}
   .counter b{color:var(--gold-soft);}
@@ -141,6 +141,36 @@
   .footnav .counter{color:#fff;}
   .hint{text-align:center; font-size:12px; color:var(--muted); margin:18px 0 0;}
 
+  /* ── 모바일 반응형 (화면 전용) ── */
+  @media screen and (max-width:640px){
+    .topbar{padding:8px 12px; gap:8px;}
+    .topbar .brand{font-size:13.5px;}
+    .topbar .brand small{font-size:10px;}
+    .nav-btns{gap:4px;}
+    button{padding:7px 10px; font-size:13px;}
+    .jump{padding:7px 12px;}
+    .stage{padding:16px 10px 88px;}
+    .slot-head{padding:16px 16px;}
+    .slot-head .idx{top:12px; right:14px; font-size:11px;}
+    .slot-head .time{font-size:24px; gap:8px;}
+    .slot-head .title{font-size:18px;}
+    .meta{gap:6px 12px; font-size:13px;}
+    .slot-body{padding:16px 16px 20px;}
+    ul.steps li{font-size:15px; padding-left:20px;}
+    ul.check{grid-template-columns:1fr 1fr; gap:5px 10px;}
+    ul.check li{font-size:14px;}
+    .info{font-size:14px;}
+    .note{font-size:13.5px; padding:10px 12px;}
+    table.rot{font-size:12px;}
+    table.rot th, table.rot td{padding:4px 5px;}
+    .footnav{bottom:12px; padding:7px 9px;}
+  }
+  @media screen and (max-width:380px){
+    ul.check{grid-template-columns:1fr;}
+    .slot-head .time{font-size:21px;}
+    .slot-head .title{font-size:16.5px;}
+  }
+
   @page{ size:A4; margin:14mm; }
   @media print{
     body{background:#fff;}
@@ -152,8 +182,8 @@
       page-break-after:always; break-after:page;
     }
     .slot:last-child{page-break-after:auto; break-after:auto;}
-    .slot-head{background:#0f2a43 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
-    .slot-head .tag,.block>.label::before{background:#e0a94a !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .slot-head{background:#155a87 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .slot-head .tag,.block>.label::before{background:#f0b34c !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
     .note{background:#fff4e0 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
     ul.check{grid-template-columns:repeat(2,1fr);}
   }
@@ -165,6 +195,7 @@
   <div class="brand">2026 여름성경학교 · 2일차 큐시트<small>7월 25일(토) · 물놀이 · 진행용</small></div>
   <div class="spacer"></div>
   <div class="nav-btns">
+    <button class="ghost" onclick="location.href='index.html'" title="큐시트 목록으로">🏠 목록</button>
     <button class="ghost" onclick="go(-1)">◀ 이전</button>
     <span class="counter"><b id="cur">1</b> / <span id="tot">9</span></span>
     <button class="ghost" onclick="go(1)">다음 ▶</button>
