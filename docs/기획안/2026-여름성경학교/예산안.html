@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 여름성경학교 예산안</title>
+<style>
+  :root{
+    --navy:#155a87; --navy-2:#2a8cc4; --gold:#f0b34c; --gold-soft:#ffe2a8;
+    --bg:#eaf4fb; --card:#ffffff; --ink:#123048; --muted:#587288;
+    --line:#d3e4f1; --accent-bg:#e1f0fb;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --navy:#134a70; --navy-2:#1e628f; --gold:#eab659; --gold-soft:#f4d290;
+      --bg:#0f1d29; --card:#17232f; --ink:#e7edf3; --muted:#a6b7c7;
+      --line:#26333f; --accent-bg:#152436;
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Pretendard","Malgun Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.5;
+    -webkit-font-smoothing:antialiased; min-height:100vh;
+  }
+
+  /* ── 헤더 ── */
+  .hero{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    color:#fff; padding:44px 20px 40px; border-bottom:3px solid var(--gold);
+    text-align:center;
+  }
+  .hero .kicker{font-size:12px; font-weight:700; letter-spacing:.14em; color:var(--gold-soft); text-transform:uppercase;}
+  .hero h1{font-size:30px; font-weight:800; margin:8px 0 6px; letter-spacing:.01em;}
+  .hero .theme{font-size:16px; opacity:.9;}
+  .hero .theme b{color:var(--gold-soft);}
+  .hero .dates{margin-top:14px; font-size:13.5px; opacity:.8; font-variant-numeric:tabular-nums;}
+  .hero .home{
+    display:inline-block; margin-top:16px; font-size:13px; font-weight:700;
+    color:#fff; text-decoration:none; border:1px solid rgba(255,255,255,.4);
+    padding:7px 14px; border-radius:999px;
+  }
+  .hero .home:hover{background:rgba(255,255,255,.12);}
+
+  .wrap{max-width:820px; margin:0 auto; padding:32px 20px 60px;}
+
+  /* ── 요약 타일 ── */
+  .summary{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:26px;
+  }
+  .tile{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:16px 16px; text-align:center; box-shadow:0 4px 14px rgba(15,42,67,.06);
+  }
+  .tile.income{background:linear-gradient(135deg,#2f7d4f,#4aa06a); border-color:transparent; color:#fff;}
+  .tile.expense{background:linear-gradient(135deg,var(--navy),var(--navy-2)); border-color:transparent; color:#fff;}
+  .tile.balance{background:linear-gradient(135deg,#7a6210,var(--gold)); border-color:transparent; color:#fff;}
+  .tile .k{font-size:11.5px; font-weight:700; letter-spacing:.04em; color:var(--muted); text-transform:uppercase;}
+  .tile.income .k, .tile.expense .k, .tile.balance .k{color:rgba(255,255,255,.82);}
+  .tile .v{font-size:22px; font-weight:800; margin-top:6px; font-variant-numeric:tabular-nums;}
+  .tile .v small{font-size:13px; font-weight:600; opacity:.7;}
+  .tile .sub{font-size:11px; margin-top:4px; opacity:.8;}
+
+  /* ── 예산 테이블 ── */
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    overflow:hidden; box-shadow:0 6px 20px rgba(15,42,67,.08);
+  }
+  table.budget{border-collapse:collapse; width:100%; font-size:14.5px; font-variant-numeric:tabular-nums;}
+  table.budget th, table.budget td{padding:11px 18px; text-align:left; border-bottom:1px solid var(--line);}
+  table.budget thead th{
+    background:var(--accent-bg); color:var(--ink); font-size:12px; font-weight:800;
+    letter-spacing:.05em; text-transform:uppercase;
+  }
+  table.budget td.amt, table.budget th.amt{text-align:right; white-space:nowrap;}
+  table.budget td.won{color:var(--muted); font-size:12px; text-align:right; width:1%; white-space:nowrap;}
+
+  .sec-title{
+    font-size:14px; font-weight:800; letter-spacing:.04em; color:var(--muted);
+    margin:28px 0 12px; display:flex; align-items:center; gap:8px;
+  }
+  .sec-title:first-of-type{margin-top:0;}
+  .sec-title::before{content:""; width:16px; height:3px; border-radius:3px; background:var(--gold);}
+  .card + .sec-title{margin-top:28px;}
+
+  tr.group td{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2)); color:#fff;
+    font-weight:800; font-size:13.5px; letter-spacing:.03em;
+    border-bottom:0; padding-top:13px; padding-bottom:13px;
+  }
+  tr.group.inc td{background:linear-gradient(135deg,#2f7d4f,#4aa06a);}
+  tr.group td .cnt{font-weight:600; font-size:11.5px; opacity:.75; margin-left:8px;}
+  tr.item td:first-child{padding-left:30px;}
+  tr.item .note{display:block; font-size:12px; color:var(--muted); margin-top:2px;}
+  tr.subtotal td{
+    background:var(--accent-bg); font-weight:800; color:var(--navy);
+    border-bottom:2px solid var(--line);
+  }
+  @media (prefers-color-scheme: dark){ tr.subtotal td{color:var(--gold-soft);} }
+  tr.grand td{
+    background:var(--gold); color:var(--navy); font-weight:800; font-size:16px;
+    border-bottom:0; padding-top:15px; padding-bottom:15px;
+  }
+
+  .foot{margin-top:24px; padding-top:18px; border-top:1px solid var(--line); font-size:13px; color:var(--muted);}
+  .foot .row{margin:5px 0;}
+  .foot a{color:#2a6db0;}
+  .btn-print{
+    font-family:inherit; cursor:pointer; border:0; border-radius:8px; margin-top:14px;
+    background:var(--navy-2); color:#fff; padding:9px 16px; font-size:14px; font-weight:700;
+  }
+  .btn-print:hover{background:#3197d1;}
+
+  @media screen and (max-width:640px){
+    .hero{padding:32px 16px 26px;}
+    .hero h1{font-size:24px;}
+    .wrap{padding:22px 14px 48px;}
+    .summary{grid-template-columns:1fr; gap:10px;}
+    table.budget th, table.budget td{padding:10px 12px;}
+    tr.item td:first-child{padding-left:20px;}
+    table.budget{font-size:13.5px;}
+  }
+
+  /* ── 인쇄 ── */
+  @page{ size:A4; margin:16mm; }
+  @media print{
+    body{background:#fff;}
+    .hero .home, .btn-print{display:none !important;}
+    .card{box-shadow:none; border:1.5px solid #333;}
+    .tile{box-shadow:none;}
+    .hero{background:#155a87 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    tr.group td{background:#155a87 !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    tr.group.inc td{background:#2f7d4f !important;}
+    tr.subtotal td, thead th{background:#e1f0fb !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    tr.grand td{background:#f0b34c !important; color:#123048 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .tile.income{background:#2f7d4f !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .tile.expense{background:#155a87 !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .tile.balance{background:#a8861f !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="kicker">2026 여름성경학교 · 예산안</div>
+  <h1>믿음의 항해 ⛵ 예산</h1>
+  <div class="theme">1박 3일 · 비전센터 &nbsp;·&nbsp; 아이 50 + 어른 20 = <b>70명</b></div>
+  <div class="dates">2026년 7월 24일(금) ~ 26일(주일)</div>
+  <a class="home" href="index.html">🏠 큐시트 목록으로</a>
+</header>
+
+<main class="wrap">
+
+  <section class="summary">
+    <div class="tile income"><div class="k">총 수입</div><div class="v">3,754,000<small> 원</small></div><div class="sub">회비 + 찬조·후원 + 초등부 재정</div></div>
+    <div class="tile expense"><div class="k">총 지출</div><div class="v">3,754,000<small> 원</small></div><div class="sub">12개 항목</div></div>
+    <div class="tile balance"><div class="k">차액</div><div class="v">0<small> 원</small></div><div class="sub">수지 균형</div></div>
+  </section>
+
+  <div class="sec-title">📥 수입</div>
+  <div class="card">
+    <table class="budget">
+      <thead>
+        <tr>
+          <th>항목</th>
+          <th class="amt">금액</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group inc"><td colspan="3">수입<span class="cnt">3개 항목</span></td></tr>
+        <tr class="item"><td>회비 <span class="note">학생 50명 × 20,000원 (교사·도우미 제외)</span></td><td class="amt">1,000,000</td><td class="won">원</td></tr>
+        <tr class="item"><td>찬조 및 후원 <span class="note">약 50만원 (추정)</span></td><td class="amt">500,000</td><td class="won">원</td></tr>
+        <tr class="item"><td>초등부 재정 <span class="note">부족분 충당</span></td><td class="amt">2,254,000</td><td class="won">원</td></tr>
+        <tr class="grand"><td>수입 합계</td><td class="amt">3,754,000</td><td class="won">원</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-title">📤 지출</div>
+  <div class="card">
+    <table class="budget">
+      <thead>
+        <tr>
+          <th>항목</th>
+          <th class="amt">금액</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- 1. 교육·준비물 -->
+        <tr class="group"><td colspan="3">교육·준비물<span class="cnt">4개 항목</span></td></tr>
+        <tr class="item"><td>교육자료</td><td class="amt">654,000</td><td class="won">원</td></tr>
+        <tr class="item"><td>소모품</td><td class="amt">300,000</td><td class="won">원</td></tr>
+        <tr class="item"><td>환경미화</td><td class="amt">200,000</td><td class="won">원</td></tr>
+        <tr class="item"><td>티셔츠</td><td class="amt">600,000</td><td class="won">원</td></tr>
+        <tr class="subtotal"><td>소계</td><td class="amt">1,754,000</td><td class="won">원</td></tr>
+
+        <!-- 2. 식음료 (간식·식대·야식) -->
+        <tr class="group"><td colspan="3">식음료 (간식·식대·야식)<span class="cnt">6개 항목</span></td></tr>
+        <tr class="item"><td>간식 <span class="note">첫째날</span></td><td class="amt">150,000</td><td class="won">원</td></tr>
+        <tr class="item"><td>간식 <span class="note">둘째날 아침</span></td><td class="amt">200,000</td><td class="won">원</td></tr>
+        <tr class="item"><td>간식 <span class="note">둘째날 물놀이</span></td><td class="amt">150,000</td><td class="won">원</td></tr>
+        <tr class="item"><td>식대 <span class="note">첫째날 저녁</span></td><td class="amt">400,000</td><td class="won">원</td></tr>
+        <tr class="item"><td>식대 <span class="note">둘째날 점심</span></td><td class="amt">200,000</td><td class="won">원</td></tr>
+        <tr class="item"><td>야식 <span class="note">첫째날 저녁</span></td><td class="amt">300,000</td><td class="won">원</td></tr>
+        <tr class="subtotal"><td>소계</td><td class="amt">1,400,000</td><td class="won">원</td></tr>
+
+        <!-- 3. 활동 -->
+        <tr class="group"><td colspan="3">활동<span class="cnt">1개 항목</span></td></tr>
+        <tr class="item"><td>물놀이 <span class="note">둘째날 · 김포조각공원</span></td><td class="amt">300,000</td><td class="won">원</td></tr>
+        <tr class="subtotal"><td>소계</td><td class="amt">300,000</td><td class="won">원</td></tr>
+
+        <!-- 4. 기타 -->
+        <tr class="group"><td colspan="3">기타<span class="cnt">1개 항목</span></td></tr>
+        <tr class="item"><td>후원자 답례</td><td class="amt">300,000</td><td class="won">원</td></tr>
+        <tr class="subtotal"><td>소계</td><td class="amt">300,000</td><td class="won">원</td></tr>
+
+        <!-- 합계 -->
+        <tr class="grand"><td>지출 합계</td><td class="amt">3,754,000</td><td class="won">원</td></tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="foot">
+    <div class="row">💡 회비는 학생 50명 × 20,000원 기준(교사·도우미 20명 제외)이며, 찬조·후원 50만원은 추정치입니다.</div>
+    <div class="row">⚖ 회비 1,000,000 + 찬조·후원 500,000 = 1,500,000원, 부족분 <b>2,254,000원은 초등부 재정으로 충당</b> → 수지 균형.</div>
+    <div class="row">📄 상세 기획 문서 — 각 일차 <code>.md</code> 파일 및 <a href="README.md">폴더 README</a> 참고</div>
+    <button class="btn-print" onclick="window.print()">🖨 인쇄 / PDF 저장</button>
+  </div>
+
+</main>
+
+</body>
+</html>

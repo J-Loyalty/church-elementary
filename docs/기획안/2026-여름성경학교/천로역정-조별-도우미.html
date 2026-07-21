@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 여름성경학교 천로역정 · 조별 도우미표</title>
+<style>
+  :root{
+    --navy:#155a87; --navy-2:#2a8cc4; --gold:#f0b34c; --gold-soft:#ffe2a8;
+    --bg:#eaf4fb; --card:#ffffff; --ink:#123048; --muted:#587288;
+    --line:#d3e4f1; --accent-bg:#e1f0fb; --rest-bg:#fff4e0; --rest-ink:#7a5410;
+    --guide-bg:#f4fbee; --guide-line:#7fb03a; --guide-ink:#38541a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --navy:#134a70; --navy-2:#1e628f; --gold:#eab659; --gold-soft:#f4d290;
+      --bg:#0f1d29; --card:#17232f; --ink:#e7edf3; --muted:#a6b7c7;
+      --line:#26333f; --accent-bg:#152436; --rest-bg:#2c2416; --rest-ink:#e8c583;
+      --guide-bg:#1a2a17; --guide-line:#5f8a2f; --guide-ink:#cfe6ac;
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Pretendard","Malgun Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* 상단 바 (화면 전용) */
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 16px; background:var(--navy); color:#fff;
+    border-bottom:3px solid var(--gold);
+  }
+  .topbar .brand{font-weight:700; font-size:15px; letter-spacing:.02em;}
+  .topbar .brand small{display:block; font-weight:400; font-size:11px; opacity:.75; letter-spacing:.03em;}
+  .spacer{flex:1;}
+  button{
+    font-family:inherit; cursor:pointer; border:0; border-radius:8px;
+    background:var(--navy-2); color:#fff; padding:8px 12px; font-size:14px; font-weight:600;
+  }
+  button:hover{background:#3197d1;}
+  button.ghost{background:transparent; border:1px solid rgba(255,255,255,.35);}
+  .hint{text-align:center; font-size:12px; color:var(--muted); margin:16px 0 0;}
+
+  .stage{max-width:820px; margin:0 auto; padding:22px 16px 60px;}
+
+  /* 조별 시트 (1조 = 1페이지) */
+  .sheet{
+    background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+    box-shadow:0 6px 24px rgba(15,42,67,.10); margin-bottom:26px;
+  }
+  .sheet-head{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    color:#fff; padding:20px 26px; position:relative;
+  }
+  .sheet-head .idx{position:absolute; top:16px; right:22px; font-size:12px; opacity:.7; font-weight:600; letter-spacing:.06em;}
+  .sheet-head .team{font-size:30px; font-weight:800; display:flex; align-items:center; gap:10px;}
+  .sheet-head .grade{
+    font-size:12px; font-weight:700; background:var(--gold); color:var(--navy);
+    padding:3px 10px; border-radius:999px; align-self:center;
+  }
+  .sheet-head .room{
+    font-size:12.5px; font-weight:600; background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.32); color:#fff;
+    padding:3px 10px; border-radius:999px; align-self:center; white-space:nowrap;
+  }
+  .sheet-head .helper{margin-top:10px; font-size:15px;}
+  .sheet-head .helper .k{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; opacity:.7; margin-right:6px;}
+  .sheet-head .helper b{color:var(--gold-soft); font-size:17px;}
+  .sheet-head .start{margin-top:6px; font-size:13.5px; opacity:.9;}
+  .sheet-head .start b{color:var(--gold-soft);}
+
+  .sheet-body{padding:20px 26px 24px;}
+
+  table.route{border-collapse:collapse; width:100%; font-size:15px; font-variant-numeric:tabular-nums;}
+  table.route th, table.route td{border:1px solid var(--line); padding:9px 12px; text-align:left; vertical-align:top;}
+  table.route thead th{
+    background:var(--accent-bg); color:var(--ink); font-size:11.5px; font-weight:800;
+    letter-spacing:.05em; text-transform:uppercase;
+  }
+  table.route td.rnd{white-space:nowrap; font-weight:700; color:var(--muted); width:1%;}
+  table.route td.time{white-space:nowrap; font-weight:800; width:1%;}
+  table.route td.time .dur{display:block; font-size:10.5px; font-weight:700; color:var(--gold); margin-top:1px;}
+  table.route td.course b{display:block;}
+  table.route td.course .mark{font-size:11.5px; font-weight:700; color:var(--gold); margin-left:2px;}
+  table.route td.place{color:var(--muted); white-space:nowrap;}
+  table.route tr.rest td{background:var(--rest-bg); color:var(--rest-ink);}
+  table.route tr.rest td.place, table.route tr.rest td.rnd{color:var(--rest-ink);}
+  table.route tr.first td:first-child{box-shadow:inset 3px 0 0 var(--gold);}
+  /* 이동(2′) 줄 */
+  table.route tr.move td{
+    background:var(--accent-bg); color:var(--navy-2);
+    font-size:12.5px; font-weight:700; padding:5px 12px; letter-spacing:.01em;
+  }
+  table.route tr.move td .win{color:var(--muted); font-weight:800; margin-right:6px; white-space:nowrap;}
+  table.route tr.move td b{color:var(--ink);}
+  table.route tr.move.stay td{background:var(--rest-bg); color:var(--rest-ink);}
+
+  .guide{
+    margin-top:16px; background:var(--guide-bg); border:1px solid var(--guide-line);
+    border-left-width:4px; border-radius:8px; padding:12px 16px;
+  }
+  .guide .h{font-size:12px; font-weight:800; letter-spacing:.05em; color:var(--guide-ink); text-transform:uppercase; margin-bottom:6px;}
+  .guide ul{margin:0; padding-left:18px;}
+  .guide li{font-size:14px; margin:4px 0; color:var(--ink);}
+  .guide li b{color:var(--guide-ink);}
+
+  .end{margin-top:12px; font-size:13.5px; color:var(--muted);}
+  .end b{color:var(--ink);}
+
+  @media screen and (max-width:640px){
+    .topbar{padding:8px 12px;}
+    .stage{padding:16px 10px 48px;}
+    .sheet-head{padding:16px 16px;}
+    .sheet-head .team{font-size:24px;}
+    .sheet-head .idx{top:12px; right:14px;}
+    .sheet-body{padding:16px 16px 20px;}
+    table.route{font-size:13.5px;}
+    table.route th, table.route td{padding:7px 8px;}
+    table.route td.place{white-space:normal;}
+  }
+
+  /* 인쇄: 1조 = 1페이지 */
+  @page{ size:A4; margin:14mm; }
+  @media print{
+    body{background:#fff;}
+    .topbar,.hint{display:none !important;}
+    .stage{padding:0; max-width:none;}
+    .sheet{
+      border:1.5px solid #333; border-radius:10px; box-shadow:none; margin:0;
+      page-break-after:always; break-after:page;
+    }
+    .sheet:last-child{page-break-after:auto; break-after:auto;}
+    .sheet-head{background:#155a87 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .sheet-head .grade{background:#f0b34c !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    thead th{background:#e1f0fb !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    tr.rest td, tr.move.stay td{background:#fff4e0 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    tr.move td{background:#e1f0fb !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .guide{background:#f4fbee !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">천로역정 · 조별 도우미표<small>2026 여름성경학교 1일차 · 조 인솔 보조 도우미 배부용</small></div>
+  <div class="spacer"></div>
+  <button class="ghost" onclick="location.href='index.html'" title="큐시트 목록으로">🏠 목록</button>
+  <button class="ghost" onclick="location.href='천로역정-큐시트.html'">🧭 진행 큐시트</button>
+  <button onclick="window.print()">🖨 인쇄 (1조=1장)</button>
+</header>
+
+<main class="stage" id="stage"></main>
+
+<p class="hint">🖨 인쇄 시 한 조가 한 페이지(A4)로 출력됩니다 · 각 도우미에게 담당 조 페이지를 배부하세요</p>
+
+<script>
+// 코스 정보 (번호 → 제목·장소)
+const COURSES = {
+  "1": {title:"무거운 백팩 — 죄 짐을 지고", place:"비전센터 앞마당"},
+  "2": {title:"은혜의 십자가 — 십자가의 길", place:"본당 지하 1층 성가대실"},
+  "3": {title:"생명책과 내 이름 — 천국의 길", place:"비전센터 1층 소그룹실", mark:"★ 사전세팅"},
+  "4": {title:"말들의 유혹 — 유혹의 길", place:"3층 유치부실"},
+  "5": {title:"믿음의 발걸음 — 좁은 길과 넓은 길", place:"4층 학생부·청년부실", mark:"⚠ 안전"},
+  "6": {title:"사랑의 공동체 — 거듭난 삶", place:"2층 초등부실"},
+  "쉼터": {title:"순례 쉼터 — 힘을 얻는 곳", place:"본당", rest:true},
+};
+// 8회차 시작 시각 (15′ 진행 + 2′ 이동)
+const TIMES = ["20:02","20:19","20:36","20:53","21:10","21:27","21:44","22:01"];
+// 진행(미션 15′) 구간 / 이동(2′) 구간
+const MISSION = ["20:02~20:17","20:19~20:34","20:36~20:51","20:53~21:08","21:10~21:25","21:27~21:42","21:44~21:59","22:01~22:16"];
+const MOVE    = ["20:17~20:19","20:34~20:36","20:51~20:53","21:08~21:10","21:25~21:27","21:42~21:44","21:59~22:01","22:16~22:18"];
+// 조별 배정 (조 이름=성령의 열매, 동선=코스 이동 시간표)
+const TEAMS = [
+  {name:"기쁨", grade:"저학년", helper:"김미경 권사", room:"2층 초등부실",      seq:["1","2","3","4","5","6","쉼터","쉼터"]},
+  {name:"절제", grade:"저학년", helper:"장윤봉 장로", room:"본당 성가대실",     seq:["2","3","4","5","6","쉼터","쉼터","1"]},
+  {name:"신실", grade:"저학년", helper:"김만섭 집사", room:"4층 학생부/청년부", seq:["3","4","5","6","쉼터","쉼터","1","2"]},
+  {name:"사랑", grade:"저학년", helper:"박경식 집사", room:"2층 초등부실",      seq:["4","5","6","쉼터","쉼터","1","2","3"]},
+  {name:"친절", grade:"고학년", helper:"최희영 집사", room:"본당 새가족실",     seq:["5","6","쉼터","쉼터","1","2","3","4"]},
+  {name:"선함", grade:"고학년", helper:"고재욱 장로", room:"3층 소그룹실 (소)", seq:["6","쉼터","쉼터","1","2","3","4","5"]},
+  {name:"온유", grade:"고학년", helper:"김정춘 집사", room:"3층 유치부실",      seq:["쉼터","쉼터","1","2","3","4","5","6"]},
+  {name:"인내", grade:"고학년", helper:"김기송 장로", room:"2층 초등부실",      seq:["쉼터","1","2","3","4","5","6","쉼터"]},
+];
+
+const GUIDE = [
+  "<b>[시작 전] 19:35</b>까지 담당 조의 <b>공과 장소</b>로 이동 → <b>19:40</b> 아이들을 <b>본당으로 인솔</b> → <b>19:45 본당 집합</b>(천로역정 오프닝).",
+  "종이 울리면 <b>아이들 손을 꼭 잡고 2분 안에</b> 다음 장소로 이동합니다 (지각 금지 · 인원 수시 확인).",
+  "미션에 <b>실패해도 통과는 막지 않습니다</b> — 짧게 마치고 바로 다음 길로.",
+  "코스 5 → 코스 6 이동은 계단 대신 <b>엘리베이터로 하강</b> (안대 벗은 직후 계단사고 방지).",
+  "‘순례 쉼터(본당)’에서는 담임 교사의 안내로 찬양·나눔하며 쉽니다. 2회 연속 배정 시 30분 머뭅니다.",
+  "사진은 <b>학생부 도우미(기태민·윤주애·손예린)</b>가 전담하니, 도우미는 아이 인솔·안전에 집중합니다.",
+  "안전 최우선 — 아픈/힘들어하는 아이는 무리시키지 말고 즉시 교사·교역자에게 알립니다.",
+];
+
+const stage = document.getElementById('stage');
+
+function courseCell(c){
+  const co = COURSES[c];
+  const label = co.rest ? "순례 쉼터" : ("코스 "+c);
+  const mark = co.mark ? `<span class="mark">${co.mark}</span>` : "";
+  return `<b>${label}${mark}</b>${co.title}`;
+}
+
+stage.innerHTML = TEAMS.map((t,ti)=>{
+  const first = t.seq[0], firstCo = COURSES[first];
+  const startLabel = firstCo.rest ? "순례 쉼터" : ("코스 "+first);
+  let rows = "";
+  t.seq.forEach((c,i)=>{
+    const co = COURSES[c];
+    rows += `<tr class="${co.rest?'rest':''}${i===0?' first':''}">
+      <td class="rnd">${i+1}회</td>
+      <td class="time">${MISSION[i]}<span class="dur">진행 15′</span></td>
+      <td class="course">${courseCell(c)}</td>
+      <td class="place">${co.place}</td>
+    </tr>`;
+    const isLast = i===t.seq.length-1;
+    if(!isLast){
+      const nxt = t.seq[i+1];
+      if(c==="쉼터" && nxt==="쉼터"){
+        rows += `<tr class="move stay"><td colspan="4">⏸ 순례 쉼터 계속 — 이동 없이 본당에서 30분 연속</td></tr>`;
+      } else {
+        const nCo = COURSES[nxt];
+        const nLabel = nCo.rest ? "순례 쉼터" : ("코스 "+nxt);
+        rows += `<tr class="move"><td colspan="4"><span class="win">🔔 ${MOVE[i]} · 이동 2′</span> → <b>${nLabel}</b> (${nCo.place})</td></tr>`;
+      }
+    } else {
+      if(c==="쉼터"){
+        rows += `<tr class="move"><td colspan="4"><span class="win">🔔 이동 없음</span> → 그대로 마무리 <b>22:18~22:28 ‘천성에 도착하여’</b> (본당)</td></tr>`;
+      } else {
+        rows += `<tr class="move"><td colspan="4"><span class="win">🔔 ${MOVE[i]} · 이동 2′</span> → 마무리 <b>22:18~22:28 ‘천성에 도착하여’</b> (본당)</td></tr>`;
+      }
+    }
+  });
+  return `
+  <section class="sheet">
+    <div class="sheet-head">
+      <div class="idx">${ti+1} / ${TEAMS.length}</div>
+      <div class="team">🍃 ${t.name}조 <span class="grade">${t.grade}</span> <span class="room">📖 공과 ${t.room}</span></div>
+      <div class="helper"><span class="k">인솔 도우미</span> <b>${t.helper}</b></div>
+      <div class="start"><b>${TIMES[0]}</b> <b>${startLabel}</b>(${firstCo.place})에서 출발</div>
+    </div>
+    <div class="sheet-body">
+      <table class="route">
+        <thead><tr><th>회차</th><th>시각</th><th>코스</th><th>장소</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+      <div class="guide">
+        <div class="h">인솔 도우미 안내</div>
+        <ul>${GUIDE.map(g=>`<li>${g}</li>`).join("")}</ul>
+      </div>
+      <div class="end">완주 후 <b>순례 쉼터(본당)</b>에서 대기 → <b>22:18~22:28 마무리 ‘천성에 도착하여’</b>(본당, 기도회 겸함)로 합류합니다.</div>
+    </div>
+  </section>`;
+}).join("");
+</script>
+</body>
+</html>
