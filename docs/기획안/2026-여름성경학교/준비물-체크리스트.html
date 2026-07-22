@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 여름성경학교 준비물 체크리스트</title>
+<style>
+  :root{
+    --navy:#155a87; --navy-2:#2a8cc4; --gold:#f0b34c; --gold-soft:#ffe2a8;
+    --bg:#eaf4fb; --card:#ffffff; --ink:#123048; --muted:#587288;
+    --line:#d3e4f1; --chk:#8fb0c9; --accent-bg:#e1f0fb;
+    --done-bg:#e7f5ec; --done-ink:#2f7d4f; --wip-bg:#fff4e0; --wip-ink:#7a5410;
+    --excl-bg:#f1e6e6; --excl-ink:#9a5b5b; --pers-bg:#eae6f4; --pers-ink:#5b4d8a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --navy:#134a70; --navy-2:#1e628f; --gold:#eab659; --gold-soft:#f4d290;
+      --bg:#0f1d29; --card:#17232f; --ink:#e7edf3; --muted:#a6b7c7;
+      --line:#26333f; --chk:#4a5c6d; --accent-bg:#152436;
+      --done-bg:#16281d; --done-ink:#7fc79a; --wip-bg:#2c2416; --wip-ink:#e8c583;
+      --excl-bg:#2a1c1c; --excl-ink:#d09a9a; --pers-bg:#1f1a2e; --pers-ink:#b6a6e0;
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Pretendard","Malgun Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.5;
+    -webkit-font-smoothing:antialiased; min-height:100vh;
+  }
+
+  /* ── 상단 바 (화면 전용) ── */
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 16px; background:var(--navy); color:#fff;
+    border-bottom:3px solid var(--gold);
+  }
+  .topbar .brand{font-weight:700; font-size:15px; letter-spacing:.02em;}
+  .topbar .brand small{display:block; font-weight:400; font-size:11px; opacity:.75; letter-spacing:.03em;}
+  .spacer{flex:1;}
+  button{
+    font-family:inherit; cursor:pointer; border:0; border-radius:8px;
+    background:var(--navy-2); color:#fff; padding:8px 12px; font-size:14px; font-weight:600;
+  }
+  button:hover{background:#3197d1;}
+  button.ghost{background:transparent; border:1px solid rgba(255,255,255,.35);}
+
+  /* 전체 진행 바 */
+  .progress-wrap{background:var(--navy-2); padding:8px 16px; color:#fff; display:flex; align-items:center; gap:12px;}
+  .progress-wrap .lbl{font-size:12.5px; font-weight:700; white-space:nowrap; font-variant-numeric:tabular-nums;}
+  .bar{flex:1; height:9px; background:rgba(255,255,255,.22); border-radius:999px; overflow:hidden;}
+  .bar > i{display:block; height:100%; width:0; background:var(--gold); border-radius:999px; transition:width .25s ease;}
+
+  .wrap{max-width:900px; margin:0 auto; padding:24px 16px 70px;}
+
+  .intro{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:14px 18px; margin-bottom:20px; font-size:13.5px; color:var(--muted);
+    box-shadow:0 4px 14px rgba(15,42,67,.06);
+  }
+  .intro b{color:var(--ink);}
+  .legend{display:flex; flex-wrap:wrap; gap:6px 10px; margin-top:10px;}
+  .badge{font-size:11px; font-weight:800; padding:2px 8px; border-radius:999px; letter-spacing:.02em; white-space:nowrap;}
+  .badge.done{background:var(--done-bg); color:var(--done-ink);}
+  .badge.wip{background:var(--wip-bg); color:var(--wip-ink);}
+  .badge.excl{background:var(--excl-bg); color:var(--excl-ink);}
+  .badge.pers{background:var(--pers-bg); color:var(--pers-ink);}
+
+  /* ── 그룹 카드 ── */
+  .group{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    overflow:hidden; box-shadow:0 6px 20px rgba(15,42,67,.08); margin-bottom:18px;
+    break-inside:avoid;
+  }
+  .group-head{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2)); color:#fff;
+    padding:14px 20px; display:flex; align-items:center; gap:12px;
+  }
+  .group-head .icon{font-size:20px;}
+  .group-head .t{font-size:17px; font-weight:800;}
+  .group-head .t small{display:block; font-weight:400; font-size:11.5px; opacity:.8; margin-top:1px;}
+  .group-head .cnt{margin-left:auto; font-size:12.5px; font-weight:800; font-variant-numeric:tabular-nums; background:rgba(255,255,255,.16); padding:3px 10px; border-radius:999px;}
+
+  .sub{font-size:11.5px; font-weight:800; letter-spacing:.04em; color:var(--muted); text-transform:uppercase; padding:12px 20px 2px;}
+  ul.items{list-style:none; margin:0; padding:6px 12px 12px;}
+  ul.items li{
+    display:flex; align-items:flex-start; gap:11px; padding:9px 8px; border-radius:9px;
+    border-bottom:1px dashed var(--line);
+  }
+  ul.items li:last-child{border-bottom:0;}
+  ul.items li:hover{background:var(--accent-bg);}
+  label.chk{display:flex; align-items:flex-start; gap:11px; cursor:pointer; flex:1;}
+  input[type=checkbox]{
+    appearance:none; -webkit-appearance:none; flex:0 0 auto; margin-top:2px;
+    width:20px; height:20px; border:2px solid var(--chk); border-radius:5px; background:var(--card);
+    cursor:pointer; position:relative;
+  }
+  input[type=checkbox]:checked{background:var(--gold); border-color:var(--gold);}
+  input[type=checkbox]:checked::after{
+    content:"✓"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    color:var(--navy); font-size:14px; font-weight:900;
+  }
+  .txt{flex:1; font-size:15.5px;}
+  .txt .m{display:inline-flex; flex-wrap:wrap; gap:5px 8px; margin-top:3px;}
+  .chip{font-size:11px; font-weight:700; color:var(--muted); background:var(--accent-bg); border-radius:5px; padding:1px 7px;}
+  .chip.by{color:var(--navy-2);}
+  .note-line{font-size:12.5px; color:var(--muted); margin-top:2px;}
+  li.checked .txt > .name{color:var(--muted); text-decoration:line-through;}
+
+  /* 비체크 항목 (제외/개인/안내) */
+  li.info{opacity:.92;}
+  li.info .mark{flex:0 0 auto; width:20px; text-align:center; margin-top:1px; font-size:15px;}
+  li.excl .name{text-decoration:line-through; color:var(--excl-ink);}
+
+  .foot{margin-top:22px; padding-top:16px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted);}
+  .foot a{color:#2a6db0;}
+  .foot .row{margin:4px 0;}
+
+  @media screen and (max-width:640px){
+    .topbar{padding:8px 12px;}
+    .wrap{padding:18px 12px 60px;}
+    .group-head{padding:12px 15px;}
+    .group-head .t{font-size:15.5px;}
+    .txt{font-size:14.5px;}
+    ul.items{padding:4px 8px 10px;}
+  }
+
+  /* ── 인쇄 ── */
+  @page{ size:A4; margin:14mm; }
+  @media print{
+    body{background:#fff;}
+    .topbar,.progress-wrap,.btn-tools{display:none !important;}
+    .wrap{padding:0; max-width:none;}
+    .group{box-shadow:none; border:1.5px solid #333; page-break-inside:avoid;}
+    .group-head{background:#155a87 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    input[type=checkbox]{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    ul.items li:hover{background:none;}
+    .badge{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">2026 여름성경학교 · 준비물 체크리스트<small>믿음의 항해 ⛵ · 7/24~26 · 아이 50 + 어른 20 = 70명</small></div>
+  <div class="spacer"></div>
+  <div class="btn-tools" style="display:flex; gap:6px;">
+    <button class="ghost" onclick="location.href='index.html'" title="큐시트 목록으로">🏠 목록</button>
+    <button class="ghost" onclick="resetAll()">↺ 초기화</button>
+    <button onclick="window.print()">🖨 인쇄</button>
+  </div>
+</header>
+<div class="progress-wrap"><span class="lbl" id="ptext">0 / 0</span><div class="bar"><i id="pbar"></i></div></div>
+
+<main class="wrap" id="wrap"></main>
+
+<script>
+// badge: done(완료) · wip(제작중) · excl(제외·미구매) · pers(개인 지참) · info(안내)
+// 체크박스는 부서가 준비하는 항목만. excl/pers/info는 참고용(체크 없음).
+const GROUPS = [
+  { icon:"📋", title:"접수·행정", sub:"1일차 15:30 접수 · 천로역정 공통", items:[
+    {t:"명단표", by:"1층 담당", when:"접수"},
+    {t:"회비납부봉투", by:"1층 담당"},
+    {t:"필기도구", by:"1층 담당"},
+    {t:"입장팔찌 <span class='note-line'>(이름표 역할 — 별도 명찰·영수증 없음)</span>", by:"1층 담당"},
+    {t:"조 편성표·명단 (8개 조)", when:"천로역정"},
+    {t:"순례 여권 + 코스별 스티커", when:"천로역정"},
+    {t:"구급함(상비약)"},
+    {t:"비상 연락망·인근 병원 연락처", badge:"done"},
+  ]},
+
+  { icon:"👕", title:"티셔츠·착용·선물", sub:"1일차 접수 (2층 담당: 조남선 권사·서옥래 집사)", items:[
+    {t:"단체 티셔츠", by:"1층 지급"},
+    {t:"항해사 모자", by:"2층 담당"},
+    {t:"별 스티커", by:"2층 담당"},
+    {t:"선물용 볼펜", by:"2층 담당"},
+    {t:"항해사 스카프", badge:"excl", note:"구매하지 않기로 확정 (모자만 사용)"},
+  ]},
+
+  { icon:"🖥", title:"PPT·음향", sub:"빔·스크린·마이크는 비전센터 2층 상시 구비", items:[
+    {t:"환영·안내 PPT", by:"장충성 집사", when:"접수 루프", badge:"wip"},
+    {t:"준비찬양 PPT + 음원", badge:"done"},
+    {t:"개회예배 PPT", badge:"done"},
+    {t:"1과 예배 PPT", badge:"done"},
+    {t:"2과 예배 PPT", badge:"done"},
+    {t:"3과 예배 PPT", badge:"done"},
+    {t:"천로역정 오프닝·마무리 찬양 PPT·음향", when:"천로역정"},
+  ]},
+
+  { icon:"🍽", title:"식음료", sub:"인원 70명분 기준 (물놀이·주일 인원 따라 조정)", items:[
+    {t:"<b>1일차 접수 간식</b> — 샌드위치·음료", by:"2층 담당", when:"15:30"},
+    {t:"<b>1일차 저녁</b> — 돈까스(여러 소스) + 아이스크림", by:"홍선미 집사", when:"17:00"},
+    {t:"저녁 순서 정하기 볼 (저·고학년 순서용)", when:"17:00"},
+    {t:"<b>1일차 야식</b> — 즉석 분식 재료", by:"이정록 집사", when:"22:40"},
+    {t:"<b>천국 잔치 간식</b> (천로역정 마무리) + 완주 상품(필요 시)", when:"22:18"},
+    {t:"<b>2일차 아침</b> — 시리얼·모닝빵·우유/두유/락토프리·요거트·딸기/포도잼·컵라면", when:"7:00"},
+    {t:"<b>2일차 점심</b> — 김밥", by:"조남선 권사 준비·서옥래 집사 11:30 픽업", when:"12:00"},
+    {t:"<b>2일차 물놀이 간식</b> — 젤리·1인 음료·물 350㎖(얼음)·컵라면(매점)", when:"물놀이"},
+    {t:"귀가 햄버거", badge:"excl", note:"미지급으로 확정"},
+    {t:"3일차 점심 — 교회 중식 제공 (별도 준비 없음)", badge:"info"},
+  ]},
+
+  { icon:"🧭", title:"천로역정 코스 교구", sub:"코스별 아날로그 교구 · 1일차 저녁", items:[
+    {t:"<b>코스1</b> 무거운 백팩 <span class='note-line'>(앞마당)</span> — 등산 배낭 · 죄 이름표 생수병 · 출발선/반환선 표시"},
+    {t:"<b>코스2</b> 은혜의 십자가 <span class='note-line'>(앞마당 천막)</span> — 큰 나무 십자가 · 붉은 끈(손목용) · 가위(교사) · <b>천막</b> · <b>야간 조명</b>"},
+    {t:"<b>코스3</b> 생명책 <span class='note-line'>(비전센터 1층·사전세팅)</span> — 천국문 장식(금색·구름·빛) · 우드락 생명책 · 흰 포스트잇 · 사인펜·네임펜 · 잔잔한 음악·은은한 조명"},
+    {t:"<b>코스4</b> 말들의 유혹 <span class='note-line'>(3층)</span> — 유혹 카드 · 말씀 조각 카드 · 타이머"},
+    {t:"<b>코스5</b> 믿음의 발걸음 <span class='note-line'>(4층·안전)</span> — 안대(최대 8) · 발바닥 종이 스티커 · 부드러운 안전 장애물(쿠션 등) · 스파이 변장 소품"},
+    {t:"<b>코스6</b> 사랑의 공동체 <span class='note-line'>(2층)</span> — LED 촛불 · 우드락 십자가 · 고정 핀(압정) · 볼펜·종이"},
+    {t:"<b>공통</b> — 각 코스 타이머 · 성경 구절 카드·팻말 · 순례 여권+스티커"},
+    {t:"<b>순례 쉼터(성가대실)</b> — 물·간단한 간식 · 암송 말씀 카드 · 찬양 리스트·음향"},
+  ]},
+
+  { icon:"🏊", title:"물놀이 (2일차)", sub:"김포조각공원 · 부서 준비물 (모자·물놀이 가방은 개인 지참)", items:[
+    {t:"상비약"},
+    {t:"돗자리(큰 것)"},
+    {t:"여분의 수건"},
+    {t:"네임펜 · 견출지 · 네임텍"},
+    {t:"물놀이 모자(야구/수영)", badge:"pers", note:"개인 지참으로 결정"},
+    {t:"물놀이 가방(큰 것)", badge:"pers", note:"개인 지참으로 결정"},
+  ]},
+
+  { icon:"🛏", title:"숙박·안전", sub:"1일차 야간", items:[
+    {t:"샤워실 슬리퍼 (저가·남 먼저 → 여)"},
+    {t:"구급함 · 비상 연락망 (야간 재확인)"},
+    {t:"야간 대기 교사 배치 확인 (여 2 · 남 3)", badge:"done"},
+    {t:"침구", badge:"pers", note:"아이 개인 지참 (가정통신문)"},
+  ]},
+
+  { icon:"🎒", title:"개인 준비물 (가정통신문 안내)", sub:"부서가 준비하지 않는 참고 목록", items:[
+    {t:"침구·이불 · 세면도구 · 잠옷 · 여벌 옷 · 개인 약 · 개인 물통", badge:"info"},
+    {t:"물놀이 용품 — 수영복 · 수건 · 물안경 · 아쿠아슈즈 · 방수팩 · <b>물놀이 가방(큰 것)</b>", badge:"info"},
+    {t:"물놀이 모자 (야구/수영모자)", badge:"info"},
+    {t:"단체 티셔츠 (당일 착용)", badge:"info"},
+  ]},
+];
+
+const BADGE = {
+  done:{cls:"done", label:"완료"}, wip:{cls:"wip", label:"제작중"},
+  excl:{cls:"excl", label:"제외"}, pers:{cls:"pers", label:"개인 지참"}, info:{cls:"pers", label:"안내"},
+};
+const KEY = "vbs2026-prep";
+let state = {};
+try{ state = JSON.parse(localStorage.getItem(KEY) || "{}"); }catch(e){ state = {}; }
+
+const wrap = document.getElementById("wrap");
+
+function isCheckable(it){ return !it.badge || it.badge==="done" || it.badge==="wip"; }
+
+function itemHTML(gi, ii, it){
+  const id = gi+"-"+ii;
+  const badge = it.badge ? `<span class="badge ${BADGE[it.badge].cls}">${BADGE[it.badge].label}</span>` : "";
+  const chips = [];
+  if(it.by) chips.push(`<span class="chip by">👤 ${it.by}</span>`);
+  if(it.when) chips.push(`<span class="chip">🕒 ${it.when}</span>`);
+  const meta = (chips.length||badge) ? `<span class="m">${badge}${chips.join("")}</span>` : "";
+  const note = it.note ? `<div class="note-line">${it.note}</div>` : "";
+  if(isCheckable(it)){
+    const on = state[id] ? "checked" : "";
+    const liCls = state[id] ? "checked" : "";
+    return `<li class="${liCls}" data-id="${id}">
+      <label class="chk">
+        <input type="checkbox" ${on} onchange="toggle('${id}', this)">
+        <span class="txt"><span class="name">${it.t}</span>${meta}${note}</span>
+      </label></li>`;
+  }
+  // 비체크 (제외·개인·안내)
+  const mark = it.badge==="excl" ? "✕" : (it.badge==="pers" ? "🎒" : "•");
+  return `<li class="info ${it.badge==='excl'?'excl':''}">
+    <span class="mark">${mark}</span>
+    <span class="txt"><span class="name">${it.t}</span>${meta}${note}</span></li>`;
+}
+
+function render(){
+  wrap.innerHTML = `<div class="intro">
+    각 항목을 체크하면 <b>이 기기에 자동 저장</b>됩니다(브라우저 저장). 인쇄하면 그룹별 체크박스가 그대로 종이로 나옵니다.
+    <div class="legend">
+      <span class="badge done">완료</span><span class="badge wip">제작중</span>
+      <span class="badge excl">제외</span><span class="badge pers">개인 지참</span>
+      <span style="font-size:12px;color:var(--muted)">✕ 제외 · 🎒 개인 · • 안내 항목은 체크 대상이 아닙니다</span>
+    </div>
+  </div>` + GROUPS.map((g,gi)=>{
+    const checkables = g.items.filter(isCheckable);
+    const rows = g.items.map((it,ii)=>itemHTML(gi,ii,it)).join("");
+    return `<section class="group" data-gi="${gi}">
+      <div class="group-head">
+        <span class="icon">${g.icon}</span>
+        <span class="t">${g.title}${g.sub?`<small>${g.sub}</small>`:""}</span>
+        <span class="cnt" data-total="${checkables.length}">0 / ${checkables.length}</span>
+      </div>
+      <ul class="items">${rows}</ul>
+    </section>`;
+  }).join("") + `<div class="foot">
+    <div class="row">📄 상세 근거 — 각 일차 <code>.md</code> · <a href="천로역정-큐시트.html">천로역정 큐시트</a> · <a href="README.md">폴더 README</a></div>
+    <div class="row">🖨 인쇄 시 그룹 카드가 페이지 안에서 잘리지 않게 배치됩니다</div>
+  </div>`;
+  updateCounts();
+}
+
+function toggle(id, el){
+  state[id] = el.checked;
+  localStorage.setItem(KEY, JSON.stringify(state));
+  const li = el.closest("li"); if(li) li.classList.toggle("checked", el.checked);
+  updateCounts();
+}
+
+function updateCounts(){
+  let total=0, done=0;
+  document.querySelectorAll(".group").forEach(sec=>{
+    const boxes = sec.querySelectorAll("input[type=checkbox]");
+    let d=0; boxes.forEach(b=>{ if(b.checked) d++; });
+    total += boxes.length; done += d;
+    const cnt = sec.querySelector(".cnt");
+    cnt.textContent = d + " / " + boxes.length;
+  });
+  document.getElementById("ptext").textContent = done + " / " + total;
+  document.getElementById("pbar").style.width = total ? (done/total*100)+"%" : "0";
+}
+
+function resetAll(){
+  state = {}; localStorage.removeItem(KEY);
+  document.querySelectorAll("input[type=checkbox]").forEach(b=>b.checked=false);
+  document.querySelectorAll("li.checked").forEach(li=>li.classList.remove("checked"));
+  updateCounts();
+}
+
+render();
+</script>
+</body>
+</html>
