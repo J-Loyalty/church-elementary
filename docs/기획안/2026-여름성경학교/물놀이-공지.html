@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 여름성경학교 · 물놀이 안내 (아버님·교사용)</title>
+<style>
+  :root{
+    --navy:#123f63; --navy-2:#2a8cc4; --sky:#5bb4e6; --gold:#f0b34c; --gold-2:#e79a2b;
+    --gold-soft:#ffe6b0; --ink:#152a3d; --muted:#5c7488; --line:#d3e4f1;
+    --bg:#eaf4fb; --card:#ffffff;
+    --dad:#1b6fa8; --dad-bg:#e7f2fb; --tea:#8a5cc0; --tea-bg:#f1eafa;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --navy:#0f2e47; --navy-2:#1e628f; --sky:#3f97cf; --gold:#eab659; --gold-2:#d9922c;
+      --gold-soft:#4a3a1c; --ink:#e7edf3; --muted:#a6b7c7; --line:#26333f;
+      --bg:#0f1d29; --card:#17232f;
+      --dad:#6fb6e6; --dad-bg:#152b3b; --tea:#c3a0e6; --tea-bg:#241a33;
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Pretendard","Malgun Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .topbar{
+    position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 16px; background:var(--navy); color:#fff; border-bottom:3px solid var(--gold);
+  }
+  .topbar .brand{font-weight:700; font-size:15px;}
+  .topbar .brand small{display:block; font-weight:400; font-size:11px; opacity:.8;}
+  .spacer{flex:1;}
+  button{font-family:inherit; cursor:pointer; border:0; border-radius:8px; background:var(--navy-2); color:#fff; padding:8px 14px; font-size:14px; font-weight:600;}
+  button:hover{background:#3197d1;}
+  button.ghost{background:transparent; border:1px solid rgba(255,255,255,.4);}
+
+  .wrap{max-width:820px; margin:0 auto; padding:22px 16px 70px;}
+
+  /* 히어로 */
+  .hero{
+    position:relative; overflow:hidden; border-radius:18px; color:#fff; margin-bottom:20px;
+    background:linear-gradient(120deg,var(--navy) 0%,#1b5f8f 55%,var(--sky) 130%);
+    padding:22px 22px 26px; box-shadow:0 8px 24px rgba(15,42,67,.18);
+  }
+  .hero .k{font-size:12px; font-weight:700; letter-spacing:.14em; opacity:.85;}
+  .hero h1{margin:4px 0 6px; font-size:24px; font-weight:800; letter-spacing:-.01em;}
+  .hero .sub{font-size:13.5px; opacity:.92;}
+  .hero .sail{position:absolute; right:16px; top:14px; font-size:46px; opacity:.9; filter:drop-shadow(0 2px 3px rgba(0,0,0,.25));}
+
+  .lead{font-size:14px; color:var(--muted); margin:0 0 18px; padding:0 2px;}
+  .lead b{color:var(--ink);}
+
+  section.card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:16px 18px; margin-bottom:16px; box-shadow:0 4px 14px rgba(15,42,67,.06);
+  }
+  h2{margin:0 0 10px; font-size:16.5px; font-weight:800; display:flex; align-items:center; gap:8px; color:var(--navy);}
+  h2 .em{font-size:19px;}
+  h3{margin:12px 0 6px; font-size:13.5px; font-weight:800; color:var(--ink);}
+
+  /* 타임라인 */
+  ul.tl{list-style:none; margin:0; padding:0;}
+  ul.tl li{display:flex; gap:12px; padding:5px 0; border-bottom:1px dashed var(--line); font-size:13.5px;}
+  ul.tl li:last-child{border-bottom:0;}
+  ul.tl .t{flex:0 0 92px; font-weight:800; color:var(--navy-2); font-variant-numeric:tabular-nums;}
+  ul.tl .d{flex:1;}
+
+  ul.b{margin:4px 0 0; padding-left:20px; font-size:13.5px;}
+  ul.b li{margin:4px 0;}
+  ul.b li b{color:var(--ink);}
+
+  .role{border-radius:12px; padding:14px 16px; margin-top:4px;}
+  .role.dad{background:var(--dad-bg); border:1px solid color-mix(in srgb,var(--dad) 30%,transparent);}
+  .role.tea{background:var(--tea-bg); border:1px solid color-mix(in srgb,var(--tea) 30%,transparent);}
+  .role h2.dad{color:var(--dad);}
+  .role h2.tea{color:var(--tea);}
+
+  .callout{
+    background:linear-gradient(180deg,#fff6e4,#ffedcf); border:1.5px solid var(--gold);
+    border-radius:12px; padding:14px 16px; margin-bottom:16px;
+  }
+  @media (prefers-color-scheme: dark){ .callout{background:#2c2416; } }
+  .callout h2{color:var(--gold-2);}
+
+  table{width:100%; border-collapse:collapse; font-size:12.5px; margin-top:6px;}
+  th,td{border:1px solid var(--line); padding:6px 8px; text-align:left; vertical-align:top;}
+  th{background:var(--navy); color:#fff; font-weight:700; font-size:11.5px;}
+  td .who{font-weight:700;}
+  .scroll{overflow-x:auto;}
+
+  .chk{list-style:none; margin:6px 0 0; padding:0; font-size:13.5px;}
+  .chk li{padding:5px 0 5px 26px; position:relative;}
+  .chk li::before{content:"☐"; position:absolute; left:2px; top:4px; color:var(--navy-2); font-weight:800;}
+
+  .foot{margin-top:20px; font-size:12px; color:var(--muted); text-align:center;}
+
+  @page{ size:A4; margin:12mm; }
+  @media print{
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    body{background:#fff;}
+    .topbar{display:none !important;}
+    .wrap{padding:0; max-width:none;}
+    section.card,.callout,.hero{box-shadow:none; break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">2026 여름성경학교 · 물놀이 안내<small>아버님·교사용 · 7/25(토) 김포조각공원</small></div>
+  <div class="spacer"></div>
+  <button class="ghost" onclick="location.href='index.html'">🏠 목록</button>
+  <button onclick="window.print()">🖨 인쇄</button>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <span class="sail">⛵🏊</span>
+    <div class="k">2026 여름성경학교 · 믿음의 항해</div>
+    <h1>물놀이 안내</h1>
+    <div class="sub">7월 25일(토) · 김포조각공원 물놀이장 · <b>아버님·교사용</b></div>
+  </div>
+
+  <p class="lead">아이들의 안전하고 즐거운 물놀이를 위해 <b>섬겨주시는 아버님·선생님들께 진심으로 감사드립니다.</b> 아래 내용을 미리 한 번 읽어봐 주세요. 핵심은 <b>🎗️ 팔찌를 찬 아이는 모두 우리 아이</b>라는 것, 그리고 <b>보이는 대로 함께 돌봐주시는 것</b>입니다.</p>
+
+  <!-- 팔찌 (최우선) -->
+  <div class="callout">
+    <h2><span class="em">🎗️</span> 가장 중요 — 물놀이 팔찌</h2>
+    <ul class="b">
+      <li>이날 아이들은 <b>물놀이용 띠(팔찌)</b>를 하나씩 착용합니다. <b>팔찌 = 우리 교회 아이</b>예요.</li>
+      <li>공공 물놀이장이라 외부 아이와 섞입니다. <b>팔찌 찬 아이는 내 자녀·내 반이 아니어도 어른 누구나 함께 돌봐주세요.</b></li>
+      <li>위험 신호(깊은 곳·혼자 멀리·다툼·우는 아이)는 <b>즉시 개입 + 가까운 선생님께 알림</b>.</li>
+      <li>아이들에게도 안내: <b>“팔찌는 절대 빼지 않기 · 화장실·매점은 꼭 어른에게 말하고 · 힘든 친구 보면 선생님께 알리기”</b></li>
+    </ul>
+  </div>
+
+  <!-- 일정 -->
+  <section class="card">
+    <h2><span class="em">🗓️</span> 하루 일정</h2>
+    <ul class="tl">
+      <li><span class="t">7:00</span><span class="d">교사 교회 집합 · 아침 예배 준비</span></li>
+      <li><span class="t">~9:20</span><span class="d"><b>아버님 교회 집합</b> (배차 탑승 준비)</span></li>
+      <li><span class="t">9:30</span><span class="d">배차대로 탑승 (명단·인원 확인)</span></li>
+      <li><span class="t">9:40~10:00</span><span class="d">김포조각공원 이동</span></li>
+      <li><span class="t">10:00~14:00</span><span class="d">물놀이 (50분 놀이 / 10분 휴식) · 12:00 점심(김밥)</span></li>
+      <li><span class="t">14:00~14:30</span><span class="d">샤워 · 환복</span></li>
+      <li><span class="t">14:40~15:10</span><span class="d">교회로 이동 → 귀가</span></li>
+    </ul>
+    <h3>물놀이 타임 운영 (50 / 10)</h3>
+    <ul class="b">
+      <li>10:00~10:50 <b>1차</b> → 10:50~11:00 휴식 · 11:00~11:50 <b>2차</b> → 정리</li>
+      <li>12:00~13:00 점심(김밥) · 13:00~13:50 <b>3차</b> → 정리</li>
+      <li>휴식 10분엔 <b>전원 뭍으로</b> → 간식·수분·인원 확인·화장실</li>
+      <li>※ 입·퇴수 신호는 <b>물놀이장 안전요원·방송</b>에 따릅니다.</li>
+    </ul>
+  </section>
+
+  <!-- 아버님 역할 -->
+  <section class="card role dad">
+    <h2 class="dad"><span class="em">👨‍👦</span> 아버님께 부탁드려요</h2>
+    <ul class="b">
+      <li><b>물놀이 중</b> — 물 안에서 아이들과 놀아주세요. 자녀를 먼저 챙기시되, <b>팔찌 찬 아이는 모두 함께</b> 봐주세요.</li>
+      <li><b>샤워(14:00~14:30)</b> — <b>남자아이</b>를 맡아주세요. (여자아이는 여교사)</li>
+      <li><b>차량봉사 해주시는 분</b> — 배차표대로 아이들을 태우고 이동·복귀해주세요. (봉사차엔 아이 위주 탑승)</li>
+      <li>다치거나 힘들어하는 아이가 있으면 <b>가까운 선생님(구급 담당)</b>께 바로 알려주세요.</li>
+    </ul>
+  </section>
+
+  <!-- 교사 역할 -->
+  <section class="card role tea">
+    <h2 class="tea"><span class="em">👩‍🏫</span> 선생님 역할 (뭍 스테이션)</h2>
+    <ul class="b">
+      <li><b>전체 총괄</b> — 장충성 집사 (안전요원·아버님 소통, 반별 인원 취합)</li>
+      <li><b>총괄·순회 안전(고정)</b> — 이유진 사모 · 조소현 집사(구급함)</li>
+      <li><b>인원 점검</b> — 각 반 담임이 <b>휴식·타임마다 자기 반</b> 확인 → 총괄에게 보고</li>
+      <li><b>샤워</b> — <b>여자아이</b>는 여교사 전원 + 어머님이 맡아주세요.</li>
+    </ul>
+    <h3>뭍 스테이션 로테이션 (휴식 10분마다 교대)</h3>
+    <div class="scroll">
+    <table>
+      <tr><th>스테이션</th><th>1차</th><th>2차</th><th>3차</th></tr>
+      <tr><td>베이스캠프<br>(짐 + 간식·수분)</td><td>박미경·박미월</td><td>김옥주·이선미</td><td>이수진·김재원</td></tr>
+      <tr><td>여아 케어·화장실</td><td>이수진·김재원</td><td>박미경·박미월</td><td>김옥주·이선미</td></tr>
+      <tr><td>매점 대기·케어</td><td>김옥주·이선미</td><td>이수진·김재원</td><td>박미경·박미월</td></tr>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin:6px 0 0;">※ 매점 대기 = 쉬며 매점에 오는 아이 케어 · 베이스캠프 1명은 샤워 때도 짐 지킴 유지</p>
+  </section>
+
+  <!-- 배차 -->
+  <section class="card">
+    <h2><span class="em">🚐</span> 배차 (아이 50 · 어른 24 = 74명)</h2>
+    <div class="scroll">
+    <table>
+      <tr><th>차량</th><th>운전</th><th>탑승</th></tr>
+      <tr><td>25인승 버스</td><td class="who">김진서 목사</td><td>기쁨·절제·선함반 (담임 동승)</td></tr>
+      <tr><td>12인승 스타렉스</td><td class="who">장충성 집사</td><td>신실반 (담임 박미월) + 학부모</td></tr>
+      <tr><td>10인승 스타렉스</td><td class="who">서옥래 집사</td><td>사랑반(담임) + 학부모</td></tr>
+      <tr><td>교사차 7인승</td><td class="who">박종렬 장로</td><td>온유반(담임)</td></tr>
+      <tr><td>교사차 7인승</td><td class="who">이유진 사모</td><td>인내반 일부 (담임 이수진)</td></tr>
+      <tr><td>아버님 7인승</td><td class="who">차량봉사 ①</td><td>친절반 (담임 조소현)</td></tr>
+      <tr><td>아버님 5인승</td><td class="who">차량봉사 ②</td><td>인내반 일부</td></tr>
+    </table>
+    </div>
+    <ul class="b">
+      <li><b>학부모는 교회차 우선</b> 탑승 · 아버님 봉사차는 <b>아이 위주</b></li>
+      <li><b>예비</b> — 아버님 5인승 1대(친구 추가 대비) · 필요 시 조소현 집사 가정 별도차</li>
+    </ul>
+  </section>
+
+  <!-- 안전·우천 -->
+  <section class="card">
+    <h2><span class="em">⚡</span> 안전 · 우천</h2>
+    <ul class="b">
+      <li>교사 + 아버님 공동 인솔 + <b>물놀이장 자체 안전요원</b> 배치</li>
+      <li>소나기 수준이면 진행 · <b>뇌우/낙뢰 시 강수량 무관 즉시 중단</b></li>
+      <li>진행 여부는 <b>토요일 아침 8시 최종 판단</b> → 학부모 단톡 공지 (취소 시 조기 귀가)</li>
+    </ul>
+  </section>
+
+  <!-- 부탁/확인 -->
+  <section class="card">
+    <h2><span class="em">✅</span> 준비 · 확인 부탁</h2>
+    <h3>아버님께</h3>
+    <ul class="chk">
+      <li>차량봉사 가능 여부 회신 (7인승/5인승 · 아이 분승)</li>
+      <li>9:20까지 교회 집합 (배차 탑승)</li>
+      <li>편한 물놀이 복장 · 여벌 옷 준비</li>
+    </ul>
+    <h3>선생님께</h3>
+    <ul class="chk">
+      <li>담당 반 명단·인원 숙지 (타임마다 인원 확인)</li>
+      <li>구급함·준비물(돗자리·수건·간식·팔찌 여분) 챙김</li>
+      <li>출발 전 아이들에게 팔찌·안전 브리핑</li>
+    </ul>
+  </section>
+
+  <div class="foot">🙏 섬겨주셔서 감사합니다 — 2026 여름성경학교 초등부</div>
+
+</main>
+</body>
+</html>

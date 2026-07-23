@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>천로역정 조 인솔 도우미 안내 (슬라이드)</title>
+<style>
+  :root{
+    --navy:#12554a; --navy-2:#1f8a76; --gold:#f0b34c; --gold-soft:#ffe2a8;
+    --ink:#123830; --muted:#5c7268; --line:#cfe6df; --card:#ffffff; --accent:#eaf6f2;
+    --hi-bg:#fff4e0; --hi-ink:#7a5410;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{background:#c3ddd5;}
+  body{font-family:"Pretendard","Malgun Gothic",system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink);}
+
+  .slide{width:1280px; height:720px; margin:0 auto; background:var(--card); display:flex; flex-direction:column; overflow:hidden; position:relative;}
+  .s-head{background:linear-gradient(135deg,var(--navy),var(--navy-2)); color:#fff; padding:18px 44px; display:flex; align-items:center; gap:14px; border-bottom:4px solid var(--gold); flex:0 0 auto;}
+  .s-head .ic{font-size:28px;}
+  .s-head h2{font-size:25px; font-weight:800;}
+  .s-head .no{margin-left:auto; font-size:15px; font-weight:700; opacity:.82;}
+  .s-body{flex:1; padding:24px 44px; overflow:hidden;}
+
+  .cover .s-head{flex-direction:column; align-items:center; text-align:center; gap:3px; padding:38px 44px 28px;}
+  .cover .kick{font-size:15px; letter-spacing:.14em; color:var(--gold-soft); font-weight:700; text-transform:uppercase;}
+  .cover h1{font-size:44px; font-weight:800; margin:8px 0 6px;}
+  .cover .csub{font-size:18px; opacity:.94;}
+
+  .h3{font-size:19px; font-weight:800; margin:2px 0 12px; display:flex; align-items:center; gap:9px;}
+  .h3 .dot{width:24px; height:24px; background:var(--gold); color:var(--navy); border-radius:7px; display:inline-flex; align-items:center; justify-content:center; font-size:14px;}
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:26px;}
+  .box{background:var(--accent); border:1px solid var(--line); border-radius:12px; padding:14px 18px;}
+  .box ul{padding-left:20px;} .box li{font-size:16px; margin:7px 0; line-height:1.45;}
+  b{color:var(--ink);}
+
+  table{border-collapse:collapse; width:100%; font-size:15px;}
+  th,td{border:1px solid var(--line); padding:8px 11px; text-align:left; vertical-align:middle;}
+  th{background:var(--accent); color:var(--navy); font-weight:800; font-size:13.5px;}
+  td.c{font-weight:800; color:var(--navy-2); white-space:nowrap;}
+
+  /* 이동표 */
+  .rot{font-size:12.5px;} .rot th,.rot td{padding:6px 6px; text-align:center;}
+  .rot td.tm{font-weight:800; color:var(--navy-2); white-space:nowrap; font-size:11.5px;}
+  .rot .rest{background:var(--hi-bg); color:var(--hi-ink); font-weight:800;}
+  .rot thead th{font-size:12.5px;}
+  .lo{color:#1f8a76;} .hi{color:#8a5cc0;}
+
+  .note{font-size:14px; color:var(--muted); margin-top:12px;}
+  .closing{text-align:center; font-size:16px; margin-top:16px;}
+
+  @media print{ @page{size:1280px 720px; margin:0;} .slide{page-break-after:always;} }
+</style>
+</head>
+<body>
+
+<!-- 1 표지 + 역할 + 명단 -->
+<section class="slide cover">
+  <div class="s-head">
+    <div class="kick">2026 여름성경학교 · 천로역정</div>
+    <h1>조 인솔 도우미 안내 🤝</h1>
+    <div class="csub">첫째날 7/24(금) 19:45~22:28 · 총괄 장충성 집사</div>
+  </div>
+  <div class="s-body">
+    <div class="cols">
+      <div>
+        <div class="h3"><span class="dot">🤝</span> 조 인솔의 역할</div>
+        <div class="box">
+          <ul>
+            <li>배정된 조를 <b>오프닝부터 마무리까지 동행</b></li>
+            <li>회차 이동마다 <b>인원 점검</b> · <b>손잡고</b> 함께 이동</li>
+            <li><b>저학년 밀착 케어</b> (미션 진행은 코스 지기가)</li>
+            <li><b>순례 여권</b> 조가 지참 → 코스 지기가 스티커</li>
+            <li><b>순례 쉼터</b>에서 조 이끌기 (다음 장 참고)</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="h3"><span class="dot">👥</span> 조별 인솔 (8명)</div>
+        <table>
+          <tbody>
+            <tr><td class="c">기쁨</td><td>김미경 권사</td><td class="c">친절</td><td>최희영 집사</td></tr>
+            <tr><td class="c">절제</td><td>장윤봉 장로</td><td class="c">선함</td><td>고재욱 장로</td></tr>
+            <tr><td class="c">신실</td><td>김만섭 집사</td><td class="c">온유</td><td>김정춘 집사</td></tr>
+            <tr><td class="c">사랑</td><td>박경식 집사</td><td class="c">인내</td><td>김기송 장로</td></tr>
+          </tbody>
+        </table>
+        <div class="note"><span class="lo">■</span> 기쁨·절제·신실·사랑 = 저학년 &nbsp; <span class="hi">■</span> 친절·선함·온유·인내 = 고학년</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 이동 시간표 -->
+<section class="slide">
+  <div class="s-head"><span class="ic">🗺️</span><h2>조별 이동 시간표 (내 조를 따라가세요)</h2><span class="no">2 / 4</span></div>
+  <div class="s-body">
+    <table class="rot">
+      <thead><tr><th>회차 / 시간</th><th class="lo">기쁨</th><th class="lo">절제</th><th class="lo">신실</th><th class="lo">사랑</th><th class="hi">친절</th><th class="hi">선함</th><th class="hi">온유</th><th class="hi">인내</th></tr></thead>
+      <tbody>
+        <tr><td class="tm">1회 20:02</td><td>1코스</td><td>2코스</td><td>3코스</td><td>4코스</td><td>5코스</td><td>6코스</td><td class="rest">쉼터</td><td class="rest">쉼터</td></tr>
+        <tr><td class="tm">2회 20:19</td><td>2코스</td><td>3코스</td><td>4코스</td><td>5코스</td><td>6코스</td><td class="rest">쉼터</td><td class="rest">쉼터</td><td>1코스</td></tr>
+        <tr><td class="tm">3회 20:36</td><td>3코스</td><td>4코스</td><td>5코스</td><td>6코스</td><td class="rest">쉼터</td><td class="rest">쉼터</td><td>1코스</td><td>2코스</td></tr>
+        <tr><td class="tm">4회 20:53</td><td>4코스</td><td>5코스</td><td>6코스</td><td class="rest">쉼터</td><td class="rest">쉼터</td><td>1코스</td><td>2코스</td><td>3코스</td></tr>
+        <tr><td class="tm">5회 21:10</td><td>5코스</td><td>6코스</td><td class="rest">쉼터</td><td class="rest">쉼터</td><td>1코스</td><td>2코스</td><td>3코스</td><td>4코스</td></tr>
+        <tr><td class="tm">6회 21:27</td><td>6코스</td><td class="rest">쉼터</td><td class="rest">쉼터</td><td>1코스</td><td>2코스</td><td>3코스</td><td>4코스</td><td>5코스</td></tr>
+        <tr><td class="tm">7회 21:44</td><td class="rest">쉼터</td><td class="rest">쉼터</td><td>1코스</td><td>2코스</td><td>3코스</td><td>4코스</td><td>5코스</td><td>6코스</td></tr>
+        <tr><td class="tm">8회 22:01</td><td class="rest">쉼터</td><td>1코스</td><td>2코스</td><td>3코스</td><td>4코스</td><td>5코스</td><td>6코스</td><td class="rest">쉼터</td></tr>
+      </tbody>
+    </table>
+    <div class="note">각 조는 <b>6코스를 한 번씩 완주 + 순례 쉼터 2회</b> · 회차당 15분 진행 + 2분 이동 · 코스 위치는 <b>코스 담당 안내(코스별 장소)</b> 참고 · <b>쉼터 = 성가대실(본당 지하1층)</b></div>
+  </div>
+</section>
+
+<!-- 3 순례 쉼터 + 오프닝·마무리 -->
+<section class="slide">
+  <div class="s-head"><span class="ic">⛺</span><h2>순례 쉼터 운영 &amp; 오프닝·마무리</h2><span class="no">3 / 4</span></div>
+  <div class="s-body">
+    <div class="cols">
+      <div>
+        <div class="h3"><span class="dot">⛺</span> 순례 쉼터 (성가대실)</div>
+        <div class="box">
+          <ul>
+            <li><b>'쉬는 시간'이 아니라 힘을 얻는 쉼터</b> — 지루하지 않게 이끌기</li>
+            <li><b>찬양</b> — 준비된 찬양 1곡 함께</li>
+            <li><b>말씀 암송 릴레이</b> — 한 사람씩 이어 외치기</li>
+            <li><b>은혜 한마디</b> — 방금 코스 소감 나누기</li>
+            <li><b>재정비</b> — 물·간식으로 수분 보충, 다음 코스 예고</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="h3"><span class="dot">🚩</span> 오프닝 &amp; 마무리 (본당)</div>
+        <div class="box">
+          <ul>
+            <li><b>19:35</b> 각 반으로 이동해 대기</li>
+            <li><b>19:40</b> 공과 끝나면 조를 <b>본당으로 인솔</b></li>
+            <li><b>19:45~20:00</b> 오프닝 — 파송 기도 후 순례 여권 받고 첫 코스로</li>
+            <li><b>22:18~22:28</b> 마무리 — 본당 재집결, 통성 기도·은혜 나눔, 천국 잔치 간식</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 안전·동선 -->
+<section class="slide">
+  <div class="s-head"><span class="ic">🛟</span><h2>안전 · 이동 동선 (꼭 지켜주세요)</h2><span class="no">4 / 4</span></div>
+  <div class="s-body">
+    <div class="box">
+      <ul>
+        <li><b>회차 이동마다 인원 점검</b> — 손잡고 함께, 뒤처지는 아이 없게</li>
+        <li><b>코스5(안대 좁은 길)</b> — 안대 낀 아이 곁에 밀착, 넘어지지 않게 살피기</li>
+        <li><b>코스5 → 코스6</b> — 계단 아닌 <b>엘리베이터</b>로 이동 (인솔 교사 동행·정원 준수)</li>
+        <li><b>코스3·4·5</b> 올라갈 때 — 올라가는 조·내려오는 조가 계단에서 겹치지 않게</li>
+        <li><b>앞마당(코스1·2)</b> — 주차장 차량 통제 구역, 어두우니 발밑 주의</li>
+        <li><b>구급</b> — 다치거나 아픈 아이는 즉시 <b>사진·안전 도우미(기태민·윤주애·손예린)</b> 또는 총괄에게</li>
+      </ul>
+    </div>
+    <div class="closing">🙏 아이들과 끝까지 함께 걸어주셔서 감사합니다<br><span style="font-size:13px;color:var(--muted)">— 2026 여름성경학교 초등부 · 총괄 장충성 집사 —</span></div>
+  </div>
+</section>
+
+</body>
+</html>

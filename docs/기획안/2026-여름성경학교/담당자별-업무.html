@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 여름성경학교 · 담당자별 업무표</title>
+<style>
+  :root{
+    --navy:#155a87; --navy-2:#2a8cc4; --gold:#f0b34c; --gold-soft:#ffe2a8;
+    --ink:#123048; --muted:#5c7488; --line:#d3e4f1; --card:#ffffff;
+    --bg:#eaf4fb; --accent:#eef6fc;
+    --d1:#1b6fa8; --d1-bg:#e7f2fb; --d2:#8a5cc0; --d2-bg:#f1eafa;
+    --tbd:#b0662a; --tbd-bg:#fcefe0; --none:#8a97a4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --navy:#134a70; --navy-2:#1e628f; --gold:#eab659; --gold-soft:#f4d290;
+      --ink:#e7edf3; --muted:#a6b7c7; --line:#26333f; --card:#17232f;
+      --bg:#0f1d29; --accent:#152436;
+      --d1:#6fb6e6; --d1-bg:#152b3b; --d2:#c3a0e6; --d2-bg:#241a33;
+      --tbd:#e0a86a; --tbd-bg:#2c2416; --none:#6b7883;
+    }
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Pretendard","Malgun Gothic",system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); line-height:1.5; -webkit-font-smoothing:antialiased;}
+
+  .topbar{position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:10px 16px; background:var(--navy); color:#fff; border-bottom:3px solid var(--gold);}
+  .topbar .brand{font-weight:700; font-size:15px;}
+  .topbar .brand small{display:block; font-weight:400; font-size:11px; opacity:.8;}
+  .spacer{flex:1;}
+  button{font-family:inherit; cursor:pointer; border:0; border-radius:8px; background:var(--navy-2); color:#fff; padding:8px 14px; font-size:14px; font-weight:600;}
+  button:hover{background:#3197d1;}
+  button.ghost{background:transparent; border:1px solid rgba(255,255,255,.4);}
+
+  .wrap{max-width:1000px; margin:0 auto; padding:22px 16px 70px;}
+  .intro{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin-bottom:18px; font-size:13px; color:var(--muted);}
+  .intro b{color:var(--ink);}
+  .legend{display:inline-flex; gap:8px; margin-left:4px;}
+  .tag{font-size:11px; font-weight:800; border-radius:999px; padding:1px 9px;}
+  .tag.tbd{background:var(--tbd-bg); color:var(--tbd);}
+  .tag.none{background:transparent; color:var(--none); border:1px solid var(--none);}
+
+  section{background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-bottom:16px; box-shadow:0 4px 14px rgba(15,42,67,.06); break-inside:avoid;}
+  .s-head{background:linear-gradient(135deg,var(--navy),var(--navy-2)); color:#fff; padding:11px 18px; font-size:16px; font-weight:800; display:flex; align-items:center; gap:9px;}
+  .s-head .cnt{margin-left:auto; font-size:12px; font-weight:700; opacity:.82; background:rgba(255,255,255,.16); padding:2px 10px; border-radius:999px;}
+
+  table{border-collapse:collapse; width:100%; font-size:13.5px;}
+  th,td{padding:9px 14px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; line-height:1.45;}
+  tr:last-child td{border-bottom:0;}
+  thead th{background:var(--accent); font-size:12px; font-weight:800; color:var(--muted); letter-spacing:.02em;}
+  th.nm,td.nm{width:150px; white-space:nowrap;}
+  td.nm b{font-size:14px;}
+  td.nm .role{display:block; font-size:11.5px; color:var(--muted); font-weight:600;}
+  .col1 .h,.col2 .h{font-weight:800; font-size:11px; letter-spacing:.03em; display:inline-block; border-radius:5px; padding:0 6px; margin-right:4px;}
+  .col1 .h{background:var(--d1-bg); color:var(--d1);}
+  .col2 .h{background:var(--d2-bg); color:var(--d2);}
+  b{color:var(--ink);}
+  .tbd{color:var(--tbd); font-weight:700;}
+  .none{color:var(--none);}
+  .t{color:var(--navy-2); font-weight:700; font-variant-numeric:tabular-nums;}
+
+  .foot{margin-top:18px; font-size:12px; color:var(--muted); text-align:center;}
+
+  @page{ size:A4; margin:12mm; }
+  @media print{
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    body{background:#fff;}
+    .topbar{display:none !important;}
+    .wrap{padding:0; max-width:none;}
+    section{box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">2026 여름성경학교 · 담당자별 업무표<small>믿음의 항해 ⛵ · 첫째날 7/24(금) · 둘째날 7/25(토)</small></div>
+  <div class="spacer"></div>
+  <button class="ghost" onclick="location.href='index.html'">🏠 목록</button>
+  <button onclick="window.print()">🖨 인쇄</button>
+</header>
+
+<main class="wrap">
+  <div class="intro">
+    사람별로 <b>첫째날(금)·둘째날(토)</b> 업무를 정리했습니다.
+    <span class="legend"><span class="tag tbd">미정</span> = 아직 확정 안 됨 · <span class="tag none">없음</span> = 해당일 섬김 없음</span>
+    <br>※ 3일차(주일)는 평소 예배·공과로 진행되어 별도 표기하지 않았습니다.
+  </div>
+
+  <!-- 교역자·총괄 -->
+  <section>
+    <div class="s-head"><span>🧭</span> 교역자 · 총괄 <span class="cnt">2명</span></div>
+    <table>
+      <thead><tr><th class="nm">이름</th><th class="col1"><span class="h">첫째날 금</span></th><th class="col2"><span class="h">둘째날 토</span></th></tr></thead>
+      <tbody>
+        <tr><td class="nm"><b>김진서 목사</b><span class="role">교역자</span></td>
+          <td><span class="t">16:25</span> 개회예배(축도) · <span class="t">18:15</span> 1과 설교 · 천로역정 코스4 지기 · <span class="t">22:28</span> 마무리 기도회 · 야간대기(남)</td>
+          <td><span class="t">8:15</span> 2과 설교 · 물놀이(물 안) · <b>25인승 버스 운전</b> · 남아 샤워</td></tr>
+        <tr><td class="nm"><b>장충성 집사</b><span class="role">부장</span></td>
+          <td>환영·안내 PPT · 신실반 공과 대체(본당석) · <b>천로역정 총괄·오프닝</b> · 야간대기(남)</td>
+          <td><b>물놀이 전체 총괄</b> · 12인승 스타렉스 운전</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 담임교사 -->
+  <section>
+    <div class="s-head"><span>👩‍🏫</span> 담임교사 (8반) <span class="cnt">8명</span></div>
+    <table>
+      <thead><tr><th class="nm">이름</th><th class="col1"><span class="h">첫째날 금</span></th><th class="col2"><span class="h">둘째날 토</span></th></tr></thead>
+      <tbody>
+        <tr><td class="nm"><b>이선미 집사</b><span class="role">기쁨반</span></td><td>1층 접수 · 기쁨반 공과 · 천로역정 코스1 지기</td><td>기쁨반 담임(버스) · 물놀이 뭍 로테이션</td></tr>
+        <tr><td class="nm"><b>김옥주 집사</b><span class="role">절제반</span></td><td>절제반 공과 · 천로역정 코스1 지기</td><td>절제반 담임(버스) · 물놀이 뭍 로테이션</td></tr>
+        <tr><td class="nm"><b>박미월 집사</b><span class="role">신실반</span></td><td class="none">— (신실반 담임 부재 → 장충성 대체)</td><td>신실반 담임(스타12) · 물놀이 뭍 로테이션</td></tr>
+        <tr><td class="nm"><b>서옥래 집사</b><span class="role">사랑반</span></td><td>2층 접수(티셔츠·볼펜) · 천로역정 코스5 지기</td><td>사랑반 담임 · <b>10인승 스타렉스 운전</b> · <span class="t">11:30</span> 김밥 픽업 · 남아 샤워</td></tr>
+        <tr><td class="nm"><b>조소현 집사</b><span class="role">친절반</span></td><td>1층 접수 · 친절반 공과 · 천로역정 코스3 지기 · 야간대기(여)</td><td>친절반 담임(봉사①차) · <b>물놀이 총괄·순회 안전(구급)</b> · 예비2 가정차</td></tr>
+        <tr><td class="nm"><b>박미경 집사</b><span class="role">선함반</span></td><td>선함반 공과 · 천로역정 코스4 지기</td><td>선함반 담임(버스) · 물놀이 뭍 로테이션</td></tr>
+        <tr><td class="nm"><b>박종렬 장로</b><span class="role">온유반</span></td><td>1층 접수 · 천로역정 코스6 지기</td><td>온유반 담임 · <b>교사차 운전</b> · 물놀이(물 안) · 남아 샤워</td></tr>
+        <tr><td class="nm"><b>이수진 집사</b><span class="role">인내반</span></td><td>1층 접수 · 인내반 공과 · 천로역정 코스2 지기</td><td>인내반 담임(교사차) · 물놀이 뭍 로테이션(여아 케어)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 찬양·미디어·학생 -->
+  <section>
+    <div class="s-head"><span>🎵</span> 찬양 · 미디어 · 학생 도우미 <span class="cnt">8명</span></div>
+    <table>
+      <thead><tr><th class="nm">이름</th><th class="col1"><span class="h">첫째날 금</span></th><th class="col2"><span class="h">둘째날 토</span></th></tr></thead>
+      <tbody>
+        <tr><td class="nm"><b>이유진 사모</b></td><td>준비찬양 인도(16:10·18:00) · 천로역정 코스3 지기 · 야간대기(여)</td><td>준비찬양(8:00) · <b>물놀이 뭍 총괄·순회 안전</b> · 교사차 운전</td></tr>
+        <tr><td class="nm"><b>김동완 학생</b></td><td>준비찬양 · 절제반 인솔 · <b>오늘의 말씀 미션</b> · 천로역정 코스5 지기 · 야간대기(남)</td><td>준비찬양(8:00 방송) · 물놀이(물 안) · 스타12 동승(스태프)</td></tr>
+        <tr><td class="nm"><b>지수민 학생</b></td><td>준비찬양 · <b>포토존 미션</b> · 절제반 인솔 · 천로역정 코스2 지기</td><td class="tbd">미정</td></tr>
+        <tr><td class="nm"><b>김재원 청년</b></td><td class="none">—</td><td>준비찬양(8:00) · 물놀이 여아 케어(이유진 교사차)</td></tr>
+        <tr><td class="nm"><b>이하음 학생</b></td><td>준비찬양</td><td class="none">— (첫째날만 섬김)</td></tr>
+        <tr><td class="nm"><b>기태민 학생</b></td><td>포토존 미션 · 천로역정 사진·안전</td><td class="tbd">미정</td></tr>
+        <tr><td class="nm"><b>윤주애 학생</b></td><td>제출·볼펜 미션 · 천로역정 사진·안전</td><td class="tbd">미정</td></tr>
+        <tr><td class="nm"><b>손예린 학생</b></td><td>제출·볼펜 미션 · 천로역정 사진·안전</td><td class="none">— (미참석)</td></tr>
+        <tr><td class="nm"><b>윤지우 학생</b></td><td><span class="t">16:30</span>까지 도착 → 이후 섬김 가능 <span class="tbd">(세부 역할 미정)</span></td><td class="tbd">미정</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 식사·간식 -->
+  <section>
+    <div class="s-head"><span>🍽️</span> 식사 · 간식 <span class="cnt">4명</span></div>
+    <table>
+      <thead><tr><th class="nm">이름</th><th class="col1"><span class="h">첫째날 금</span></th><th class="col2"><span class="h">둘째날 토</span></th></tr></thead>
+      <tbody>
+        <tr><td class="nm"><b>홍선미 집사</b></td><td><span class="t">17:00~18:00</span> <b>저녁식사(돈까스) 준비</b></td><td class="none">— (없음)</td></tr>
+        <tr><td class="nm"><b>김민후 학생</b></td><td>저녁 주방 도우미</td><td class="tbd">미정</td></tr>
+        <tr><td class="nm"><b>조남선 권사</b></td><td>2층 접수(간식·티셔츠)</td><td><b>점심 김밥 준비</b></td></tr>
+        <tr><td class="nm"><b>이정록 집사</b></td><td><span class="t">22:40</span> <b>야식(분식)</b></td><td>물놀이 도우미(아버님)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 천로역정 조 인솔 -->
+  <section>
+    <div class="s-head"><span>🧭</span> 천로역정 조 인솔 도우미 <span class="cnt">첫째날만 · 8명</span></div>
+    <table>
+      <thead><tr><th class="nm">조</th><th>인솔 (금 19:35~22:28)</th><th class="nm">조</th><th>인솔 (금 19:35~22:28)</th></tr></thead>
+      <tbody>
+        <tr><td class="nm"><b>기쁨</b></td><td>김미경 권사</td><td class="nm"><b>친절</b></td><td>최희영 집사</td></tr>
+        <tr><td class="nm"><b>절제</b></td><td>장윤봉 장로</td><td class="nm"><b>선함</b></td><td>고재욱 장로</td></tr>
+        <tr><td class="nm"><b>신실</b></td><td>김만섭 집사</td><td class="nm"><b>온유</b></td><td>김정춘 집사</td></tr>
+        <tr><td class="nm"><b>사랑</b></td><td>박경식 집사</td><td class="nm"><b>인내</b></td><td>김기송 장로</td></tr>
+      </tbody>
+    </table>
+    <table><tbody><tr><td style="font-size:12.5px;color:var(--muted);">※ 조 인솔 8분은 <b>첫째날 천로역정만</b> 섬깁니다 (둘째날 없음).</td></tr></tbody></table>
+  </section>
+
+  <!-- 물놀이 아버님·어머님 -->
+  <section>
+    <div class="s-head"><span>🏊</span> 물놀이 아버님 · 어머님 <span class="cnt">둘째날 · ~11명</span></div>
+    <table>
+      <tbody>
+        <tr><td class="nm"><b>아버님 ~10명</b></td><td>물 안(자녀 + 팔찌 찬 아이 공동 케어) · 남아 샤워 · <b>차량봉사 3분(①②③)</b> <span class="tbd">실명 미정</span></td></tr>
+        <tr><td class="nm"><b>어머님 1명</b></td><td>여아 케어 합류</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="foot">🙏 함께 섬겨주셔서 감사합니다 — 2026 여름성경학교 초등부</div>
+</main>
+</body>
+</html>
