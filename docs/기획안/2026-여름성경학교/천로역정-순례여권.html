@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 여름성경학교 · 천로역정 순례 여권</title>
+<style>
+  :root{
+    --navy:#123f63; --navy-2:#2a8cc4; --sky:#5bb4e6; --gold:#f0b34c; --gold-2:#e79a2b;
+    --gold-soft:#ffe6b0; --ink:#123048; --muted:#5c7488; --line:#b7cee0;
+    --paper:#ffffff; --paper-2:#eff7fd; --bg:#dcecf7;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Pretendard","Malgun Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.35;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ── 화면 전용 안내바 ── */
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 16px; background:var(--navy); color:#fff; border-bottom:3px solid var(--gold);
+  }
+  .topbar .brand{font-weight:700; font-size:15px;}
+  .topbar .brand small{display:block; font-weight:400; font-size:11px; opacity:.8;}
+  .spacer{flex:1;}
+  button{
+    font-family:inherit; cursor:pointer; border:0; border-radius:8px;
+    background:var(--navy-2); color:#fff; padding:8px 14px; font-size:14px; font-weight:600;
+  }
+  button:hover{background:#3197d1;}
+  button.ghost{background:transparent; border:1px solid rgba(255,255,255,.4);}
+  .hint{max-width:210mm; margin:14px auto 0; padding:0 6mm; font-size:12.5px; color:var(--muted);}
+
+  /* ── A4 세로 시트 (1열 × 2행 = 여권 2장) ── */
+  .sheet{
+    width:210mm; min-height:297mm; margin:14px auto; padding:9mm;
+    background:#fff; box-shadow:0 6px 24px rgba(15,42,67,.12);
+    display:flex; flex-direction:column; gap:8mm; justify-content:center;
+  }
+
+  /* ── 여권 카드 (A5 가로, 192 × 132mm) ── */
+  .pass{
+    position:relative; overflow:hidden;
+    border:1.6px dashed #a7c2d8; border-radius:16px;
+    background:linear-gradient(180deg,var(--paper),var(--paper-2));
+    display:flex; flex-direction:column; padding:0;
+  }
+
+  /* 여권 머리 */
+  .pass-head{
+    position:relative;
+    background:linear-gradient(120deg,var(--navy) 0%,#1b5f8f 55%,var(--sky) 130%);
+    color:#fff; padding:9px 16px 12px; display:flex; align-items:center; gap:11px;
+  }
+  .pass-head .sail{font-size:26px; line-height:1; filter:drop-shadow(0 1px 1px rgba(0,0,0,.25));}
+  .pass-head .ht{display:flex; flex-direction:column; line-height:1.2;}
+  .pass-head .ht .k{font-size:9px; font-weight:800; letter-spacing:.14em; opacity:.85;}
+  .pass-head .ht .t{font-size:18px; font-weight:900;}
+  .pass-head .stamp-seal{
+    margin-left:auto; text-align:center; font-size:9px; font-weight:800; line-height:1.25;
+    color:#fff; border:2px solid rgba(255,255,255,.6); border-radius:50%;
+    width:52px; height:52px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transform:rotate(-8deg); background:rgba(255,255,255,.1);
+  }
+  .wave{position:absolute; left:0; right:0; bottom:-1px; width:100%; height:9px; display:block;}
+
+  /* 이름·조 기입란 */
+  .pass-id{display:flex; gap:12px; padding:9px 16px 4px;}
+  .pass-id .fld{flex:1; display:flex; align-items:flex-end; gap:8px;}
+  .pass-id .fld .lbl{
+    flex:0 0 auto; background:var(--navy); color:#fff; font-weight:800; font-size:11px;
+    text-align:center; border-radius:7px; padding:3px 0; width:14mm; letter-spacing:.04em;
+  }
+  .pass-id .fld .line{flex:1; border-bottom:2px solid var(--line); height:9mm;}
+
+  /* 스탬프 그리드 (3 × 2 = 6칸) */
+  .stamps{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:5mm;
+    padding:6px 16px 6px;
+  }
+  .slot{
+    border:1.4px solid var(--line); border-radius:12px; background:var(--paper);
+    padding:6px 7px 7px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:3px;
+    min-height:34mm;
+  }
+  .slot .top{display:flex; align-items:center; gap:6px; align-self:stretch;}
+  .slot .num{
+    flex:0 0 auto; width:19px; height:19px; border-radius:50%;
+    background:var(--gold); color:var(--navy); font-weight:900; font-size:11px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .slot .cname{font-size:11px; font-weight:800; color:var(--navy); line-height:1.15; text-align:left;}
+  .slot .ring{
+    flex:1; display:flex; align-items:center; justify-content:center; align-self:stretch;
+    margin:1px 0;
+  }
+  .slot .ring .circle{
+    width:16mm; height:16mm; border:1.6px dashed #bcd0e0; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:9px; font-weight:700; color:#b3c6d6; text-align:center; line-height:1.15;
+  }
+  .slot .verse{font-size:8.5px; font-weight:700; color:var(--navy-2); letter-spacing:.01em;}
+
+  /* 완주 배너 */
+  .pass-foot{
+    margin:auto 16px 12px; padding:6px 12px; border-radius:10px;
+    background:linear-gradient(120deg,var(--gold-soft),#fff5e0);
+    border:1.4px solid var(--gold); color:var(--gold-2);
+    font-size:11.5px; font-weight:800; text-align:center; letter-spacing:.01em;
+  }
+  @media (prefers-color-scheme: dark){
+    .slot{background:#132030;}
+    .slot .ring .circle{border-color:#33475a; color:#5c7488;}
+  }
+
+  /* ── 반응형 (화면) ── */
+  @media screen and (max-width:760px){
+    .sheet{width:100%; min-height:auto; padding:14px; gap:16px;}
+    .stamps{gap:10px;}
+  }
+
+  /* ── 인쇄 ── */
+  @page{ size:A4 portrait; margin:0; }
+  @media print{
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    body{background:#fff;}
+    .topbar,.hint{display:none !important;}
+    .sheet{margin:0; box-shadow:none; width:210mm; min-height:297mm;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">2026 여름성경학교 · 천로역정 순례 여권<small>A4 세로 1장 = 여권 2장 · 코스 통과마다 도장/스티커 · 6칸 완주=천성 도착</small></div>
+  <div class="spacer"></div>
+  <button class="ghost" onclick="location.href='index.html'">🏠 목록</button>
+  <button onclick="window.print()">🖨 인쇄</button>
+</header>
+
+<div class="hint">💡 인쇄 팁 — A4 <b>세로</b>, 배율 100%, 여백 없음/최소, <b>배경 그래픽 켜기</b>. 한 장에 <b>여권 2장</b>(각 A5 가로)이 나오니, 아이 수 ÷ 2 만큼 인쇄해 점선을 따라 자릅니다. 오프닝 때 이름·조를 적어 나눠 주고, 각 코스 지기가 통과 시 <b>도장(또는 스티커)</b>을 찍어 줍니다. 6칸을 다 채우면 마무리에서 완주를 축하하세요.</div>
+
+<main class="sheet" id="sheet"></main>
+
+<script>
+  const WAVE = `<svg class="wave" viewBox="0 0 100 9" preserveAspectRatio="none">
+    <path d="M0 4 C 14 9, 24 -1, 38 4 S 66 9, 82 4 S 96 6, 100 4 L100 9 L0 9 Z" fill="#ffffff"/></svg>`;
+
+  const COURSES = [
+    { n:1, name:"무거운 백팩<br><small style='font-weight:600;color:var(--muted)'>죄 짐을 지고</small>", verse:"롬 3:23" },
+    { n:2, name:"은혜의 십자가<br><small style='font-weight:600;color:var(--muted)'>십자가의 길</small>", verse:"요 3:16" },
+    { n:3, name:"생명책과 내 이름<br><small style='font-weight:600;color:var(--muted)'>천국의 길</small>", verse:"눅 10:20" },
+    { n:4, name:"말들의 유혹<br><small style='font-weight:600;color:var(--muted)'>유혹의 길</small>", verse:"마 4:4" },
+    { n:5, name:"믿음의 발걸음<br><small style='font-weight:600;color:var(--muted)'>좁은 길</small>", verse:"마 7:14" },
+    { n:6, name:"사랑의 공동체<br><small style='font-weight:600;color:var(--muted)'>거듭난 삶</small>", verse:"고후 5:17" },
+  ];
+
+  function slotHTML(c){
+    return `<div class="slot">
+      <div class="top"><span class="num">${c.n}</span><span class="cname">${c.name}</span></div>
+      <div class="ring"><span class="circle">도장<br>/스티커</span></div>
+      <div class="verse">${c.verse}</div>
+    </div>`;
+  }
+
+  function passHTML(){
+    return `<section class="pass">
+      <div class="pass-head">
+        <span class="sail">🧭</span>
+        <div class="ht"><span class="k">2026 여름성경학교 · 믿음의 항해</span><span class="t">천로역정 순례 여권</span></div>
+        <div class="stamp-seal">순례자<br>PASSPORT</div>
+        ${WAVE}
+      </div>
+      <div class="pass-id">
+        <div class="fld"><span class="lbl">이름</span><span class="line"></span></div>
+        <div class="fld"><span class="lbl">조</span><span class="line"></span></div>
+      </div>
+      <div class="stamps">${COURSES.map(slotHTML).join("")}</div>
+      <div class="pass-foot">⭐ 6칸을 모두 채우면 &mdash; 순례 완주! 천성(하늘 나라)에 도착했어요 🎉</div>
+    </section>`;
+  }
+
+  document.getElementById("sheet").innerHTML = Array.from({length:2}, passHTML).join("");
+</script>
+</body>
+</html>
