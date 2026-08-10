@@ -1,6 +1,9 @@
 # Claude Code 로컬 설정
 .claude/
 
+# Obsidian 로컬 볼트 설정
+.obsidian/
+
 # OS
 Thumbs.db
 Desktop.ini
