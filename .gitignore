@@ -4,6 +4,9 @@
 # Obsidian 로컬 볼트 설정
 .obsidian/
 
+# JetBrains IDE 로컬 설정
+.idea/
+
 # OS
 Thumbs.db
 Desktop.ini
