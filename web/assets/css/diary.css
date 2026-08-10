@@ -1,0 +1,143 @@
+/* ============================================================
+   초등부 교사 다이어리 속지 — 출력용 (A5 · 6공 펀치형 · 양면 인쇄)
+   - A5로 양면 인쇄(긴 가장자리로 넘김) 후 6공 펀치로 뚫어 바인더에 끼웁니다.
+   - 양면이므로 제본(구멍) 쪽 여백을 앞면(홀수 쪽)은 왼쪽, 뒷면(짝수 쪽)은 오른쪽에 둡니다.
+   - 잉크를 아끼도록 배경색은 최소화했습니다.
+   ============================================================ */
+
+@page { size: A5 portrait; }
+/* 양면 제본 — 안쪽(구멍) 여백을 넓게 (짝/홀 번갈아) */
+@page :right { margin: 12mm 12mm 12mm 20mm; }  /* 앞면(홀수 쪽): 구멍 왼쪽 */
+@page :left  { margin: 12mm 20mm 12mm 12mm; }  /* 뒷면(짝수 쪽): 구멍 오른쪽 */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #232323;
+  --muted: #5f5a53;
+  --primary: #256456;
+  --primary-2: #2e7d6b;
+  --line: #cfd8d3;
+  --soft: #eef4f1;
+  --gold: #a9702a;
+  --bind: 18mm;   /* 6공 구멍 쪽 여백 폭 */
+}
+
+body {
+  font-family: "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕",
+    system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: #e6e9e9;
+  line-height: 1.5;
+  font-size: 10.5px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ---- 인쇄 도구막대 (화면 전용) ---- */
+.toolbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: var(--primary); color: #fff; padding: 10px 16px; font-size: 12px;
+}
+.toolbar button {
+  font-family: inherit; font-size: 12px; font-weight: 700;
+  background: #fff; color: var(--primary); border: none; border-radius: 8px;
+  padding: 7px 14px; cursor: pointer;
+}
+
+/* ---- A5 낱장 ---- */
+.sheet {
+  position: relative;
+  width: 148mm; min-height: 210mm;
+  margin: 14px auto; padding: 12mm 11mm;
+  background: #fff; box-shadow: 0 3px 18px rgba(0, 0, 0, .16);
+  page-break-after: always;
+}
+.sheet:last-child { page-break-after: auto; }
+/* 화면에서 제본(구멍) 쪽 여백을 넓게 — 앞/뒤 번갈아 */
+section.sheet:nth-of-type(odd)  { padding-left: var(--bind); }
+section.sheet:nth-of-type(even) { padding-right: var(--bind); }
+
+/* ---- 6공 펀치 가이드 (화면 전용) ---- */
+.punch {
+  position: absolute; top: 0; bottom: 0; width: var(--bind);
+  display: flex; flex-direction: column; justify-content: space-around; align-items: center;
+  padding: 20mm 0;
+}
+.punch.left  { left: 0; border-right: 1px dashed var(--line); }
+.punch.right { right: 0; border-left: 1px dashed var(--line); }
+.punch i {
+  width: 5mm; height: 5mm; border-radius: 50%;
+  background: #e6e9e9; box-shadow: inset 0 0 0 1px var(--line);
+}
+
+/* ---- 공통 요소 ---- */
+h2.sheet-title {
+  font-size: 15px; color: var(--primary); border-bottom: 2px solid var(--primary);
+  padding-bottom: 5px; margin-bottom: 10px;
+}
+h3 {
+  font-size: 11.5px; color: var(--primary-2); margin: 12px 0 5px;
+  border-left: 3px solid var(--primary-2); padding-left: 7px;
+}
+h3:first-of-type { margin-top: 0; }
+p { margin-bottom: 4px; }
+.muted { color: var(--muted); }
+.small { font-size: 9.5px; color: var(--muted); }
+strong { font-weight: 700; }
+.note {
+  font-size: 9.5px; color: var(--muted); background: var(--soft);
+  border-left: 3px solid var(--primary-2); padding: 6px 9px; border-radius: 0 6px 6px 0;
+  margin-top: 8px;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 10px; }
+th, td { padding: 4px 6px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+thead th { background: var(--soft); color: var(--muted); font-weight: 700; font-size: 9.5px; white-space: nowrap; }
+tr:last-child td { border-bottom: none; }
+td.r, th.r { text-align: right; white-space: nowrap; }
+td.c { text-align: center; }
+
+/* 월별 목록 */
+.months { list-style: none; }
+.months li { display: flex; gap: 8px; padding: 4px 0; border-bottom: 1px dashed var(--line); }
+.months li:last-child { border-bottom: none; }
+.months .m { flex: none; width: 30px; font-weight: 700; color: var(--gold); }
+
+/* 반 편성 칩 */
+.classes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+.chip { border: 1px solid var(--line); border-radius: 7px; padding: 6px 8px; }
+.chip b { color: var(--primary); }
+.chip .dept { font-size: 9px; color: var(--muted); }
+
+/* 표지 */
+.cover { text-align: center; padding-top: 24mm; }
+.cover .brand { font-size: 12px; letter-spacing: .12em; color: var(--muted); }
+.cover h1 { font-size: 24px; color: var(--primary); margin: 8px 0 4px; line-height: 1.25; }
+.cover .year { font-size: 15px; color: var(--gold); font-weight: 700; }
+.cover .verse { margin: 18px auto 0; max-width: 90%; color: var(--muted); font-size: 11px; }
+.cover .info { margin-top: 22mm; text-align: left; border-top: 1px solid var(--line); padding-top: 12px; }
+.cover .info table { font-size: 10.5px; }
+.cover .info th { width: 42px; color: var(--muted); font-weight: 600; border: none; padding: 4px 6px 4px 0; }
+.cover .info td { border: none; padding: 4px 0; }
+
+/* 2열 배치 */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; }
+
+/* 쪽 번호 (조립 순서 확인용) */
+.folio {
+  position: absolute; bottom: 7mm; left: 11mm; right: 11mm;
+  text-align: center; font-size: 8.5px; color: var(--muted);
+}
+
+/* ---- 인쇄 모드 ---- */
+@media print {
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .punch { display: none !important; }          /* 구멍은 실제 펀치로 뚫습니다 */
+  /* 여백은 @page(:left/:right)가 담당 — 낱장 자체 여백은 최소화 */
+  .sheet { width: auto; min-height: auto; margin: 0; padding: 0; box-shadow: none; }
+  section.sheet:nth-of-type(odd),
+  section.sheet:nth-of-type(even) { padding: 0; }
+}
