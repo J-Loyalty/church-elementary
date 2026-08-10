@@ -1,0 +1,63 @@
+/* ============================================================
+   김포남현교회 초등부 · 허브(index) 전용 스타일
+   base.css 와 함께 사용합니다.
+   ============================================================ */
+
+/* 허브 히어로 */
+.home-hero {
+  color: #fff; text-align: center;
+  background: linear-gradient(135deg, #2e7d6b 0%, #256456 55%, #1f5348 100%);
+}
+.home-hero .wrap { padding-top: 72px; padding-bottom: 66px; }
+.home-hero .eyebrow { font-size: .95rem; letter-spacing: .16em; opacity: .85; font-weight: 600; }
+.home-hero h1 { font-size: clamp(2.1rem, 6vw, 3.1rem); font-weight: 800; line-height: 1.2; margin-top: 12px; }
+.home-hero .lead { margin: 18px auto 0; font-size: 1.12rem; opacity: .95; max-width: 46ch; }
+
+/* 안내 문구 */
+.home-intro { text-align: center; padding: 46px 0 8px; }
+.home-intro h2 { font-size: 1.4rem; color: var(--primary-dark); }
+.home-intro p { color: var(--muted); margin-top: 8px; }
+
+/* 세 파트 카드 */
+.home-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  padding: 26px 0 12px;
+}
+.audience-card {
+  display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px 24px; box-shadow: var(--shadow);
+  text-decoration: none; color: var(--text);
+  border-top: 5px solid var(--card-accent, var(--primary));
+  transition: transform .16s, box-shadow .16s;
+}
+.audience-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.audience-card .ac-icon {
+  width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center;
+  font-size: 1.8rem; background: var(--card-soft, var(--primary-soft)); margin-bottom: 16px;
+}
+.audience-card h3 { font-size: 1.3rem; color: var(--card-accent, var(--primary-dark)); }
+.audience-card .ac-desc { color: var(--muted); margin-top: 8px; font-size: .96rem; flex: 1; }
+.audience-card .ac-more { margin-top: 18px; font-weight: 700; color: var(--card-accent, var(--primary-dark)); }
+.audience-card .ac-more::after { content: " →"; }
+
+.audience-card.a-pastor  { --card-accent: #3f5c8c; --card-soft: #e9eef7; }
+.audience-card.a-teacher { --card-accent: #2e7d6b; --card-soft: #e6f2ee; }
+.audience-card.a-member  { --card-accent: #c9683a; --card-soft: #fbeadf; }
+
+/* 인쇄물 바로가기 */
+.home-print { padding: 30px 0 60px; }
+.home-print h2 { font-size: 1.1rem; color: var(--primary-dark); margin-bottom: 4px; }
+.home-print p { color: var(--muted); font-size: .92rem; margin-bottom: 14px; }
+.print-links { display: flex; flex-wrap: wrap; gap: 12px; }
+.print-links a {
+  display: inline-flex; align-items: center; gap: 8px;
+  text-decoration: none; color: var(--text); font-weight: 600; font-size: .95rem;
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 11px 18px; border-radius: 999px;
+}
+.print-links a:hover { background: var(--surface-2); }
+
+@media (max-width: 820px) {
+  .home-cards { grid-template-columns: 1fr; }
+}
