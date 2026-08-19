@@ -106,6 +106,9 @@ td.c { text-align: center; }
 /* 2열 배치 */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; }
 
+/* 교사 목장 표 */
+.mokjang td:first-child { color: var(--primary); font-weight: 700; white-space: nowrap; width: 58px; }
+
 /* 쪽 번호 (순서 확인용) — 본문 아래 흐름으로 두어 겹치지 않게 */
 .folio {
   margin-top: auto; padding-top: 8px;
