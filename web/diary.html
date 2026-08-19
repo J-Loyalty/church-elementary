@@ -8,7 +8,8 @@
 </head>
 <body>
   <div class="toolbar no-print">
-    <span>A5 · <b>6공 펀치형</b> · <b>양면(긴 가장자리 넘김)</b>. 용지 크기를 <b>A5</b>로 지정해 인쇄하면 한 장이 곧 한 낱장입니다. A5 용지가 없으면 A4에 <b>한 쪽씩(100%)</b> 양면 인쇄 후 A5로 자르세요. ⚠️ <b>‘한 장에 2쪽(모아찍기)’은 쓰지 마세요</b> — 잘라 끼우면 순서가 어긋납니다. 출력 후 6공 펀치로 뚫어 끼웁니다.</span>
+    <span>A5로 출력해 <b>클리어파일</b>에 끼우세요. (양면 인쇄해도 됩니다.) 용지 크기를 <b>A5</b>로 지정하면 한 장이 곧 한 쪽입니다. A5 용지가 없으면 A4에 <b>한 쪽씩(100%)</b> 인쇄한 뒤 A5로 자르세요.</span>
+    <a href="index.html" class="tb-home">🏠 홈</a>
     <button type="button" onclick="window.print()">🖨️ 인쇄하기</button>
   </div>
 
@@ -199,16 +200,9 @@
   </section>
 
   <script>
-    // 6공 펀치 가이드(화면 전용) — 앞면(홀수 쪽) 왼쪽, 뒷면(짝수 쪽) 오른쪽에 6구멍 표시
+    // 쪽 번호(순서 확인용) — 표지(1쪽)에는 표시하지 않음
     var list = document.querySelectorAll("section.sheet");
     list.forEach(function (s, i) {
-      var p = document.createElement("div");
-      p.className = "punch " + (i % 2 === 0 ? "left" : "right");
-      p.setAttribute("aria-hidden", "true");
-      for (var h = 0; h < 6; h++) p.appendChild(document.createElement("i"));
-      s.appendChild(p);
-
-      // 쪽 번호(조립 순서 확인용) — 표지(1쪽)에는 표시하지 않음
       if (i > 0) {
         var f = document.createElement("div");
         f.className = "folio";

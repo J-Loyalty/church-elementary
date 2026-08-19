@@ -21,8 +21,9 @@
   - `인수인계.md` — 자료·계정·연락처 등 실무 인계 사항
 - `web/` — 웹 게시용 정적 사이트. `docs/`와 **자동 연동되지 않는** 손수 관리 HTML입니다.
   - `index.html` (허브) → `pastor.html`(교역자) · `teacher.html`(교사) · `member.html`(일반성도) 세 파트
-  - `print.html` (A4 비치용) · `welcome.html` (A3 새 가정 환영지) · `diary.html` (A5 6공 교사 다이어리 속지) — 인쇄물
-  - `assets/css/` (`base.css` 공통 + `home.css` · 인쇄물용 `print.css`·`welcome.css`·`diary.css`) · `assets/js/` (`site.js` 공통) — 빌드 없는 바닐라
+  - `print.html` (A4 비치용) · `welcome.html` (A3 새 가정 환영지) · `diary.html` (A5 교사 다이어리 속지) — 인쇄물
+  - `worship-order.html` — 주일 예배 순서 안내지를 이미지로 만드는 자체 완결형 도구 (배경 사진을 파일 안에 내장 · 사용법 `docs/주일예배순서-도구.md`)
+  - `assets/css/` (`base.css` 공통 + `home.css` · 인쇄물용 `print.css`·`welcome.css`·`diary.css`) · `assets/js/` (`site.js` 공통) · `assets/images/` — 빌드 없는 바닐라
 - 기획안 폴더 안의 `.html` / `전달용 이미지/*.png` — 학부모·교사 배부용 슬라이드와 이미지
 
 ## 독자와 문체 (가장 중요)
