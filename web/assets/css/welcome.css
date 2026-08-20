@@ -7,18 +7,18 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --primary: #2f9e79;      /* 상큼한 초록 */
-  --primary-2: #34a853;
+  --primary: #2e7d6b;      /* 브랜드 그린 */
+  --primary-2: #256456;
   --ink: #3a352f;
   --muted: #6f6a62;
-  --line: #ffd9a8;         /* 따뜻한 점선 테두리 */
-  --soft: #eafaf0;         /* 민트 배경 */
-  --warm: #fff5e6;         /* 크림 배경 */
-  --sky: #eaf4ff;          /* 하늘 배경 */
-  --pink: #ffeef2;         /* 분홍 배경 */
-  --accent: #f79e3d;       /* 주황 포인트 */
-  --coral: #ff7a90;        /* 코랄 포인트 */
-  --blue: #4a90e2;         /* 파랑 포인트 */
+  --line: #d7c3a0;         /* 따뜻한 점선 테두리(차분하게) */
+  --soft: #e6f2ee;         /* 민트 배경 */
+  --warm: #fbf3e6;         /* 크림 배경 */
+  --sky: #eef4f1;          /* 연한 초록빛 배경 */
+  --pink: #f7efe7;         /* 연한 살구빛 배경 */
+  --accent: #bd7f2f;       /* 골드 포인트(브랜드) */
+  --coral: #c9683a;        /* 코랄 포인트(브랜드) */
+  --blue: #4a76c4;         /* 파랑 포인트(브랜드) */
 }
 
 body {
@@ -27,7 +27,7 @@ body {
   color: var(--ink);
   background:
     radial-gradient(circle at 12% 8%, #d8f3e6 0 22px, transparent 23px),
-    radial-gradient(circle at 88% 4%, #ffe6ee 0 18px, transparent 19px),
+    radial-gradient(circle at 88% 4%, #fbeede 0 18px, transparent 19px),
     #eef4f1;
   line-height: 1.65;
   -webkit-print-color-adjust: exact;
