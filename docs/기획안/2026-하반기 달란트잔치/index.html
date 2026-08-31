@@ -398,7 +398,7 @@
     <button class="tab-btn active" onclick="showTab('tab-budget')"   >📊 예산·달란트</button>
     <button class="tab-btn"        onclick="showTab('tab-timeline')" >⏱ 타임라인</button>
     <button class="tab-btn"        onclick="showTab('tab-space')"    >🏛 공간 배치</button>
-    <button class="tab-btn"        onclick="showTab('tab-order')"    >🎲 반 순서 뽑기</button>
+    <button class="tab-btn"        onclick="showTab('tab-order')"    >🎲 반 순서 (핀볼)</button>
     <button class="tab-btn"        onclick="showTab('tab-game')"     >🎯 게임 프로그램</button>
     <button class="tab-btn"        onclick="showTab('tab-staff')"    >👥 운영 인력</button>
     <button class="tab-btn"        onclick="showTab('tab-checklist')">✅ 체크리스트</button>
@@ -456,10 +456,10 @@
               <td>58명 누적 달란트 합계</td>
             </tr>
             <tr>
-              <td>십일조 제외</td>
+              <td>헌금 제외</td>
               <td class="num">7,378</td>
               <td class="num">—</td>
-              <td>각자 달란트의 십일조 공제</td>
+              <td>십일조(의무) 공제 · 감사·선교·구제(자율)는 아이별로 추가</td>
             </tr>
             <tr class="highlight-row">
               <td>쇼핑 가능 달란트 (음식 제외)</td>
@@ -532,7 +532,7 @@
             <div style="font-size:22px; font-weight:800; color:var(--primary);">100</div>
           </div>
           <div style="padding:10px; background:var(--red-light); border-radius:8px;">
-            <div style="font-size:11px; color:var(--red);">— 십일조</div>
+            <div style="font-size:11px; color:var(--red);">— 헌금(십일조)</div>
             <div style="font-size:22px; font-weight:800; color:var(--red);">10</div>
           </div>
           <div style="padding:10px; background:var(--accent-light); border-radius:8px;">
@@ -574,8 +574,8 @@
           <div class="tl-left"><div class="tl-time">11:20</div></div>
           <div class="tl-mid"><div class="tl-dot"></div><div class="tl-line"></div></div>
           <div class="tl-right">
-            <div class="tl-title">달란트 지급 + 십일조 납부 + 반 순서 뽑기 <span class="tl-badge badge-blue">비전센터</span></div>
-            <div class="tl-desc">명단 순 달란트 지급 → 십일조 수납함 납부 → 반 이동 순서 결정 (10분)</div>
+            <div class="tl-title">달란트 지급 + 헌금 + 반 순서(핀볼) <span class="tl-badge badge-blue">비전센터</span></div>
+            <div class="tl-desc">명단 순 달란트 지급 → 헌금 수납함(십일조 의무 · 감사·선교·구제 자율) → 핀볼 랜덤게임으로 반 이동 순서 결정 (10분)</div>
           </div>
         </div>
         <div class="tl-item">
@@ -590,7 +590,7 @@
           <div class="tl-left"><div class="tl-time">11:45~<br />12:25</div></div>
           <div class="tl-mid"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
           <div class="tl-right">
-            <div class="tl-title">🎯 달란트 추가 획득 프로그램 <span class="tl-badge badge-purple">비전센터</span></div>
+            <div class="tl-title">🎯 달란트 추가 획득 프로그램 <span class="tl-badge badge-purple">성가대실</span></div>
             <div class="tl-desc">성경퀴즈 · 암송 · 제기차기를 <b>하나의 프로그램으로</b> 진행 · 쇼핑 시간 내내 자유롭게 참여 → 달란트 추가 획득 (모든 아이가 한 번은 참여하도록 유도)</div>
           </div>
         </div>
@@ -653,19 +653,19 @@
           <ul>
             <li>오프닝 예배 · 말씀</li>
             <li>달란트 지급</li>
-            <li>십일조 수납함</li>
-            <li>반 순서 뽑기</li>
-            <li>추가 획득 게임 진행</li>
+            <li>헌금 수납함 (십일조·감사·선교·구제)</li>
+            <li>반 순서 핀볼 게임</li>
             <li>마무리 예배</li>
           </ul>
         </div>
         <div class="space-card green">
           <div class="space-icon">🛍</div>
           <div class="space-name">성가대실</div>
-          <div class="space-role">달란트 마켓</div>
+          <div class="space-role">달란트 마켓 · 게임</div>
           <ul>
             <li>사전주문 물품 수령</li>
             <li>현장 구매 마켓</li>
+            <li>달란트 추가 획득 게임</li>
             <li>재고 할인 타임</li>
             <li>달란트 계산 데스크</li>
           </ul>
@@ -686,40 +686,30 @@
   </div>
 </div>
 
-<!-- ════ 탭 4: 반 순서 뽑기 ════ -->
+<!-- ════ 탭 4: 반 순서 (핀볼) ════ -->
 <div id="tab-order" class="tab-panel">
   <div class="container">
 
     <div class="section">
-      <div class="section-title"><div class="icon">🎲</div>반 이동 순서 결정 방법</div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>안</th><th>방법</th><th>설명</th><th class="center">추천</th></tr>
-          </thead>
-          <tbody>
-            <tr style="background:#f0fdf4;">
-              <td><strong>1안</strong></td>
-              <td><strong>반 대표 뽑기 배틀</strong></td>
-              <td>각 반 대표 1명이 나와 동시에 숫자 카드 뽑기 → 낮은 숫자 순서로 출발. 발표 시 긴장감 연출 가능</td>
-              <td class="center">⭐ 추천</td>
-            </tr>
-            <tr>
-              <td>2안</td>
-              <td>미션 선착순</td>
-              <td>"이 구절 가장 빨리 외우는 반?" 또는 "반 전체가 가장 빨리 일어서는 반?" → 1등 반부터 순서 선택</td>
-              <td class="center">—</td>
-            </tr>
-            <tr>
-              <td>3안</td>
-              <td>스피너 앱</td>
-              <td>화면에 반 이름 넣고 스피너 돌리기. 아이들이 환호하며 집중</td>
-              <td class="center">—</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="section-title"><div class="icon">🎲</div>반 이동 순서 — 핀볼 랜덤게임</div>
+      <div class="info-box blue" style="margin-bottom:12px;">
+        반 이동 순서는 <strong>핀볼 랜덤게임</strong>으로 정합니다. 공(구슬)을 위에서 굴려 내려가다 아래 여러 칸 중 하나에 떨어지면, 그 칸에 적힌 순번이 그 반의 이동 순서가 됩니다. 결과를 아무도 미리 알 수 없어 <strong>공정하고, 아이들이 함께 환호하며 집중</strong>하기 좋습니다.
       </div>
-      <div class="info-box blue" style="margin-top:10px;">
+
+      <div style="background:#fff; border:1px solid var(--border); border-radius:10px; padding:16px; margin-bottom:12px;">
+        <div style="font-weight:700; font-size:13px; margin-bottom:10px;">진행 방법</div>
+        <ul style="font-size:13px; padding-left:16px; line-height:2.1;">
+          <li>반마다 대표 1명이 나와 <strong>공을 하나씩 굴립니다.</strong></li>
+          <li>공이 떨어진 칸의 <strong>번호가 그 반의 이동 순서</strong>가 됩니다. (칸에 1·2·3… 순번 표시)</li>
+          <li>같은 칸에 겹치면 그 두 반만 <strong>한 번 더</strong> 굴려 정합니다.</li>
+          <li>결과가 나올 때마다 사회자가 발표해 <strong>긴장감과 재미</strong>를 살립니다.</li>
+        </ul>
+      </div>
+
+      <div class="info-box amber" style="margin-bottom:10px;">
+        <strong>준비물</strong> — 핀볼 판(플린코식 보드) 또는 굴리는 통·공. 없으면 📝 대체 도구(숫자 공 뽑기 통 등)로 진행하세요. 미신·점(占)이 아니라 <strong>순서를 공정하게 정하는 놀이</strong>임을 아이들에게 안내합니다.
+      </div>
+      <div class="info-box blue">
         <strong>이동 원칙</strong> — 먼저 뽑힌 반 = 성가대실(마켓) 우선 / 나중 반 = 식당(음식) 먼저 → 이후 자유 이동
       </div>
     </div>
@@ -790,80 +780,67 @@
 
     <div class="section">
       <div class="section-title"><div class="icon">👥</div>운영 인력 배치 📝</div>
+      <div class="info-box blue" style="margin-bottom:12px;">
+        인력 배치는 <strong>두 단계</strong>입니다. <strong>예배 때는 초등부 교사 전체</strong>가 아이들과 함께 예배하고, <strong>헌금이 끝난 뒤에는 교사들이 각자 맡은 자리로 흩어져</strong> 이동을 돕고 부스를 운영합니다.
+      </div>
+
+      <!-- 1단계: 예배 -->
+      <div class="staff-card" style="border-top:3px solid var(--primary); margin-bottom:16px;">
+        <div class="staff-place">⛪ 1단계 · 예배 (비전센터)</div>
+        <div class="staff-title">초등부 교사 전체</div>
+        <div class="staff-row" style="flex-direction:column; align-items:flex-start;">
+          <span>오프닝 예배·말씀 시간에는 <strong>교사 전원이 아이들과 함께</strong> 예배합니다. 반별로 아이들 옆에 앉아 함께 찬양·기도하며 분위기를 잡아 줍니다.</span>
+        </div>
+        <div class="staff-row">
+          <span>달란트 지급 · 헌금 수납 (십일조·감사·선교·구제) · 반 순서 핀볼 게임 진행</span>
+          <span class="staff-count" style="color:var(--primary);">부장·교역자 + 지정 교사</span>
+        </div>
+      </div>
+
+      <!-- 2단계: 헌금 이후 자리 배치 -->
       <div class="info-box amber" style="margin-bottom:12px;">
-        아래는 2026 상반기 인력 배치를 그대로 이어받은 초안입니다. 실제 참여 가능 인원에 맞게 확정하세요.
+        <strong>2단계 · 헌금 이후</strong> — 헌금이 끝나면 아이들이 비전센터에서 본당으로 이동합니다. 이때 교사들은 아래처럼 <strong>각 자리로 배치</strong>됩니다. (📝 실제 참여 가능 인원에 맞게 이름을 채우세요.)
       </div>
 
-      <div class="card-grid col4" style="margin-bottom:16px;">
-        <div class="card highlight">
-          <div class="card-label">비전센터</div>
-          <div class="card-value primary">4명</div>
-          <div class="card-sub">오프닝 · 게임</div>
-        </div>
-        <div class="card green">
-          <div class="card-label">성가대실</div>
-          <div class="card-value green">5명</div>
-          <div class="card-sub">달란트 마켓</div>
-        </div>
-        <div class="card accent">
-          <div class="card-label">본당 식당</div>
-          <div class="card-value accent">8명+</div>
-          <div class="card-sub">음식 · 정리 · 지도</div>
-        </div>
-        <div class="card">
-          <div class="card-label">총 인원</div>
-          <div class="card-value">17명+</div>
-          <div class="card-sub">최소 기준</div>
-        </div>
-      </div>
-
-      <div class="staff-3col" style="display:grid; grid-template-columns:1fr 1fr 2fr; gap:12px;">
+      <div class="staff-3col" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
 
         <div class="staff-card" style="border-top:3px solid var(--primary);">
-          <div class="staff-place">⛪ 비전센터</div>
-          <div class="staff-title">오프닝 · 달란트 · 게임</div>
-          <div class="staff-row">
-            <span>오프닝 · 달란트 지급 · 십일조 수납</span>
-            <span class="staff-count" style="color:var(--primary);">2명</span>
+          <div class="staff-place">🚶 이동 길 안내</div>
+          <div class="staff-title">비전센터 → 본당</div>
+          <div class="staff-row" style="flex-direction:column; align-items:flex-start;">
+            <span>비전센터에서 본당까지 <strong>가는 길목마다 교사를 세워</strong> 아이들이 안전하게 이동하도록 안내합니다.</span>
           </div>
           <div class="staff-row">
-            <span>게임 진행 (퀴즈·암송·제기차기)</span>
-            <span class="staff-count" style="color:var(--primary);">2명</span>
+            <span>길목 안내 · 인솔</span>
+            <span class="staff-count" style="color:var(--primary);">📝 몇 명</span>
           </div>
         </div>
 
         <div class="staff-card" style="border-top:3px solid var(--green);">
           <div class="staff-place">🛍 성가대실</div>
-          <div class="staff-title">달란트 마켓</div>
+          <div class="staff-title">달란트 마켓 · 게임</div>
           <div class="staff-row">
-            <span>마켓 운영 (판매·계산)</span>
-            <span class="staff-count" style="color:var(--green);">4명</span>
+            <span>마켓 운영 (판매·계산·수령)</span>
+            <span class="staff-count" style="color:var(--green);">📝 몇 명</span>
           </div>
           <div class="staff-row">
-            <span>사전 물품 수령 데스크</span>
-            <span class="staff-count" style="color:var(--green);">1명</span>
+            <span>달란트 추가 획득 게임 진행 (퀴즈·암송·제기차기)</span>
+            <span class="staff-count" style="color:var(--green);">📝 몇 명</span>
           </div>
         </div>
 
         <div class="staff-card" style="border-top:3px solid var(--accent);">
           <div class="staff-place">🍱 본당 식당</div>
-          <div class="staff-title">음식 판매 · 정리 · 지도</div>
+          <div class="staff-title">음식 부스</div>
           <div class="staff-row">
-            <span>과자 / 음료</span>
-            <span class="staff-count" style="color:#d97706;">1명</span>
+            <span>음식 제작·판매 · 과자/음료</span>
+            <span class="staff-count" style="color:#d97706;">📝 몇 명</span>
           </div>
           <div class="staff-row" style="flex-direction:column; align-items:flex-start;">
-            <div style="display:flex; justify-content:space-between; width:100%;">
-              <span>음식 제작 및 판매</span>
-              <span class="staff-count" style="color:#d97706;">6명</span>
-            </div>
+            <span>식당 정리 및 아이들 지도</span>
             <div style="font-size:11px; color:var(--text-muted); margin-top:4px; line-height:1.7;">
               📝 메뉴 확정 (예: 떡볶이 · 회오리 감자 · 김밥 · 라면 · 과자 등)
             </div>
-          </div>
-          <div class="staff-row">
-            <span>식당 정리 및 아이들 지도</span>
-            <span class="staff-count" style="color:#d97706;">별도</span>
           </div>
         </div>
 
@@ -899,7 +876,7 @@
         </div>
         <div class="checklist-item">
           <div class="ci-box"></div>
-          <div class="ci-label">달란트 지급 명단 출력 (아이별 달란트·십일조 제외 금액 기재)</div>
+          <div class="ci-label">달란트 지급 명단 출력 (아이별 달란트·헌금(십일조) 제외 금액 기재)</div>
           <div class="ci-tag pre">사전</div>
         </div>
         <div class="checklist-item">
@@ -913,12 +890,12 @@
       <div class="checklist">
         <div class="checklist-item">
           <div class="ci-box"></div>
-          <div class="ci-label">십일조 수납함 준비</div>
+          <div class="ci-label">헌금 수납함 준비 (십일조·감사·선교·구제)</div>
           <div class="ci-tag day">당일</div>
         </div>
         <div class="checklist-item">
           <div class="ci-box"></div>
-          <div class="ci-label">반 순서 뽑기 도구 준비 (숫자 카드 or 스피너)</div>
+          <div class="ci-label">반 순서 핀볼 랜덤게임 도구 준비 (핀볼 판 또는 대체 도구)</div>
           <div class="ci-tag day">당일</div>
         </div>
         <div class="checklist-item">
