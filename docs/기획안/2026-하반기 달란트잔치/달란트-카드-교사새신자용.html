@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>달란트 카드 인쇄 (교사·새신자용) — 2026 하반기 달란트 잔치</title>
+<style>
+  @page { size: A4; margin: 10mm; }
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  body {
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+    background: #f1f5f9;
+    color: #111827;
+    margin: 0;
+  }
+
+  /* ── 화면 전용 안내 영역 ── */
+  .guide { max-width: 880px; margin: 0 auto; padding: 28px 20px 40px; }
+  .guide h1 { font-size: 22px; margin-bottom: 4px; }
+  .guide .lead { color: #6b7280; font-size: 13px; margin-bottom: 20px; }
+  .guide .box {
+    background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
+    padding: 16px 18px; margin-bottom: 16px; font-size: 13px; line-height: 1.7;
+  }
+  .guide .box h2 { font-size: 14px; margin-bottom: 8px; }
+  .guide table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  .guide th, .guide td { border-bottom: 1px solid #e5e7eb; padding: 7px 8px; text-align: center; }
+  .guide th { background: #f8fafc; }
+  .guide td.left { text-align: left; }
+  .note { background: #fffbeb; border: 1px solid #fcd34d; color: #92400e; border-radius: 8px; padding: 10px 14px; font-size: 12.5px; margin-top: 10px; }
+  .print-btn {
+    display: inline-block; margin-top: 6px; background: #4f46e5; color: #fff;
+    border: none; border-radius: 8px; padding: 10px 20px; font-size: 14px; font-weight: 700;
+    cursor: pointer;
+  }
+  .legend { display:flex; gap:14px; flex-wrap:wrap; font-size:12.5px; margin-top:8px; }
+  .legend span { display:inline-flex; align-items:center; gap:6px; }
+  .legend i { width:14px; height:14px; border-radius:50%; display:inline-block; }
+
+  /* ── 인쇄 시트 ── */
+  .sheet-tag {
+    max-width: 190mm; margin: 0 auto 4px; font-size: 12px; color: #6b7280; font-weight: 700;
+  }
+  .sheet {
+    width: 180mm;
+    margin: 0 auto 10mm;
+    display: grid;
+    grid-template-columns: repeat(4, 45mm);
+    grid-template-rows: repeat(5, 50mm);
+    gap: 0;
+    justify-content: center;
+  }
+  .cut-cell {
+    border: 1px dashed #b8bfc9;
+    overflow: visible;
+    position: relative;
+  }
+
+  /* ── 카드 공통 ── */
+  .bill { width: 100%; height: 100%; position: relative; }
+  .brand {
+    position: absolute; bottom: 1.3mm; left: 0; right: 0; text-align: center; padding: 0 1mm;
+    font-size: 8.5px; line-height: 1.2; font-weight: 700; color: var(--text, rgba(255,255,255,.92));
+    text-shadow: var(--shadow, none); letter-spacing: .01em; white-space: nowrap;
+  }
+
+  /* ── 동전형(교사용·새신자용 공용) ── */
+  .bill.coin-bill {
+    background: var(--c);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 1.2mm; overflow: hidden; padding-bottom: 8.5mm;
+  }
+  .bill.coin-bill .wing { position: absolute; top: 40%; width: 11mm; opacity: .55; }
+  .bill.coin-bill .wing.l { left: -1mm; transform: translateY(-50%); }
+  .bill.coin-bill .wing.r { right: -1mm; transform: translateY(-50%) scaleX(-1); }
+  .bill.coin-bill .spark { position: absolute; font-size: 8px; opacity: .65; color: #fff; }
+  .bill.coin-bill .spark.a { top: 1.5mm; left: 2.5mm; }
+  .bill.coin-bill .spark.b { top: 1.5mm; right: 2.5mm; }
+  .coin {
+    width: 30mm; height: 30mm; border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.85), rgba(255,255,255,0) 58%), var(--c);
+    border: 2.5px solid rgba(255,255,255,.9);
+    box-shadow: 0 0 0 3px rgba(0,0,0,.14), 0 2px 3px rgba(0,0,0,.18);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    z-index: 1;
+  }
+  .coin .v { font-size: 38px; font-weight: 900; color: var(--text, #fff); line-height: 1; text-shadow: var(--shadow, 0 0 4px rgba(0,0,0,.4)); }
+  .coin .u { font-size: 9.5px; font-weight: 800; color: var(--text, #fff); margin-top: .8mm; text-shadow: var(--shadow, 0 0 2px rgba(0,0,0,.35)); }
+  .coin-ribbon {
+    background: rgba(255,255,255,.9); color: #33363e; font-size: 10.5px; font-weight: 800;
+    padding: 1.5mm 3.5mm; border-radius: 999px; z-index: 1; white-space: nowrap;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .guide { display: none; }
+    .sheet-tag { display: none; }
+    .sheet {
+      page-break-after: always;
+      break-after: page;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .cut-cell {
+      border-color: #ccc;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════ 화면 안내 (인쇄 안 됨) ════ -->
+<div class="guide">
+  <h1>🎫 달란트 카드 인쇄 (교사용·새신자용) — 2026 하반기 달란트 잔치</h1>
+  <p class="lead">아이들용과 별도로, 교사와 새신자에게 나눠 드릴 20달란트 카드입니다. 아이들의 음식 전용 달란트와 달리 <b>물품·음식 어디에나 자유롭게 쓸 수 있는 달란트</b>이며, 색으로 대상을 구분했습니다.</p>
+
+  <div class="box">
+    <h2>두 가지로 나눠 만들었어요</h2>
+    <div class="legend">
+      <span><i style="background:#2f5f77"></i> 🙏 교사용 — 20달란트, 16명</span>
+      <span><i style="background:#e2637f"></i> 🌱 새신자용 — 20달란트, 5명</span>
+    </div>
+    <p style="margin-top:8px;">아이들 카드와 모양(동전형)은 같지만, 리본 문구와 색을 달리해서 한눈에 구분되게 했습니다. 한 사람당 20달란트 카드 1장씩 나눠 드리면 됩니다.</p>
+  </div>
+
+  <div class="box">
+    <h2>몇 장을 인쇄하면 될까요</h2>
+    <table>
+      <thead>
+        <tr><th>대상</th><th>인원</th><th>필요 매수</th><th>인쇄 매수(여유 포함)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="left">🙏 교사용</td><td>16명</td><td>16장</td><td><b>18장</b></td></tr>
+        <tr><td class="left">🌱 새신자용</td><td>5명</td><td>5장</td><td><b>7장</b></td></tr>
+      </tbody>
+    </table>
+    <div class="note">📝 인원이 바뀌면 아래 스크립트의 인원 수만 고쳐서 다시 인쇄하면 됩니다.</div>
+  </div>
+
+  <div class="box">
+    <h2>사용 방법</h2>
+    <p>① 아래로 스크롤해 원하는 시트를 찾습니다. &nbsp; ② <b>인쇄하기</b> 버튼(또는 Ctrl+P)으로 인쇄합니다. &nbsp; ③ 점선을 따라 가위로 오려 사용합니다.</p>
+    <button class="print-btn" onclick="window.print()">🖨️ 인쇄하기</button>
+  </div>
+</div>
+
+<!-- ════ 인쇄 시트 (스크립트로 생성) ════ -->
+<div id="sheets"></div>
+
+<script>
+  // 대상별 인원(필요 매수)과 여유 포함 인쇄 매수, 색상, 아이콘, 리본 문구
+  const GROUPS = [
+    { label: '교사용', qty: 18, color: '#2f5f77', icon: '🙏' },
+    { label: '새신자용', qty: 7, color: '#e2637f', icon: '🌱' },
+  ];
+  const CELLS_PER_SHEET = 20;
+
+  function luminance(hex) {
+    const c = hex.replace('#', '');
+    const r = parseInt(c.substr(0, 2), 16), g = parseInt(c.substr(2, 2), 16), b = parseInt(c.substr(4, 2), 16);
+    return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  }
+  function textStyle(hex) {
+    return luminance(hex) > 0.62
+      ? { text: '#2d2a26', shadow: '0 1px 0 rgba(255,255,255,.55)' }
+      : { text: '#ffffff', shadow: '0 0 4px rgba(0,0,0,.4)' };
+  }
+
+  function coinBill(label, color, icon) {
+    const t = textStyle(color);
+    return `
+      <div class="bill coin-bill" style="--c:${color}; --text:${t.text}; --shadow:${t.shadow}">
+        <svg class="wing l" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><path d="M2 38 C10 10 40 2 58 6 C40 14 22 22 2 38 Z" fill="#fff"/></svg>
+        <svg class="wing r" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><path d="M2 38 C10 10 40 2 58 6 C40 14 22 22 2 38 Z" fill="#fff"/></svg>
+        <span class="spark a">✨</span><span class="spark b">✨</span>
+        <div class="coin"><div class="v">20</div><div class="u">달란트</div></div>
+        <div class="coin-ribbon">${icon} ${label}</div>
+        <div class="brand">2026 하반기 김포남현교회 초등부<br>달란트 잔치</div>
+      </div>`;
+  }
+
+  function buildSheets(container) {
+    GROUPS.forEach(group => {
+      const sheetCount = Math.ceil(group.qty / CELLS_PER_SHEET);
+      for (let s = 0; s < sheetCount; s++) {
+        const tag = document.createElement('div');
+        tag.className = 'sheet-tag';
+        tag.textContent = `${group.label} · 20달란트 · 시트 ${s + 1}/${sheetCount} (총 ${group.qty}장)`;
+        container.appendChild(tag);
+
+        const sheet = document.createElement('div');
+        sheet.className = 'sheet';
+        const cellsInSheet = Math.min(CELLS_PER_SHEET, group.qty - s * CELLS_PER_SHEET);
+        for (let i = 0; i < cellsInSheet; i++) {
+          const cell = document.createElement('div');
+          cell.className = 'cut-cell';
+          cell.innerHTML = coinBill(group.label, group.color, group.icon);
+          sheet.appendChild(cell);
+        }
+        container.appendChild(sheet);
+      }
+    });
+  }
+
+  buildSheets(document.getElementById('sheets'));
+</script>
+
+</body>
+</html>

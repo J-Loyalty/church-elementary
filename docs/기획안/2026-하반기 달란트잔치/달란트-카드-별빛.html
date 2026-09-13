@@ -68,16 +68,16 @@
   /* ── 카드 공통 ── */
   .bill { width: 100%; height: 100%; position: relative; }
   .brand {
-    position: absolute; bottom: 1mm; left: 0; right: 0; text-align: center; padding: 0 1.5mm;
-    font-size: 7.5px; line-height: 1.2; font-weight: 700; color: var(--text, rgba(255,255,255,.92));
-    text-shadow: var(--shadow, none); letter-spacing: .01em;
+    position: absolute; bottom: 1.3mm; left: 0; right: 0; text-align: center; padding: 0 1mm;
+    font-size: 8.5px; line-height: 1.2; font-weight: 700; color: var(--text, rgba(255,255,255,.92));
+    text-shadow: var(--shadow, none); letter-spacing: .01em; white-space: nowrap;
   }
 
   /* ── 음식용(동전형) ── */
   .bill.food {
     background: var(--c);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 1.2mm; overflow: hidden; padding-bottom: 8mm;
+    gap: 1.2mm; overflow: hidden; padding-bottom: 8.5mm;
   }
   .bill.food .wing { position: absolute; top: 40%; width: 11mm; opacity: .55; }
   .bill.food .wing.l { left: -1mm; transform: translateY(-50%); }
@@ -100,34 +100,45 @@
     padding: 1.5mm 3.5mm; border-radius: 999px; z-index: 1; white-space: nowrap;
   }
 
-  /* ── 물품구매용(표/티켓형) ── */
+  /* ── 물품구매용(티켓형) ── */
   .bill.item {
     background: var(--c);
-    position: relative; overflow: visible;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+    gap: 2mm; overflow: hidden; padding-bottom: 8mm;
   }
-  .bill.item .stub {
-    position: absolute; top: 0; bottom: 0; left: 0; width: 11mm;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
+  .bill.item .spark { position: absolute; font-size: 9px; opacity: .65; color: #fff; }
+  .bill.item .spark.a { top: 2mm; left: 3mm; }
+  .bill.item .spark.b { top: 2mm; right: 3mm; }
+  .bill.item .panel {
+    width: 25mm; height: 12mm; border-radius: 4mm;
+    background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.85), rgba(255,255,255,0) 58%), var(--c);
+    border: 2.5px solid rgba(255,255,255,.9);
+    box-shadow: 0 0 0 3px rgba(0,0,0,.14), 0 2px 3px rgba(0,0,0,.18);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    z-index: 1;
   }
-  .bill.item .main {
-    width: 100%; height: 100%;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1mm;
-    padding-bottom: 4mm;
-  }
-  .bill.item .main .v { font-size: 30px; font-weight: 900; color: var(--text, #fff); line-height: 1; text-shadow: var(--shadow, 0 0 3px rgba(0,0,0,.35)); }
-  .bill.item .main .u { font-size: 9px; font-weight: 800; color: var(--text, #fff); }
-  .bill.item .tag {
-    background: rgba(255,255,255,.9); color: #1e2a63; font-size: 8px; font-weight: 800;
-    padding: 0.7mm 2mm; border-radius: 999px;
+  .bill.item .panel .v { font-size: 21px; font-weight: 900; color: var(--text, #fff); line-height: 1; text-shadow: var(--shadow, 0 0 4px rgba(0,0,0,.4)); }
+  .bill.item .panel .u { font-size: 6.5px; font-weight: 800; color: var(--text, #fff); margin-top: .4mm; text-shadow: var(--shadow, 0 0 2px rgba(0,0,0,.35)); }
+  .bill.item .item-ribbon {
+    background: rgba(255,255,255,.9); color: #1e2a63; font-size: 8.5px; font-weight: 800;
+    padding: 0.9mm 3mm; border-radius: 999px; z-index: 1; white-space: nowrap;
   }
 
   @media print {
     body { background: #fff; }
     .guide { display: none; }
     .sheet-tag { display: none; }
-    .sheet { page-break-after: always; }
-    .cut-cell { border-color: #ccc; }
+    .sheet {
+      page-break-after: always;
+      break-after: page;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .cut-cell {
+      border-color: #ccc;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
   }
 </style>
 </head>
@@ -168,8 +179,22 @@
   </div>
 
   <div class="box">
-    <h2>🎈 물품구매용 — 아직 수량 미정</h2>
-    <p>물품구매용은 희망 물품 사전 구매·게임 추가 달란트 등 아직 정해지지 않은 부분이 많아, 여기서는 <b>권종별 도안 1장씩(32칸)</b>만 만들어 두었습니다. 필요한 수량이 정해지면 원하는 권종의 인쇄 시트를 <b>브라우저에서 여러 번 인쇄</b>하거나 그 부분만 복사해서 쓰세요.</p>
+    <h2>🎈 물품구매용 — 몇 장을 인쇄하면 될까요</h2>
+    <p>희망 물품 신청이 모두 끝나 아이별로 남은 달란트가 확정됐습니다. 그 금액을 실제 권종별 매수로 정확히 계산했습니다 (58명 전체 합계 기준).</p>
+    <table>
+      <thead>
+        <tr><th>권종</th><th>필요 매수</th><th>인쇄 시트 수</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>20달란트</td><td><b>7장</b></td><td>1장</td></tr>
+        <tr><td>10달란트</td><td><b>46장</b></td><td>2장</td></tr>
+        <tr><td>5달란트</td><td><b>77장</b></td><td>3장</td></tr>
+        <tr><td>3달란트</td><td><b>261장</b></td><td>9장</td></tr>
+        <tr><td>2달란트</td><td><b>121장</b></td><td>4장</td></tr>
+        <tr><td>1달란트</td><td><b>333장</b></td><td>11장</td></tr>
+      </tbody>
+    </table>
+    <div class="note">📝 이 수량은 지금 구글 시트(명단) 기준입니다. 희망 물품 신청이 바뀌면 매수도 달라지니, 인쇄 전에 시트를 한 번 더 확인하세요.</div>
   </div>
 
   <div class="box">
@@ -190,8 +215,8 @@
 
   // 음식용: 실제 필요 매수(거스름돈 포함, 10장 단위)
   const FOOD_QTY = { 1: 40, 2: 30, 3: 20, 5: 20, 10: 10, 20: 60 };
-  // 물품구매용: 수량 미정 — 도안 1장(32칸)만 생성
-  const ITEM_QTY = { 1: 32, 2: 32, 3: 32, 5: 32, 10: 32, 20: 32 };
+  // 물품구매용: 명단 시트 기준 실제 필요 매수
+  const ITEM_QTY = { 1: 333, 2: 121, 3: 261, 5: 77, 10: 46, 20: 7 };
 
   function luminance(hex) {
     const c = hex.replace('#', '');
@@ -221,12 +246,9 @@
     const t = textStyle(color);
     return `
       <div class="bill item" style="--c:${color}; --text:${t.text}; --shadow:${t.shadow}">
-        <div class="stub">🎈</div>
-        <div class="main">
-          <div class="v">${denom}</div>
-          <div class="u">달란트</div>
-          <div class="tag">물품 구매용</div>
-        </div>
+        <span class="spark a">✨</span><span class="spark b">✨</span>
+        <div class="panel"><div class="v">${denom}</div><div class="u">달란트</div></div>
+        <div class="item-ribbon">🎈 물품 구매용</div>
         <div class="brand">2026 하반기 김포남현교회 초등부<br>달란트 잔치</div>
       </div>`;
   }
