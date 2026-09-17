@@ -295,6 +295,7 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 14px;
+      min-width: 0;
     }
     .staff-card .staff-place { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
     .staff-card .staff-title { font-weight: 700; margin-bottom: 10px; font-size: 14px; }
@@ -402,6 +403,7 @@
     <button class="tab-btn"        onclick="showTab('tab-order')"    >🎲 반 순서 (핀볼)</button>
     <button class="tab-btn"        onclick="showTab('tab-game')"     >🎯 게임 프로그램</button>
     <button class="tab-btn"        onclick="showTab('tab-staff')"    >👥 운영 인력</button>
+    <button class="tab-btn"        onclick="showTab('tab-transport')">🚐 배차 안내</button>
     <button class="tab-btn"        onclick="showTab('tab-checklist')">✅ 체크리스트</button>
   </nav>
 </div>
@@ -488,6 +490,48 @@
       </div>
       <div class="info-box blue">
         <strong>희망 물품 구매 방식</strong> — 희망 물품은 <strong>담임 선생님이 각 반 신청을 전달받아 개별 구매</strong>한 뒤, <strong>영수증으로 교회에 청구</strong>합니다. 구매한 물품은 당일 아이에게 전달합니다.
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><div class="icon">💰</div>결산 현황</div>
+
+      <div style="font-weight:700; font-size:13px; margin-bottom:8px;">반별 희망 물품 구매 내역 (담임 선생님 개별 구매 · 청구 기준)</div>
+      <div class="table-wrap" style="margin-bottom:16px;">
+        <table>
+          <thead><tr><th>반</th><th class="num">달란트 물품</th></tr></thead>
+          <tbody>
+            <tr><td>기쁨반</td><td class="num">74,930원</td></tr>
+            <tr><td>절제반</td><td class="num">107,140원</td></tr>
+            <tr><td>신실반</td><td class="num">81,050원</td></tr>
+            <tr><td>사랑반</td><td class="num">98,510원</td></tr>
+            <tr><td>친절반</td><td class="num">124,070원</td></tr>
+            <tr><td>선함반</td><td class="num">115,680원</td></tr>
+            <tr><td>온유반</td><td class="num">121,520원</td></tr>
+            <tr><td>인내반</td><td class="num">112,800원</td></tr>
+            <tr class="highlight-row"><td>합계 (8개 반)</td><td class="num">835,700원</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="font-weight:700; font-size:13px; margin-bottom:8px;">전체 지출 집행 현황</div>
+      <div class="table-wrap" style="margin-bottom:12px;">
+        <table>
+          <thead><tr><th>구분</th><th class="num">예산</th><th class="num">집행액</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>달란트 물품 — 반별 희망 물품</td><td class="num">1,100,000원</td><td class="num">835,700원</td><td>담임 선생님 개별 구매(위 표) · 잔액 264,300원은 예비 물품으로 전환</td></tr>
+            <tr><td>달란트 물품 — 예비(게임) 물품</td><td class="num">300,000원</td><td class="num">404,530원</td><td>예비 300,000 + 위 잔액 264,300 = 564,300원 안에서 공동구매</td></tr>
+            <tr><td>달란트 간식</td><td class="num">200,000원</td><td class="num">213,550원</td><td>음료·과자·컵라면</td></tr>
+            <tr><td>식대 (분식)</td><td class="num">300,000원</td><td class="num">📝 미집행</td><td>행사 당일 지출 예정 — 유일하게 남은 항목</td></tr>
+            <tr class="highlight-row"><td>합계</td><td class="num">1,900,000원</td><td class="num">1,453,780원 + 식대</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="info-box green">
+        <strong>수입</strong> — 전액 <strong>교회 재정 100%</strong>로 지원합니다 (별도 학부모 회비·후원 없음).
+      </div>
+      <div class="info-box amber">
+        📝 식대(분식) 지출이 아직 남아 있습니다. 행사 당일 영수증 정리 후 이 표를 갱신하세요.
       </div>
     </div>
 
@@ -588,7 +632,7 @@
           </div>
         </div>
         <div class="tl-item">
-          <div class="tl-left"><div class="tl-time">11:45~<br />12:25</div></div>
+          <div class="tl-left"><div class="tl-time">11:35~<br />12:25</div></div>
           <div class="tl-mid"><div class="tl-dot purple"></div><div class="tl-line"></div></div>
           <div class="tl-right">
             <div class="tl-title">🎯 달란트 추가 획득 프로그램 <span class="tl-badge badge-purple">성가대실</span></div>
@@ -863,7 +907,7 @@
 
       <!-- 2단계: 헌금 이후 자리 배치 -->
       <div class="info-box amber" style="margin-bottom:12px;">
-        <strong>2단계 · 헌금 이후</strong> — 헌금이 끝나면 아이들이 비전센터에서 본당으로 이동합니다. 이때 교사들은 아래처럼 <strong>각 자리로 배치</strong>됩니다. (📝 실제 참여 가능 인원에 맞게 이름을 채우세요.)
+        <strong>2단계 · 헌금 이후</strong> — 헌금이 끝나면 아이들이 비전센터에서 본당으로 이동합니다. 이때 교사들은 아래처럼 <strong>각 자리로 배치</strong>됩니다. 이름이 없는 <strong>나머지 교사진은 식당 정리 및 저학년 아이들 도우미</strong>를 맡습니다.
       </div>
 
       <div class="staff-3col" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
@@ -883,40 +927,142 @@
         <div class="staff-card" style="border-top:3px solid var(--green);">
           <div class="staff-place">🛍 성가대실</div>
           <div class="staff-title">달란트 마켓 · 게임</div>
-          <div class="staff-row">
-            <span>마켓 운영 (판매·계산·수령)</span>
-            <span class="staff-count" style="color:var(--green);">📝 몇 명</span>
+          <div class="staff-row" style="flex-direction:column; align-items:flex-start;">
+            <span>마켓 운영 (판매·계산·수령) — <strong>청년부</strong></span>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px; line-height:1.7;">
+              유승찬 · 김우빈 · 김건호 · 신동혁
+            </div>
           </div>
-          <div class="staff-row">
-            <span>달란트 추가 획득 게임 진행 (퀴즈·암송·제기차기)</span>
-            <span class="staff-count" style="color:var(--green);">📝 몇 명</span>
+          <div class="staff-row" style="flex-direction:column; align-items:flex-start;">
+            <span>선택 물품 교환 — <strong>청년부</strong></span>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px; line-height:1.7;">
+              장현수 · 박주은
+            </div>
+          </div>
+          <div class="staff-row" style="flex-direction:column; align-items:flex-start;">
+            <span>성경 퀴즈 진행 — <strong>초등부 교사</strong></span>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px; line-height:1.7;">
+              조소현 집사
+            </div>
+          </div>
+          <div class="staff-row" style="flex-direction:column; align-items:flex-start;">
+            <span>성경 암송 — <strong>초등부 교사</strong></span>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px; line-height:1.7;">
+              이선미 집사
+            </div>
+          </div>
+          <div class="staff-row" style="flex-direction:column; align-items:flex-start;">
+            <span>제기차기 진행 — <strong>초등부 교사</strong></span>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px; line-height:1.7;">
+              박종렬 장로
+            </div>
           </div>
         </div>
 
         <div class="staff-card" style="border-top:3px solid var(--accent);">
           <div class="staff-place">🍱 본당 식당</div>
           <div class="staff-title">음식 부스</div>
-          <div class="staff-row">
-            <span>음식 제작·판매 · 과자/음료</span>
-            <span class="staff-count" style="color:#d97706;">📝 몇 명</span>
+          <div class="staff-row" style="flex-direction:column; align-items:flex-start;">
+            <span>음식 부스</span>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px; line-height:1.7;">
+               홍선미 집사 · 김용민 청년 · 김민후 학생
+              <br />
+              박미경 집사 · 이유진 사모
+            </div>
           </div>
           <div class="staff-row" style="flex-direction:column; align-items:flex-start;">
-            <span>식당 정리 및 아이들 지도</span>
+            <span>간식 부스 — <strong>초등부 교사</strong></span>
             <div style="font-size:11px; color:var(--text-muted); margin-top:4px; line-height:1.7;">
-              📝 메뉴 확정 (예: 떡볶이 · 회오리 감자 · 김밥 · 라면 · 과자 등)
+              김옥주 집사 · 안옥자 집사
+            </div>
+          </div>
+          <div class="staff-row" style="flex-direction:column; align-items:flex-start;">
+            <span>식당 정리 및 저학년 아이들 도우미</span>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px; line-height:1.7;">
+              김동완 학생 · 이수진 집사 · 김진서 목사
+            </div>
+          </div>
+          <div class="staff-row" style="flex-direction:column; align-items:flex-start;">
+            <span style="font-weight:700;">✅ 메뉴 확정 — 전 품목 3달란트</span>
+            <div class="table-wrap" style="margin-top:6px; width:100%;">
+              <table style="min-width:0;">
+                <thead><tr><th>메뉴</th><th class="center">준비 수량</th><th class="center">가격</th></tr></thead>
+                <tbody>
+                  <tr><td>닭꼬치</td><td class="center">100개</td><td class="center">3달란트</td></tr>
+                  <tr><td>회오리튀김</td><td class="center">100개</td><td class="center">3달란트</td></tr>
+                  <tr><td>김밥</td><td class="center">25~35인분</td><td class="center">3달란트</td></tr>
+                  <tr><td>떡볶이</td><td class="center">25~35인분</td><td class="center">3달란트</td></tr>
+                  <tr><td>콜팝</td><td class="center">60개</td><td class="center">3달란트</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <div class="staff-row" style="flex-direction:column; align-items:flex-start; background:var(--accent-light); border-radius:8px; padding:10px; margin-top:4px;">
             <span style="font-weight:700; color:#d97706;">남기지 않기 전략</span>
             <div style="font-size:11px; color:var(--text); margin-top:4px; line-height:1.8;">
               · 준비량 <b>55~60인분</b> (상반기 70 준비·20 남음 → 실수요에 맞춤)<br>
-              · <b>20달란트 = 한 끼</b>가 되게 가격 설정 (예: 메인 12~15 + 사이드 5~8)<br>
+              · <b>전 품목 일괄 3달란트</b> — 20달란트로 6~7개를 골라 먹으면 한 끼<br>
               · 조리형은 <b>즉석에서 소량씩 추가 조리</b> (한 번에 다 만들지 않기)<br>
               · 남으면 교사·형제 부서·가정 <b>포장 나눔</b> · 이번 실제 소비 인분 <b>기록</b>
             </div>
           </div>
         </div>
 
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ 탭: 배차 안내 ════ -->
+<div id="tab-transport" class="tab-panel">
+  <div class="container">
+
+    <div class="section">
+      <div class="section-title"><div class="icon">🚐</div>배차 안내</div>
+      <div class="info-box blue" style="margin-bottom:16px;">
+        행사 당일 아이들 등원을 돕는 <strong>차량 배차</strong>입니다. 스타렉스 2대가 각자 정해진 경로로 돌며 아이들을 태워 옵니다. 하차 후에는 두 차량 모두 <strong>10시 30분까지 교회에 도착</strong>합니다.
+      </div>
+
+      <div class="staff-3col" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+
+        <div class="staff-card" style="border-top:3px solid var(--primary);">
+          <div class="staff-place">🚐 배차표 · 스타렉스 1</div>
+          <div class="staff-title">기사: 김진서 목사</div>
+          <div class="table-wrap">
+            <table style="min-width:0;">
+              <thead><tr><th>시간</th><th>정차 장소</th></tr></thead>
+              <tbody>
+                <tr><td class="num">10:00</td><td>교회 출발</td></tr>
+                <tr><td class="num">10:10</td><td>이편한세상 김포로얄하임 정문</td></tr>
+                <tr><td class="num">10:15</td><td>대방 엘리움</td></tr>
+                <tr><td class="num">10:20</td><td>LH 4단지</td></tr>
+                <tr><td class="num">10:30</td><td>교회 도착</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="staff-card" style="border-top:3px solid var(--green);">
+          <div class="staff-place">🚐 배차표 · 스타렉스 2</div>
+          <div class="staff-title">기사: 장충성 집사</div>
+          <div class="table-wrap">
+            <table style="min-width:0;">
+              <thead><tr><th>시간</th><th>정차 장소</th></tr></thead>
+              <tbody>
+                <tr><td class="num">10:00</td><td>교회 출발</td></tr>
+                <tr><td class="num">10:05</td><td>이편한세상 어반베뉴</td></tr>
+                <tr><td class="num">10:10</td><td>대방 디에트로</td></tr>
+                <tr><td class="num">10:15</td><td>교회 도착</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="info-box amber" style="margin-top:16px;">
+        📝 위 경로 이외의 배차가 필요할 경우 <strong>담임선생님께 알려주세요.</strong>
       </div>
     </div>
 
@@ -1031,7 +1177,7 @@
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    const idx = ['tab-budget','tab-timeline','tab-space','tab-order','tab-game','tab-staff','tab-checklist'].indexOf(id);
+    const idx = ['tab-budget','tab-timeline','tab-space','tab-order','tab-game','tab-staff','tab-transport','tab-checklist'].indexOf(id);
     document.querySelectorAll('.tab-btn')[idx].classList.add('active');
     // 선택된 탭이 보이도록 스크롤
     document.querySelectorAll('.tab-btn')[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
